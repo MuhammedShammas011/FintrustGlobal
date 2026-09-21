@@ -1,0 +1,404 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* ─── Base Reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Poppins', system-ui, sans-serif;
+  background-color: #F7F6F2;
+  color: #111111;
+  overflow-x: hidden;
+}
+
+/* ─── Custom Cursor ─── */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #111111;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, background 0.2s ease, width 0.3s ease, height 0.3s ease;
+  mix-blend-mode: exclusion;
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(17, 17, 17, 0.4);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease, width 0.3s cubic-bezier(0.25,0.1,0.25,1), height 0.3s cubic-bezier(0.25,0.1,0.25,1), opacity 0.3s ease, border-color 0.3s ease;
+}
+
+.cursor-ring.hovering {
+  width: 56px;
+  height: 56px;
+  border-color: #2A5C45;
+  opacity: 0.6;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F6F2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D5D4D0;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2A5C45;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: #2A5C45;
+  color: #F7F6F2;
+}
+
+/* ─── Typography Utilities ─── */
+.text-display {
+  font-size: clamp(3.2rem, 7vw, 6.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+.text-hero {
+  font-size: clamp(2.6rem, 5.5vw, 5.2rem);
+  line-height: 1.07;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+.text-section {
+  font-size: clamp(2rem, 4vw, 3.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+.text-large {
+  font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+
+.text-label-tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ─── Layout Utilities ─── */
+.container-site {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 5rem);
+}
+
+.section-padding {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+}
+
+.section-padding-sm {
+  padding: clamp(3rem, 6vw, 6rem) 0;
+}
+
+/* ─── Scroll Reveal Animations ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ─── Line Animation (for SVG) ─── */
+.draw-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ─── Text Mask Reveal ─── */
+.text-reveal-wrapper {
+  overflow: hidden;
+}
+
+.text-reveal-inner {
+  transform: translateY(100%);
+  transition: transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.text-reveal-inner.visible {
+  transform: translateY(0);
+}
+
+/* ─── Button Base ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #111111;
+  color: #F7F6F2;
+  padding: 0.85rem 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border: 1px solid #111111;
+  transition: background 0.35s cubic-bezier(0.25,0.1,0.25,1), color 0.35s cubic-bezier(0.25,0.1,0.25,1), transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  background: #2A5C45;
+  border-color: #2A5C45;
+  transform: translateX(2px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #111111;
+  padding: 0.85rem 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border: 1px solid rgba(17,17,17,0.25);
+  transition: border-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: #111111;
+  transform: translateX(2px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111111;
+  background: transparent;
+  border: none;
+  padding: 0;
+  letter-spacing: -0.01em;
+  transition: gap 0.3s cubic-bezier(0.25,0.1,0.25,1);
+}
+
+.btn-ghost:hover {
+  gap: 0.85rem;
+}
+
+/* Dark background variants */
+.dark-bg .btn-primary {
+  background: #F7F6F2;
+  color: #111111;
+  border-color: #F7F6F2;
+}
+
+.dark-bg .btn-primary:hover {
+  background: #2A5C45;
+  color: #F7F6F2;
+  border-color: #2A5C45;
+}
+
+.dark-bg .btn-ghost {
+  color: #F7F6F2;
+}
+
+/* ─── Service Row ─── */
+.service-row {
+  border-top: 1px solid #E5E4E0;
+  padding: 1.75rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.service-row:last-child {
+  border-bottom: 1px solid #E5E4E0;
+}
+
+.service-row::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(42, 92, 69, 0.04);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.service-row:hover::before {
+  opacity: 1;
+}
+
+/* ─── Mobile Nav Overlay ─── */
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: #111111;
+  z-index: 998;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem clamp(1.5rem, 5vw, 5rem);
+}
+
+/* ─── Misc ─── */
+.thin-rule {
+  border: none;
+  border-top: 1px solid #E5E4E0;
+}
+
+.thin-rule-dark {
+  border: none;
+  border-top: 1px solid #2A2A2A;
+}
+
+.accent-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2A5C45;
+}
+
+/* ─── Testimonial ─── */
+.testimonial-quote {
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  color: #111111;
+}
+
+/* ─── Insights / Blog ─── */
+.insight-card {
+  border-top: 1px solid #E5E4E0;
+  padding-top: 1.5rem;
+  transition: opacity 0.3s ease;
+}
+
+.insight-card:hover {
+  opacity: 0.7;
+}
+
+/* ─── Step indicator ─── */
+.step-number {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: #2A5C45;
+  text-transform: uppercase;
+}
+
+.step-active .step-title {
+  color: #111111;
+}
+
+.step-inactive .step-title {
+  color: #C0BEBC;
+}
+
+.step-inactive .step-body {
+  color: #C0BEBC;
+}
+
+/* ─── Industries horizontal scroll ─── */
+.industry-item {
+  flex-shrink: 0;
+  padding: 2rem 3rem;
+  border-right: 1px solid #E5E4E0;
+  transition: background 0.3s ease;
+  min-width: 180px;
+  text-align: center;
+}
+
+.industry-item:first-child {
+  border-left: 1px solid #E5E4E0;
+}
+
+.industry-item:hover {
+  background: rgba(42, 92, 69, 0.05);
+}
+
+/* ─── ERP Platform ─── */
+.erp-platform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 2rem;
+  border: 1px solid #E5E4E0;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: -0.01em;
+  color: #6B6B6B;
+  transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+}
+
+.erp-platform:hover {
+  border-color: #2A5C45;
+  color: #2A5C45;
+  background: rgba(42, 92, 69, 0.04);
+}
+
+/* ─── Process progress line ─── */
+.process-line {
+  width: 1px;
+  background: #E5E4E0;
+  flex: 1;
+  margin: 0 auto;
+  transition: background 0.5s ease;
+}
+
+.process-line.active {
+  background: #2A5C45;
+}
