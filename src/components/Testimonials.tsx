@@ -56,23 +56,21 @@ export default function Testimonials() {
         {/* Header */}
         <div className="mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <div>
-            <motion.span
-              className="text-label-tag text-accent tracking-[0.18em] block mb-6"
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.6 }}
-            >
-              CLIENT PERSPECTIVES
-            </motion.span>
-            <motion.h2
-              className="text-section text-near-black max-w-xl"
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
             >
-              Trusted by people
-              <span className="text-near-black/35"> building businesses.</span>
-            </motion.h2>
+              <div className="mb-6">
+                <span className="text-[#8a8a8a] text-sm font-semibold uppercase tracking-wider">
+                  CLIENT PERSPECTIVES
+                </span>
+              </div>
+              <h2 className="text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] leading-[1.1] text-near-black font-normal tracking-tight flex flex-col gap-2">
+                <span className="block">Trusted by people</span>
+                <span className="block text-[#212e52]/40">building businesses.</span>
+              </h2>
+            </motion.div>
           </div>
 
           {/* Navigation arrows */}

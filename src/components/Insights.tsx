@@ -54,23 +54,21 @@ export default function Insights() {
         {/* Header */}
         <div className="mb-14 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <div>
-            <motion.span
-              className="text-label-tag text-accent tracking-[0.18em] block mb-6"
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.6 }}
-            >
-              INSIGHTS
-            </motion.span>
-            <motion.h2
-              className="text-section text-near-black max-w-xl"
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
             >
-              Ideas for businesses
-              <span className="text-near-black/35"> that want to move forward.</span>
-            </motion.h2>
+              <div className="mb-6">
+                <span className="text-[#8a8a8a] text-sm font-semibold uppercase tracking-wider">
+                  INSIGHTS
+                </span>
+              </div>
+              <h2 className="text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] leading-[1.1] text-near-black font-normal tracking-tight flex flex-col gap-2">
+                <span className="block">Ideas for businesses</span>
+                <span className="block text-[#212e52]/40">that want to move forward.</span>
+              </h2>
+            </motion.div>
           </div>
           <motion.a
             href="https://fintrustglobal.ae/blog/"
