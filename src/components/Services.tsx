@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const services = [
   {
@@ -46,7 +46,6 @@ const services = [
 
 export default function Services() {
   const ref = useRef<HTMLElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-50px' })
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
   return (
