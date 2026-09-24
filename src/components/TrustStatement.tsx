@@ -120,7 +120,7 @@ export default function TrustStatement() {
   const featureParallax = [yFeature1, yFeature2, yFeature3, yFeature4]
 
   return (
-    <section ref={ref} className="py-24 md:py-32 bg-[#FCFBF8]" id="why-fintrust-statement">
+    <section ref={ref} className="py-24 md:py-32 bg-[#FCFBF8] border-t-[4px] border-black" id="why-fintrust-statement">
       <div className="container-site max-w-[1200px]">
         
         <motion.div style={{ y: yHeadline }}>

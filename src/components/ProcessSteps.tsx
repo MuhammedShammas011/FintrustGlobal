@@ -58,7 +58,7 @@ export default function ProcessSteps() {
   }, [])
 
   return (
-    <section ref={ref} className="section-padding bg-[#FCFBF8]" id="process">
+    <section ref={ref} className="section-padding bg-[#FCFBF8] border-t-[4px] border-black" id="process">
       <div className="container-site">
         {/* Header */}
         <div className="mb-20 md:mb-24 grid md:grid-cols-2 gap-8">

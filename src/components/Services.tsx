@@ -50,7 +50,7 @@ export default function Services() {
 
   return (
     <section ref={ref} className="bg-[#FCFBF8]" id="services">
-      <div className="border-t border-border">
+      <div>
         <div className="grid md:grid-cols-12 min-h-screen">
 
           {/* Left: Sticky Header area */}
