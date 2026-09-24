@@ -12,11 +12,24 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [onProcessSection, setOnProcessSection] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.8)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Hide navbar when the #process section is visible
+  useEffect(() => {
+    const processEl = document.getElementById('process')
+    if (!processEl) return
+    const observer = new IntersectionObserver(
+      ([entry]) => setOnProcessSection(entry.isIntersecting),
+      { threshold: 0.1 }
+    )
+    observer.observe(processEl)
+    return () => observer.disconnect()
   }, [])
 
   useEffect(() => {
@@ -30,10 +43,12 @@ export default function Navbar() {
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const navVisible = scrolled && !onProcessSection
+
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navVisible
           ? 'translate-y-0 opacity-100 py-2 bg-off-white/95 backdrop-blur-md border-b border-border'
           : '-translate-y-full opacity-0 pointer-events-none'
           }`}
@@ -45,7 +60,7 @@ export default function Navbar() {
             className="flex items-center group"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
           >
-            <img src={logoImg} alt="Fintrust Global" className="h-16 md:h-20 w-auto object-contain" />
+            <img src={logoImg} alt="Fintrust Global" className="h-12 md:h-16 w-auto object-contain" />
           </a>
 
           {/* Desktop Nav */}
@@ -66,7 +81,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <a
               href="tel:+971506029161"
-              className="btn-ghost text-sm"
+              className="text-sm font-medium text-[#C9951A] hover:text-[#a87a15] transition-colors duration-200 tracking-tight"
             >
               Let's Talk →
             </a>

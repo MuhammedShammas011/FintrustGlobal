@@ -61,7 +61,7 @@ export default function FinalCTA() {
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-[#8a8a8a] text-sm font-semibold uppercase tracking-wider">
+          <span className="text-[#C9951A] text-sm font-semibold uppercase tracking-wider">
             GET STARTED
           </span>
         </motion.div>

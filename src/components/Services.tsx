@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { useState, useRef } from 'react'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
 
 const services = [
   {
@@ -47,84 +47,126 @@ const services = [
 export default function Services() {
   const ref = useRef<HTMLElement>(null)
   const inView = useInView(ref, { once: true, margin: '-50px' })
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
   return (
     <section ref={ref} className="bg-[#FCFBF8]" id="services">
-      <div>
-        <div className="grid md:grid-cols-12 min-h-screen">
 
-          {/* Left: Sticky Header area */}
-          <div className="md:col-span-5 border-b md:border-b-0 md:border-r border-border p-6 md:p-8 lg:p-10 relative">
-            <div className="md:sticky md:top-32">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-              >
-                <div className="mb-6">
-                  <span className="text-[#8a8a8a] text-sm font-semibold uppercase tracking-wider">
-                    OUR SERVICES
-                  </span>
-                </div>
+      {/* ── Header ─────────────────────────────────────────────────── */}
+      <div className="border-b border-[#e0ddd8]">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 py-16 md:py-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            <span className="text-[#C9951A] text-xs font-semibold uppercase tracking-[0.2em] mb-5 block">
+              Our Services
+            </span>
+            <h2 className="text-5xl md:text-6xl lg:text-[5rem] leading-[1.05] text-[#1a1a1a] font-normal tracking-tight max-w-2xl">
+              Everything your business needs{' '}
+              <span className="text-[#212e52]">behind the numbers.</span>
+            </h2>
+          </motion.div>
 
-                <h2 className="text-5xl md:text-6xl lg:text-[5rem] leading-[1.1] text-near-black font-normal tracking-tight flex flex-col gap-2 mb-8">
-                  <span className="block">Everything your business needs</span>
-                  <span className="text-[#212e52] drop-shadow-sm block">behind the numbers.</span>
-                </h2>
-
-                <p className="text-[#5a5a5a] text-lg leading-relaxed max-w-sm">
-                  From bookkeeping to strategic advisory, Fintrust provides the full spectrum of financial services your business requires.
-                </p>
-              </motion.div>
-            </div>
-          </div>
-
-          {/* Right: Scrollable Services List */}
-          <div className="md:col-span-7 flex flex-col">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.number}
-                initial={{ opacity: 0, y: 12 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 + index * 0.1 }}
-                className={`p-8 md:p-12 lg:p-20 flex flex-col sm:flex-row gap-6 md:gap-12 ${index !== services.length - 1 ? 'border-b border-border' : ''
-                  }`}
-              >
-                {/* Number */}
-                <div className="text-3xl md:text-4xl text-[#C0BEBC] font-light font-mono shrink-0">
-                  {service.number}
-                </div>
-
-                {/* Content */}
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-[#212e52] mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-[#5a5a5a] text-base leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-
-                  {/* Tagline & Items */}
-                  <div className="text-sm font-medium text-[#212e52]/70 mb-3">
-                    {service.tagline}
-                  </div>
-                  <ul className="flex flex-wrap gap-2">
-                    {service.items.map(item => (
-                      <li
-                        key={item}
-                        className="text-xs font-medium text-[#5a5a5a] border border-[#d8d7d5] px-3 py-1.5 rounded-full"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
+          <motion.p
+            className="text-[#5a5a5a] text-base leading-relaxed max-w-xs md:text-right"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            From bookkeeping to strategic advisory — the full spectrum of financial services.
+          </motion.p>
         </div>
       </div>
+
+      {/* ── Services List ───────────────────────────────────────────── */}
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20">
+        {services.map((service, index) => (
+          <motion.div
+            key={service.number}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className={`border-b border-[#e0ddd8] ${index === 0 ? 'border-t' : ''}`}
+          >
+            <div
+              className={`-mx-4 px-4 md:-mx-8 md:px-8 rounded-2xl transition-colors duration-400 ${activeIndex === index ? 'bg-[#C9951A]/[0.08]' : 'hover:bg-[#C9951A]/[0.04]'}`}
+              onMouseEnter={() => setActiveIndex(index)}
+            >
+              {/* Row — hoverable (and clickable for mobile) */}
+              <button
+                className="w-full text-left py-7 flex items-center gap-6 md:gap-12 group"
+                onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+              >
+                {/* Number */}
+                <span className="text-xs font-mono text-[#b0ada9] shrink-0 w-6">
+                  {service.number}
+                </span>
+
+                {/* Title */}
+                <span
+                  className={`flex-1 text-2xl md:text-3xl font-normal tracking-tight transition-colors duration-300 ${
+                    activeIndex === index ? 'text-[#212e52]' : 'text-[#1a1a1a] group-hover:text-[#212e52]'
+                  }`}
+                >
+                  {service.title}
+                </span>
+
+                {/* Tagline — hidden on mobile, visible on md+ */}
+                <span className="hidden md:block text-sm text-[#8a8a8a] max-w-[240px] text-right leading-snug">
+                  {service.tagline}
+                </span>
+
+                {/* Arrow / indicator */}
+                <motion.span
+                  className="shrink-0 w-8 h-8 rounded-full border border-[#C9951A]/40 flex items-center justify-center text-[#C9951A]"
+                  animate={{ rotate: activeIndex === index ? 45 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M7 1v12M1 7h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                </motion.span>
+              </button>
+
+              {/* Expandable Detail */}
+              <AnimatePresence initial={false}>
+                {activeIndex === index && (
+                  <motion.div
+                    key="content"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pb-10 pl-12 md:pl-[4.5rem] grid md:grid-cols-2 gap-8">
+                      <p className="text-[#5a5a5a] text-base leading-relaxed">
+                        {service.description}
+                      </p>
+                      <ul className="flex flex-wrap gap-2 content-start">
+                        {service.items.map(item => (
+                          <li
+                            key={item}
+                            className="text-xs font-medium text-[#212e52] bg-[#212e52]/8 border border-[#212e52]/15 px-3 py-1.5 rounded-full"
+                          >
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
     </section>
   )
 }

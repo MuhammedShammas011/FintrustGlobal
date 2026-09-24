@@ -23,13 +23,15 @@ export default function Hero() {
   })
 
   // The section is 150vh, so the first 50vh of scrolling keeps it sticky.
-  // 50vh / 150vh = 0.33. We animate from 0 to 0.33.
-  // Text starts hidden and offset right, then fades in and moves left to join the logo
-  const textOpacity = useTransform(scrollYProgress, [0, 0.33], [0, 1])
-  const textX = useTransform(scrollYProgress, [0, 0.33], [150, 0])
+  // 0 to 0.33: Initial reveal, text and logo join in the center.
+  // 0.33 to 0.5: Hold together as the next section begins to slide up.
+  // 0.5 to 1.0: Next section covers the screen; logo moves left, text moves right, and both fade out.
+  
+  const textOpacity = useTransform(scrollYProgress, [0, 0.33, 0.5, 0.8], [0, 1, 1, 0])
+  const textX = useTransform(scrollYProgress, [0, 0.33, 0.5, 1], [150, 0, 0, 150])
 
-  // Logo starts in the center, then moves left to its natural position in the lockup
-  const logoX = useTransform(scrollYProgress, [0, 0.33], ['25vw', '0vw'])
+  const logoX = useTransform(scrollYProgress, [0, 0.33, 0.5, 1], ['25vw', '0vw', '0vw', '-20vw'])
+  const logoOpacity = useTransform(scrollYProgress, [0, 0.33, 0.5, 0.8], [1, 1, 1, 0])
 
   return (
     <>
@@ -59,7 +61,7 @@ export default function Hero() {
           ──────────────────────────────────────────────────────────── */}
           <motion.div 
             className="flex flex-col items-start justify-center gap-[2px] md:gap-[3px] xl:gap-[4px] overflow-hidden shrink-0"
-            style={{ x: logoX }}
+            style={{ x: logoX, opacity: logoOpacity }}
           >
 
             {/* Top Block */}

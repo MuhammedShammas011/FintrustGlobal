@@ -60,7 +60,7 @@ export default function Insights() {
               transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
             >
               <div className="mb-6">
-                <span className="text-[#8a8a8a] text-sm font-semibold uppercase tracking-wider">
+                <span className="text-[#C9951A] text-sm font-semibold uppercase tracking-wider">
                   INSIGHTS
                 </span>
               </div>
