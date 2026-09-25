@@ -32,7 +32,7 @@ export default function TaxSection() {
               <h2 className="text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] leading-[1.1] text-near-black font-normal tracking-tight flex flex-col gap-2 mb-8">
                 <span className="block whitespace-nowrap">Tax shouldn't</span>
                 <span className="block whitespace-nowrap">
-                  be <span className="text-[#212e52]/40">complicated.</span>
+                  be <span className="text-[#212e52]">complicated.</span>
                 </span>
               </h2>
             </motion.div>

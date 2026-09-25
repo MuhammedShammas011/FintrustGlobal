@@ -74,7 +74,7 @@ export default function FinalCTA() {
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.15 }}
         >
           <span className="block">Your business is moving forward.</span>
-          <span className="block text-[#212e52]/40">Make sure your finances are too.</span>
+          <span className="block text-[#212e52]">Make sure your finances are too.</span>
         </motion.h2>
 
         {/* Supporting text */}

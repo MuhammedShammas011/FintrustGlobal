@@ -66,7 +66,7 @@ export default function Insights() {
               </div>
               <h2 className="text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] leading-[1.1] text-near-black font-normal tracking-tight flex flex-col gap-2">
                 <span className="block">Ideas for businesses</span>
-                <span className="block text-[#212e52]/40">that want to move forward.</span>
+                <span className="block text-[#212e52]">that want to move forward.</span>
               </h2>
             </motion.div>
           </div>

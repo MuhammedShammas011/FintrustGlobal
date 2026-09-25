@@ -61,7 +61,7 @@ export default function DueDiligence() {
               transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
             >
               <span className="block">Know what you're</span>
-              <span className="block text-[#212e52]/40">really investing in.</span>
+              <span className="block text-[#212e52]">really investing in.</span>
             </motion.h2>
           </div>
           <motion.div

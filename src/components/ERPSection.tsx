@@ -26,7 +26,7 @@ export default function ERPSection() {
               <h2 className="text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] leading-[1.1] text-near-black font-normal tracking-tight flex flex-col gap-2 mb-8">
                 <span className="block">Your financial systems</span>
                 <span className="block">
-                  should work <span className="text-[#212e52]/40">as hard as you do.</span>
+                  should work <span className="text-[#212e52]">as hard as you do.</span>
                 </span>
               </h2>
             </motion.div>
