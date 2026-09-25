@@ -108,9 +108,8 @@ export default function Services() {
 
                 {/* Title */}
                 <span
-                  className={`flex-1 text-2xl md:text-3xl font-normal tracking-tight transition-colors duration-300 ${
-                    activeIndex === index ? 'text-[#212e52]' : 'text-[#1a1a1a] group-hover:text-[#212e52]'
-                  }`}
+                  className={`flex-1 text-2xl md:text-3xl font-normal tracking-tight transition-colors duration-300 ${activeIndex === index ? 'text-[#212e52]' : 'text-[#1a1a1a] group-hover:text-[#212e52]'
+                    }`}
                 >
                   {service.title}
                 </span>
@@ -127,7 +126,7 @@ export default function Services() {
                   transition={{ duration: 0.3 }}
                 >
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M7 1v12M1 7h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                    <path d="M7 1v12M1 7h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                   </svg>
                 </motion.span>
               </button>
