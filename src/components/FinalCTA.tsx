@@ -8,50 +8,10 @@ export default function FinalCTA() {
   return (
     <section
       ref={ref}
-      className="relative min-h-[80vh] flex items-center bg-white overflow-hidden"
+      className="relative min-h-[80vh] flex items-center bg-off-white overflow-hidden"
       id="contact"
     >
-      {/* Animated line background */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <svg
-          viewBox="0 0 1440 800"
-          fill="none"
-          className="w-full h-full opacity-[0.4]"
-          preserveAspectRatio="xMidYMid slice"
-        >
-          {/* Diagonal lines */}
-          {Array.from({ length: 20 }, (_, i) => (
-            <line
-              key={`d${i}`}
-              x1={i * 80 - 200}
-              y1="0"
-              x2={i * 80 + 200}
-              y2="800"
-              stroke="#E5E4E0"
-              strokeWidth="1"
-            />
-          ))}
-          {/* Horizontal lines */}
-          {Array.from({ length: 10 }, (_, i) => (
-            <line
-              key={`h${i}`}
-              x1="0"
-              y1={i * 90}
-              x2="1440"
-              y2={i * 90}
-              stroke="#E5E4E0"
-              strokeWidth="0.5"
-            />
-          ))}
-          {/* Accent line — trend */}
-          <path
-            d="M0,700 C300,650 600,400 800,300 C1000,200 1200,150 1440,100"
-            stroke="#2A5C45"
-            strokeWidth="1.5"
-            fill="none"
-          />
-        </svg>
-      </div>
+
 
       <div className="container-site relative z-10 py-24">
         {/* Label */}

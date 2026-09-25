@@ -35,9 +35,9 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-off-white border-t border-border">
+    <footer className="bg-off-white pb-16">
       {/* Main footer */}
-      <div className="container-site py-16">
+      <div className="container-site pt-16">
         <div className="grid md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-1">

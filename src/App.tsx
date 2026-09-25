@@ -4,10 +4,7 @@ import TrustStatement from './components/TrustStatement'
 import ScrollSteps from './components/ScrollSteps'
 import Services from './components/Services'
 import ProcessSteps from './components/ProcessSteps'
-import TaxSection from './components/TaxSection'
-import ERPSection from './components/ERPSection'
 import Industries from './components/Industries'
-import DueDiligence from './components/DueDiligence'
 import WhyFintrust from './components/WhyFintrust'
 import Testimonials from './components/Testimonials'
 import Insights from './components/Insights'
@@ -24,10 +21,7 @@ export default function App() {
         <ScrollSteps />
         <Services />
         <ProcessSteps />
-        <TaxSection />
-        <ERPSection />
         <Industries />
-        <DueDiligence />
         <WhyFintrust />
         <Testimonials />
         <Insights />
