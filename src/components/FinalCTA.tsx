@@ -3,73 +3,38 @@ import { motion, useInView } from 'framer-motion'
 
 export default function FinalCTA() {
   const ref = useRef<HTMLElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: true, margin: '-10%' })
 
   return (
     <section
       ref={ref}
-      className="relative min-h-[80vh] flex items-center bg-off-white overflow-hidden"
+      className="relative py-40 md:py-56 bg-[#F7F6F2] flex items-center justify-center text-center overflow-hidden"
       id="contact"
     >
-
-
-      <div className="container-site relative z-10 py-24">
-        {/* Label */}
+      <div className="w-full max-w-[1920px] mx-auto px-6 relative z-10">
         <motion.div
-          className="mb-8"
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="text-[#C9951A] text-sm font-semibold uppercase tracking-wider">
-            GET STARTED
-          </span>
-        </motion.div>
-
-        {/* Large headline */}
-        <motion.h2
-          className="text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] leading-[1.1] text-near-black font-normal tracking-tight flex flex-col gap-2 mb-10"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.15 }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          className="max-w-5xl mx-auto flex flex-col items-center"
         >
-          <span className="block">Your business is moving forward.</span>
-          <span className="block text-[#212e52]">Make sure your finances are too.</span>
-        </motion.h2>
+          <h2 className="text-4xl md:text-6xl lg:text-[5.5rem] font-normal tracking-tighter text-[#212e52] mb-16 leading-[1.05]">
+            <span className="block">''Your business is moving forward.</span>
+            <span className="block text-[#212e52]/30 mt-2">Make sure your finances are too.''</span>
+          </h2>
 
-        {/* Supporting text */}
-        <motion.p
-          className="text-muted text-body-lg max-w-lg leading-relaxed mb-14"
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.3 }}
-        >
-          Accounting, taxation and business advisory for businesses in the UAE.
-          Speak with a Fintrust advisor today.
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div
-          className="flex flex-wrap gap-4 items-center"
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.45 }}
-        >
           <a
             href="mailto:info@fintrustglobal.ae"
-            className="btn-primary text-sm"
+            className="group flex items-center gap-4 text-[#212e52] text-lg md:text-2xl font-medium tracking-tight relative pb-2 pr-4"
           >
-            Talk to Fintrust →
+            <span>Talk to an advisor</span>
+            <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
+
+            {/* Animated underline */}
+            <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#212e52]/20" />
+            <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#212e52] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
           </a>
-          <button
-            onClick={() => document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' })}
-            className="btn-ghost text-near-black border-near-black hover:bg-near-black hover:text-white text-sm transition-colors duration-300"
-          >
-            Explore services
-          </button>
         </motion.div>
-
-
       </div>
     </section>
   )
