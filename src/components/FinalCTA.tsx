@@ -69,33 +69,7 @@ export default function FinalCTA() {
           </button>
         </motion.div>
 
-        {/* Contact strip */}
-        <motion.div
-          className="mt-20 pt-10 border-t border-border grid sm:grid-cols-3 gap-8"
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.7, delay: 0.6 }}
-        >
-          <div>
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-muted mb-2">Phone</div>
-            <a href="tel:+971506029161" className="text-near-black text-sm font-medium hover:text-accent transition-colors duration-200">
-              +971 50 602 9161
-            </a>
-          </div>
-          <div>
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-muted mb-2">Email</div>
-            <a href="mailto:info@fintrustglobal.ae" className="text-near-black text-sm font-medium hover:text-accent transition-colors duration-200">
-              info@fintrustglobal.ae
-            </a>
-          </div>
-          <div>
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-muted mb-2">Address</div>
-            <p className="text-near-black text-sm leading-relaxed">
-              206, Alphamed Building<br />
-              Abu Hail, Dubai, UAE
-            </p>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   )

@@ -8,11 +8,11 @@ const industries = [
     description: 'Building your financial foundation from day one — accounting, compliance and structure for early-stage businesses.',
     icon: (
       <svg className="w-full h-full text-[#212e52]/15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-        <path d="m12 15-3-3a22 22 0 0 1 3.82-13 1.5 1.5 0 0 1 2.18 2.18A22 22 0 0 1 12 15z"/>
-        <path d="m15 12 3 3"/>
-        <path d="M10 17l4 4"/>
-        <path d="M14 19l-4-4"/>
+        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+        <path d="m12 15-3-3a22 22 0 0 1 3.82-13 1.5 1.5 0 0 1 2.18 2.18A22 22 0 0 1 12 15z" />
+        <path d="m15 12 3 3" />
+        <path d="M10 17l4 4" />
+        <path d="M14 19l-4-4" />
       </svg>
     ),
   },
@@ -22,8 +22,8 @@ const industries = [
     description: 'Scaling businesses need financial clarity. Fintrust helps SMEs manage complexity and make informed growth decisions.',
     icon: (
       <svg className="w-full h-full text-[#212e52]/15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
       </svg>
     ),
   },
@@ -33,7 +33,7 @@ const industries = [
     description: 'Enterprise-level accounting, tax strategy and due diligence for established businesses operating in the UAE.',
     icon: (
       <svg className="w-full h-full text-[#212e52]/15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 21h18"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/><path d="M9 7h6"/><path d="M9 11h6"/>
+        <path d="M3 21h18" /><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16" /><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4" /><path d="M9 7h6" /><path d="M9 11h6" />
       </svg>
     ),
   },
@@ -43,7 +43,7 @@ const industries = [
     description: 'Sole practitioners and independent consultants deserve the same financial clarity as any growing business.',
     icon: (
       <svg className="w-full h-full text-[#212e52]/15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/>
+        <path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16" />
       </svg>
     ),
   },
@@ -53,7 +53,7 @@ const industries = [
     description: 'Navigating UAE financial requirements as an expatriate — Fintrust provides clarity, structure and ongoing support.',
     icon: (
       <svg className="w-full h-full text-[#212e52]/15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
       </svg>
     ),
   },
@@ -82,19 +82,19 @@ export default function Industries() {
     const rect = containerRef.current.getBoundingClientRect()
     const containerTop = rect.top + window.scrollY
     const scrollSpace = rect.height - window.innerHeight
-    
+
     // We want to scroll to the middle of the 'segment' for that index
     // Segment size is 1/5. Middle of segment is (index + 0.5) / 5
     const targetProgress = (index + 0.5) / 5
     const targetScroll = containerTop + (targetProgress * scrollSpace)
-    
+
     window.scrollTo({ top: targetScroll, behavior: 'smooth' })
   }
 
   const handlePrev = () => {
     if (active > 0) scrollToTab(active - 1)
   }
-  
+
   const handleNext = () => {
     if (active < 4) scrollToTab(active + 1)
   }
@@ -178,7 +178,7 @@ export default function Industries() {
 
               </motion.div>
             </AnimatePresence>
-            
+
             {/* Large SVG Icon - Absolutely Positioned to avoid stretching vertical height */}
             <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[150px] h-[150px] lg:w-[220px] lg:h-[220px] xl:w-[280px] xl:h-[280px] pointer-events-none z-0">
               <AnimatePresence mode="wait">
@@ -202,9 +202,8 @@ export default function Industries() {
               <button
                 onClick={handlePrev}
                 disabled={active === 0}
-                className={`flex items-center gap-2 text-sm font-semibold uppercase tracking-wider group transition-colors duration-200 ${
-                  active === 0 ? 'text-[#212e52]/20 cursor-not-allowed' : 'text-[#212e52]/40 hover:text-[#212e52]'
-                }`}
+                className={`flex items-center gap-2 text-sm font-semibold uppercase tracking-wider group transition-colors duration-200 ${active === 0 ? 'text-[#212e52]/20 cursor-not-allowed' : 'text-[#212e52]/40 hover:text-[#212e52]'
+                  }`}
               >
                 <svg className={`w-4 h-4 transition-transform duration-200 ${active !== 0 && 'group-hover:-translate-x-1'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -214,9 +213,8 @@ export default function Industries() {
               <button
                 onClick={handleNext}
                 disabled={active === industries.length - 1}
-                className={`flex items-center gap-2 text-sm font-semibold uppercase tracking-wider group transition-colors duration-200 ${
-                  active === industries.length - 1 ? 'text-[#212e52]/20 cursor-not-allowed' : 'text-[#212e52]/40 hover:text-[#212e52]'
-                }`}
+                className={`flex items-center gap-2 text-sm font-semibold uppercase tracking-wider group transition-colors duration-200 ${active === industries.length - 1 ? 'text-[#212e52]/20 cursor-not-allowed' : 'text-[#212e52]/40 hover:text-[#212e52]'
+                  }`}
               >
                 Next
                 <svg className={`w-4 h-4 transition-transform duration-200 ${active !== industries.length - 1 && 'group-hover:translate-x-1'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -224,12 +222,12 @@ export default function Industries() {
                 </svg>
               </button>
             </div>
-            
+
             {/* Scroll Indicator */}
             <div className="hidden md:flex items-center gap-3 text-[#212e52]/30 text-xs font-semibold uppercase tracking-widest">
               <span>Scroll to explore</span>
-              <motion.div 
-                animate={{ y: [0, 5, 0] }} 
+              <motion.div
+                animate={{ y: [0, 5, 0] }}
                 transition={{ repeat: Infinity, duration: 2 }}
               >
                 ↓
