@@ -19,7 +19,7 @@ export default function ScrollSteps() {
   const w4 = useTransform(scrollYProgress, [0, 0.6], ["35%", "100%"])
 
   return (
-    <div ref={containerRef} className="relative w-full overflow-hidden bg-[#FCFBF8] py-12 md:py-20">
+    <div ref={containerRef} className="relative w-full overflow-hidden bg-white py-12 md:py-20">
 
       {/* Lines are flush left to create a connected alignment, but maintain separate gaps */}
 
@@ -27,7 +27,7 @@ export default function ScrollSteps() {
         {/* Step 1 - Increased vertical thickness */}
         <motion.div
           style={{ width: w1 }}
-          className="h-20 md:h-28 bg-[#151414] origin-left"
+          className="h-20 md:h-28 bg-[#212e52] origin-left"
         ></motion.div>
         <div className="h-[0.2px]"></div> {/* Gap */}
 
@@ -36,8 +36,8 @@ export default function ScrollSteps() {
           style={{ width: w2 }}
           className="flex items-end origin-left"
         >
-          <div className="w-full h-10 md:h-16 bg-[#151414]"></div>
-          <div className="w-[50%] min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#151414] shrink-0"></div>
+          <div className="w-full h-10 md:h-16 bg-[#212e52]"></div>
+          <div className="w-[50%] min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] shrink-0"></div>
         </motion.div>
         <div className="h-[0.2px]"></div> {/* Gap */}
 
@@ -46,8 +46,8 @@ export default function ScrollSteps() {
           style={{ width: w3 }}
           className="flex items-end origin-left"
         >
-          <div className="w-full h-10 md:h-16 bg-[#151414]"></div>
-          <div className="w-[33%] min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#151414] shrink-0"></div>
+          <div className="w-full h-10 md:h-16 bg-[#212e52]"></div>
+          <div className="w-[33%] min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] shrink-0"></div>
         </motion.div>
         <div className="h-[0.2px]"></div> {/* Gap */}
 
@@ -56,8 +56,8 @@ export default function ScrollSteps() {
           style={{ width: w4 }}
           className="flex items-end origin-left"
         >
-          <div className="w-full h-10 md:h-16 bg-[#151414]"></div>
-          <div className="w-[25%] min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#151414] shrink-0"></div>
+          <div className="w-full h-10 md:h-16 bg-[#212e52]"></div>
+          <div className="w-[25%] min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] shrink-0"></div>
         </motion.div>
       </div>
     </div>

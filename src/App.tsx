@@ -18,11 +18,11 @@ export default function App() {
       <main>
         <Hero />
         <TrustStatement />
-        <ScrollSteps />
         <Services />
         <ProcessSteps />
         <Industries />
         <WhyFintrust />
+        <ScrollSteps />
         <Testimonials />
         <Insights />
         <FinalCTA />
