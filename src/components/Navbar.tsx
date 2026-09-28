@@ -3,10 +3,62 @@ import { motion, AnimatePresence } from 'framer-motion'
 import logoImg from '../assets/Horizontal-Logo- Fintrust Global-01.png'
 
 const navLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'Solutions', href: '#solutions' },
-  { label: 'About', href: '#why-fintrust' },
-  { label: 'Insights', href: '#insights' },
+  { label: 'Home', href: '#' },
+  { 
+    label: 'Services', 
+    href: '#services',
+    dropdown: [
+      { 
+        label: 'Accounting', 
+        href: '#accounting',
+        subDropdown: [
+          { label: 'Monthly bookkeeping', href: '#monthly-bookkeeping' },
+          { label: 'Payroll Management', href: '#payroll-management' }
+        ]
+      },
+      { 
+        label: 'Taxation', 
+        href: '#taxation',
+        subDropdown: [
+          { label: 'Corporate tax', href: '#corporate-tax' },
+          { label: 'Vat consultancy', href: '#vat-consultancy' },
+          { label: 'Excise Tax Service', href: '#excise-tax' },
+          { label: 'Tax Audit service', href: '#tax-audit' },
+          { label: 'VAT Administration penalties', href: '#vat-penalties' }
+        ]
+      },
+      { 
+        label: 'Business Consultation', 
+        href: '#business-consultation',
+        subDropdown: [
+          { label: 'AML Compliance', href: '#aml-compliance' },
+          { label: 'Economic Substance Advisory', href: '#esa' },
+          { label: 'Budgeting & Forecasting', href: '#budgeting' },
+          { label: 'CFO Outsourcing', href: '#cfo' },
+          { label: 'ERP / Accounting software', href: '#erp' }
+        ]
+      },
+      { 
+        label: 'Due Diligence', 
+        href: '#due-diligence',
+        subDropdown: [
+          { label: 'Operations due diligence', href: '#operations-dd' },
+          { label: 'Accounts due diligence', href: '#accounts-dd' },
+          { label: 'Commerce due diligence', href: '#commerce-dd' },
+          { label: 'Tax Due Diligence', href: '#tax-dd' }
+        ]
+      },
+      { 
+        label: 'Management', 
+        href: '#management',
+        subDropdown: [
+          { label: '360 Business management', href: '#360-management' }
+        ]
+      },
+    ]
+  },
+  { label: 'Blog', href: '#insights' },
+  { label: 'Contact-Us', href: '#contact' },
 ]
 
 export default function Navbar() {
@@ -66,13 +118,52 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <ul className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <li key={link.label}>
+              <li key={link.label} className="relative group">
                 <button
                   onClick={() => scrollTo(link.href)}
-                  className="text-sm font-medium text-near-black/70 hover:text-near-black transition-colors duration-200 tracking-tight"
+                  className="text-sm font-medium text-near-black/70 hover:text-near-black transition-colors duration-200 tracking-tight flex items-center gap-1 py-4"
                 >
                   {link.label}
+                  {link.dropdown && (
+                    <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  )}
                 </button>
+                
+                {link.dropdown && (
+                  <div className="absolute top-[80%] left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 w-64 bg-white border border-border shadow-lg rounded-xl py-2">
+                    {link.dropdown.map((subItem) => (
+                      <div key={subItem.label} className="relative group/sub">
+                        <button
+                          onClick={() => scrollTo(subItem.href)}
+                          className="w-full text-left px-4 py-2.5 text-sm text-near-black/70 hover:text-[#C9951A] hover:bg-off-white transition-colors flex items-center justify-between"
+                        >
+                          {subItem.label}
+                          {subItem.subDropdown && (
+                            <svg className="w-3 h-3 -rotate-90 text-near-black/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          )}
+                        </button>
+                        
+                        {subItem.subDropdown && (
+                          <div className="absolute top-0 left-[100%] opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 -translate-x-2 group-hover/sub:translate-x-0 w-64 bg-white border border-border shadow-lg rounded-xl py-2 overflow-hidden">
+                            {subItem.subDropdown.map((nestedItem) => (
+                              <button
+                                key={nestedItem.label}
+                                onClick={() => scrollTo(nestedItem.href)}
+                                className="block w-full text-left px-4 py-2.5 text-sm text-near-black/70 hover:text-[#C9951A] hover:bg-off-white transition-colors"
+                              >
+                                {nestedItem.label}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </li>
             ))}
           </ul>
@@ -80,10 +171,10 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="tel:+971506029161"
-              className="text-sm font-medium text-[#C9951A] hover:text-[#a87a15] transition-colors duration-200 tracking-tight"
+              href="#contact"
+              className="text-sm font-medium bg-[#C9951A] text-white hover:bg-[#a87a15] px-5 py-2.5 rounded-full transition-colors duration-200 tracking-tight shadow-sm"
             >
-              Let's Talk →
+              Book now
             </a>
           </div>
 
@@ -116,20 +207,48 @@ export default function Navbar() {
             exit={{ clipPath: 'inset(0 0 100% 0)' }}
             transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <ul className="flex flex-col gap-8">
+            <ul className="flex flex-col gap-6">
               {navLinks.map((link, i) => (
                 <motion.li
                   key={link.label}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 + i * 0.07, duration: 0.5 }}
+                  className="flex flex-col gap-3"
                 >
                   <button
                     onClick={() => scrollTo(link.href)}
-                    className="text-off-white text-4xl font-semibold tracking-tight hover:text-accent transition-colors duration-200"
+                    className="text-off-white text-4xl font-semibold tracking-tight hover:text-accent transition-colors duration-200 text-left"
                   >
                     {link.label}
                   </button>
+                  {link.dropdown && (
+                    <div className="flex flex-col gap-5 pl-4 border-l border-off-white/20 mt-2">
+                      {link.dropdown.map((subItem) => (
+                        <div key={subItem.label} className="flex flex-col gap-2">
+                          <button
+                            onClick={() => scrollTo(subItem.href)}
+                            className="text-off-white/80 text-xl font-medium tracking-tight hover:text-accent transition-colors duration-200 text-left"
+                          >
+                            {subItem.label}
+                          </button>
+                          {subItem.subDropdown && (
+                            <div className="flex flex-col gap-2 pl-4 border-l border-off-white/10 mt-1">
+                              {subItem.subDropdown.map((nestedItem) => (
+                                <button
+                                  key={nestedItem.label}
+                                  onClick={() => scrollTo(nestedItem.href)}
+                                  className="text-off-white/50 text-base font-normal tracking-tight hover:text-accent transition-colors duration-200 text-left"
+                                >
+                                  {nestedItem.label}
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </motion.li>
               ))}
             </ul>
