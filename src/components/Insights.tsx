@@ -84,13 +84,13 @@ export default function Insights() {
         </div>
 
         {/* Editorial grid */}
-        <div className="grid md:grid-cols-3 gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
           {/* Featured large article */}
           <motion.a
             href={featured.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="insight-card md:col-span-2 md:pr-12 group"
+            className="insight-card md:col-span-2 pb-10 md:pb-0 md:pr-12 border-b md:border-b-0 group"
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
@@ -112,7 +112,7 @@ export default function Insights() {
           </motion.a>
 
           {/* Secondary articles */}
-          <div className="flex flex-col md:pl-12 md:border-l border-border gap-0">
+          <div className="flex flex-col pt-10 md:pt-0 md:pl-12 md:border-l border-border gap-0 border-t md:border-t-0">
             {secondary.map((article, index) => (
               <motion.a
                 key={article.title}

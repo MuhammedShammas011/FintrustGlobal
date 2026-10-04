@@ -8,7 +8,7 @@ export default function FinalCTA() {
   return (
     <section
       ref={ref}
-      className="relative py-40 md:py-56 bg-[#F7F6F2] flex items-center justify-center text-center overflow-hidden"
+      className="relative py-24 md:py-40 lg:py-56 bg-[#F7F6F2] flex items-center justify-center text-center overflow-hidden"
       id="contact"
     >
       <div className="w-full max-w-[1920px] mx-auto px-6 relative z-10">
@@ -18,7 +18,7 @@ export default function FinalCTA() {
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
           className="max-w-5xl mx-auto flex flex-col items-center"
         >
-          <h2 className="text-4xl md:text-6xl lg:text-[5.5rem] font-normal tracking-tighter text-[#212e52] mb-16 leading-[1.05]">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-[5.5rem] font-normal tracking-tighter text-[#212e52] mb-10 md:mb-16 leading-[1.05]">
             <span className="block">''Your business is moving forward.</span>
             <span className="block text-[#212e52]/30 mt-2">Make sure your finances are too.''</span>
           </h2>

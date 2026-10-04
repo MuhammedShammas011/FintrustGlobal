@@ -38,9 +38,9 @@ export default function Footer() {
     <footer className="bg-off-white pb-16">
       {/* Main footer */}
       <div className="container-site pt-16">
-        <div className="grid md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
-          <div className="md:col-span-1">
+          <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <span className="w-2 h-2 rounded-sm bg-accent" />
               <span className="font-semibold tracking-tight text-near-black text-sm">
@@ -104,7 +104,7 @@ export default function Footer() {
         </div>
 
         {/* Contact info */}
-        <div className="mt-14 pt-8 border-t border-border grid sm:grid-cols-3 gap-6">
+        <div className="mt-14 pt-8 border-t border-border grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div>
             <div className="text-[10px] font-semibold text-muted/60 uppercase tracking-[0.12em] mb-2">Address</div>
             <p className="text-xs text-muted leading-relaxed">

@@ -61,16 +61,16 @@ export default function Testimonials() {
           <p className="text-[#212e52]/40 text-xs font-semibold uppercase tracking-widest mb-4">
             GOOD PEOPLE. HONEST WORDS.
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl text-[#212e52] font-normal tracking-tight leading-[1.1]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#212e52] font-normal tracking-tight leading-[1.1]">
             The work speaks.<br/>So do the people.
           </h2>
         </div>
 
         {/* 2-Column Grid */}
-        <div className="grid lg:grid-cols-2 gap-6 mb-12 min-h-[450px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
           
           {/* Left Column: Image Card */}
-          <div className="relative rounded-3xl overflow-hidden aspect-square lg:aspect-auto lg:h-full bg-gray-100">
+          <div className="relative rounded-3xl overflow-hidden aspect-[4/3] sm:aspect-square lg:aspect-auto lg:h-[500px] bg-gray-100">
             <AnimatePresence mode="wait">
               <motion.img
                 key={active}

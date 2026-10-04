@@ -75,7 +75,7 @@ export default function WhyFintrust() {
               </span>
             </div>
             
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight leading-[1.0] text-[#212e52] mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight leading-[1.0] text-[#212e52] mb-6">
               <span className="block">More than</span>
               <span className="block text-[#212e52]">accounting.</span>
             </h2>
@@ -104,7 +104,7 @@ export default function WhyFintrust() {
               <motion.div
                 key={principle.id}
                 variants={itemVariants}
-                className="p-8 md:p-10 rounded-[1.5rem] flex flex-col justify-start min-h-[280px] group bg-white border border-[#212e52]/10 transition-all duration-300 shadow-sm hover:shadow-xl hover:bg-[#212e52]"
+                className="p-6 md:p-8 lg:p-10 rounded-[1.5rem] flex flex-col justify-start min-h-[220px] md:min-h-[280px] group bg-white border border-[#212e52]/10 transition-all duration-300 shadow-sm hover:shadow-xl hover:bg-[#212e52]"
               >
                 <div 
                   className="w-12 h-12 rounded-full flex items-center justify-center mb-10 bg-[#212e52] text-white transition-colors duration-300 group-hover:bg-white/10 group-hover:border group-hover:border-white/10"

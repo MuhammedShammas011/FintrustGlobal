@@ -138,7 +138,7 @@ export default function TrustStatement() {
 
           {/* Large statement with unique scrubbed 3D fold-out */}
           <div className="mb-8" style={{ perspective: 1000 }}>
-            <h2 className="text-5xl md:text-6xl lg:text-[5rem] leading-[1.1] text-near-black font-normal tracking-tight flex flex-col gap-2">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] leading-[1.1] text-near-black font-normal tracking-tight flex flex-col gap-2">
               <motion.span 
                 className="block origin-bottom" 
                 style={{ opacity: line1Opacity, y: line1Y, rotateX: line1Rotate }}
@@ -167,7 +167,7 @@ export default function TrustStatement() {
         </motion.div>
 
         {/* Features grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-12">
           {features.map((feature, index) => (
             <motion.div key={feature.title} style={{ y: featureParallax[index] }}>
               <motion.div

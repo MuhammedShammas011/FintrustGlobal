@@ -115,7 +115,7 @@ export default function Industries() {
                   WHO WE SERVE
                 </span>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.0] text-[#212e52]">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.0] text-[#212e52]">
                 <span className="block">Built for businesses</span>
                 <span className="block text-[#212e52]/30">at every stage.</span>
               </h2>
@@ -131,12 +131,12 @@ export default function Industries() {
               <button
                 key={ind.label}
                 onClick={() => scrollToTab(i)}
-                className="text-left pr-2 md:pr-4 pb-3 group focus:outline-none"
+                className="text-left pr-1 md:pr-4 pb-3 group focus:outline-none overflow-hidden"
               >
                 <span className={`block text-[10px] font-mono mb-1 transition-colors duration-300 ${active === i ? 'text-[#212e52]/60' : 'text-[#212e52]/25'}`}>
                   {ind.number}
                 </span>
-                <span className={`block text-[10px] md:text-xs font-semibold uppercase tracking-wider transition-colors duration-300 ${active === i ? 'text-[#212e52]' : 'text-[#212e52]/30 group-hover:text-[#212e52]/60'}`}>
+                <span className={`block text-[9px] md:text-xs font-semibold uppercase tracking-wider transition-colors duration-300 truncate ${active === i ? 'text-[#212e52]' : 'text-[#212e52]/30 group-hover:text-[#212e52]/60'}`}>
                   {ind.label}
                 </span>
                 {/* Active indicator bar */}
@@ -154,7 +154,7 @@ export default function Industries() {
           </div>
 
           {/* Content panel */}
-          <div className="relative min-h-[200px] md:min-h-[240px]">
+          <div className="relative min-h-[240px] sm:min-h-[260px] md:min-h-[240px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -168,7 +168,7 @@ export default function Industries() {
                   <p className="text-[#212e52]/35 text-xs uppercase tracking-widest font-semibold mb-4">
                     CLIENT TYPE
                   </p>
-                  <h3 className="text-4xl md:text-5xl lg:text-7xl font-normal tracking-tight text-[#212e52] mb-4 md:mb-6">
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-normal tracking-tight text-[#212e52] mb-4 md:mb-6">
                     {current.label}
                   </h3>
                   <p className="text-[#212e52]/50 text-base md:text-lg leading-relaxed max-w-xl">

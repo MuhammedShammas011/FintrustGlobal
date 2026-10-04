@@ -63,7 +63,7 @@ export default function Services() {
             <span className="text-[#C9951A] text-xs font-semibold uppercase tracking-[0.2em] mb-5 block">
               Our Services
             </span>
-            <h2 className="text-5xl md:text-6xl lg:text-[5rem] leading-[1.05] text-[#1a1a1a] font-normal tracking-tight max-w-2xl">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[5rem] leading-[1.05] text-[#1a1a1a] font-normal tracking-tight max-w-2xl">
               Everything your business needs{' '}
               <span className="text-[#212e52]">behind the numbers.</span>
             </h2>
@@ -142,7 +142,7 @@ export default function Services() {
                     transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="pb-10 pl-12 md:pl-[4.5rem] grid md:grid-cols-2 gap-8">
+                    <div className="pb-8 md:pb-10 pl-8 md:pl-[4.5rem] grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                       <p className="text-[#5a5a5a] text-base leading-relaxed">
                         {service.description}
                       </p>

@@ -78,11 +78,11 @@ export default function DueDiligence() {
         </div>
 
         {/* Areas grid */}
-        <div className="grid md:grid-cols-4 gap-0 border-t border-border">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0 border-t border-border">
           {areas.map((area, index) => (
             <motion.div
               key={area.number}
-              className="py-10 pr-8 border-b md:border-b-0 md:border-r border-border last:border-r-0 group"
+              className="py-10 pr-6 md:pr-8 border-b sm:last:border-b-0 md:border-b-0 md:border-r border-border last:border-r-0 group"
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 + index * 0.08 }}
