@@ -112,7 +112,7 @@ export default function Navbar() {
             className="flex items-center group"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
           >
-            <img src={logoImg} alt="Fintrust Global" className="h-12 md:h-16 w-auto object-contain" />
+            <img src={logoImg} alt="Fintrust Global" className="h-20 md:h-28 w-auto object-contain" />
           </a>
 
           {/* Desktop Nav */}
@@ -172,7 +172,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <a
               href="#contact"
-              className="text-sm font-medium bg-[#C9951A] text-white hover:bg-[#a87a15] px-5 py-2.5 rounded-full transition-colors duration-200 tracking-tight shadow-sm"
+              className="text-sm font-medium bg-[#212e52] text-white hover:bg-[#1a2542] px-5 py-2.5 rounded-full transition-colors duration-200 tracking-tight shadow-sm"
             >
               Book now
             </a>
