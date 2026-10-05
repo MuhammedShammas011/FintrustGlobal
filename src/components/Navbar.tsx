@@ -21,8 +21,8 @@ const navLinks = [
         label: 'Taxation', 
         href: '/#taxation',
         subDropdown: [
-          { label: 'Corporate tax', href: '/#corporate-tax' },
-          { label: 'Vat consultancy', href: '/#vat-consultancy' },
+          { label: 'Corporate tax', href: '/corporate-tax' },
+          { label: 'Vat consultancy', href: '/vat-consultancy' },
           { label: 'Excise Tax Service', href: '/#excise-tax' },
           { label: 'Tax Audit service', href: '/#tax-audit' },
           { label: 'VAT Administration penalties', href: '/#vat-penalties' }
