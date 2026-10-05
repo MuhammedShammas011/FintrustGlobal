@@ -101,7 +101,7 @@ export default function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navVisible
-          ? 'translate-y-0 opacity-100 py-2 bg-off-white/95 backdrop-blur-md border-b border-border'
+          ? 'translate-y-0 opacity-100 py-1 bg-off-white/95 backdrop-blur-md border-b border-border'
           : '-translate-y-full opacity-0 pointer-events-none'
           }`}
       >
@@ -112,7 +112,7 @@ export default function Navbar() {
             className="flex items-center group"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
           >
-            <img src={logoImg} alt="Fintrust Global" className="h-20 md:h-28 w-auto object-contain" />
+            <img src={logoImg} alt="Fintrust Global" className="h-16 md:h-20 w-auto object-contain scale-[1.15] md:scale-[1.3] origin-left" />
           </a>
 
           {/* Desktop Nav */}

@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react'
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const industries = [
   {
@@ -60,181 +60,91 @@ const industries = [
 ]
 
 export default function Industries() {
-  const containerRef = useRef<HTMLElement>(null)
   const [active, setActive] = useState(0)
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  })
-
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // There are 5 states. We want them to change evenly across the scroll space.
-    // 0.0 -> 0, 0.99 -> 4
-    const index = Math.min(4, Math.floor(latest * 5))
-    if (index !== active) {
-      setActive(index)
-    }
-  })
-
-  const scrollToTab = (index: number) => {
-    if (!containerRef.current) return
-    const rect = containerRef.current.getBoundingClientRect()
-    const containerTop = rect.top + window.scrollY
-    const scrollSpace = rect.height - window.innerHeight
-
-    // We want to scroll to the middle of the 'segment' for that index
-    // Segment size is 1/5. Middle of segment is (index + 0.5) / 5
-    const targetProgress = (index + 0.5) / 5
-    const targetScroll = containerTop + (targetProgress * scrollSpace)
-
-    window.scrollTo({ top: targetScroll, behavior: 'smooth' })
-  }
-
-  const handlePrev = () => {
-    if (active > 0) scrollToTab(active - 1)
-  }
-
-  const handleNext = () => {
-    if (active < 4) scrollToTab(active + 1)
-  }
-
   const current = industries[active]
 
   return (
-    <section ref={containerRef} className="bg-white h-[400vh] relative" id="industries">
-      {/* Sticky wrapper that takes exactly one viewport height and stays centered */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden">
-        <div className="w-full max-w-[1920px] mx-auto px-6 md:px-16 lg:px-24 xl:px-32 relative">
-
-          {/* Top row: label + heading + description */}
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-8">
-            <div>
-              <div className="mb-4">
-                <span className="text-[#C9951A] text-sm font-semibold uppercase tracking-wider">
-                  WHO WE SERVE
-                </span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.0] text-[#212e52]">
-                <span className="block">Built for businesses</span>
-                <span className="block text-[#212e52]/30">at every stage.</span>
-              </h2>
+    <section className="bg-[#FCFBF8] py-24 md:py-32" id="industries">
+      <div className="container-site max-w-[1200px]">
+        
+        {/* Top row: label + heading + description */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-20">
+          <div>
+            <div className="mb-4">
+              <span className="text-[#C9951A] text-sm font-semibold uppercase tracking-wider">
+                WHO WE SERVE
+              </span>
             </div>
-            <p className="text-[#212e52]/50 text-base md:text-lg leading-relaxed max-w-lg md:text-right md:mt-6">
-              From day-one startups to established corporates — Fintrust is built to serve every kind of business in the UAE.
-            </p>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight leading-[1.1] text-[#212e52]">
+              <span className="block">Built for businesses</span>
+              <span className="block text-[#212e52]/40">at every stage.</span>
+            </h2>
           </div>
+          <p className="text-[#212e52]/60 text-base md:text-lg leading-relaxed max-w-sm md:text-right md:pb-2">
+            From day-one startups to established corporates — Fintrust is built to serve every kind of business in the UAE.
+          </p>
+        </div>
 
-          {/* Tabs row */}
-          <div
-            className="flex md:grid md:grid-cols-5 overflow-x-auto md:overflow-visible gap-8 md:gap-0 mb-4 md:mb-6 pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden"
+        {/* Minimal Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-6 md:gap-16">
+          
+          {/* Left Column: List of Tabs */}
+          <div 
+            className="flex flex-row md:flex-col overflow-x-auto md:overflow-visible gap-2 pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden" 
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {industries.map((ind, i) => (
               <button
                 key={ind.label}
-                onClick={() => scrollToTab(i)}
-                className="text-left shrink-0 md:shrink md:pr-4 pb-1 md:pb-3 group focus:outline-none"
+                onClick={() => setActive(i)}
+                className={`shrink-0 text-left py-4 px-5 md:px-6 rounded-2xl transition-all duration-300 border ${active === i ? 'bg-white border-[#212e52]/10 shadow-sm' : 'bg-transparent border-transparent hover:bg-white/50'}`}
               >
-                <span className={`block text-[10px] font-mono mb-1 transition-colors duration-300 ${active === i ? 'text-[#212e52]/60' : 'text-[#212e52]/25'}`}>
-                  {ind.number}
-                </span>
-                <span className={`block text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition-colors duration-300 ${active === i ? 'text-[#212e52]' : 'text-[#212e52]/30 group-hover:text-[#212e52]/60'}`}>
-                  {ind.label}
-                </span>
-                {/* Active indicator bar */}
-                <div className="mt-3 h-px w-full relative overflow-hidden bg-[#212e52]/10">
-                  {active === i && (
-                    <motion.div
-                      layoutId="tab-indicator"
-                      className="absolute inset-0 bg-[#212e52]"
-                      transition={{ type: 'spring', stiffness: 400, damping: 40 }}
-                    />
-                  )}
+                <div className="flex items-center gap-4">
+                  <span className={`text-xs font-mono transition-colors ${active === i ? 'text-[#C9951A]' : 'text-[#212e52]/30'}`}>
+                    {ind.number}
+                  </span>
+                  <span className={`text-sm md:text-base font-semibold uppercase tracking-wider transition-colors ${active === i ? 'text-[#212e52]' : 'text-[#212e52]/50'}`}>
+                    {ind.label}
+                  </span>
                 </div>
               </button>
             ))}
           </div>
 
-          {/* Content panel */}
-          <div className="relative min-h-[220px] sm:min-h-[240px] md:min-h-[240px]">
+          {/* Right Column: Active Content */}
+          <div className="relative min-h-[280px] flex items-center bg-white border border-[#212e52]/5 rounded-3xl p-8 md:p-16 overflow-hidden shadow-sm">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                className="w-full md:w-1/2 h-full z-10 relative"
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="relative z-10 max-w-xl"
               >
-                <div className="pt-6 md:pt-0">
-                  <p className="text-[#212e52]/35 text-xs uppercase tracking-widest font-semibold mb-4">
-                    CLIENT TYPE
-                  </p>
-                  <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-normal tracking-tight text-[#212e52] mb-4 md:mb-6">
-                    {current.label}
-                  </h3>
-                  <p className="text-[#212e52]/50 text-base md:text-lg leading-relaxed max-w-xl">
-                    {current.description}
-                  </p>
-                </div>
-
+                <h3 className="text-3xl md:text-5xl font-normal tracking-tight text-[#212e52] mb-4 md:mb-6">
+                  {current.label}
+                </h3>
+                <p className="text-[#212e52]/60 text-lg md:text-xl leading-relaxed">
+                  {current.description}
+                </p>
               </motion.div>
             </AnimatePresence>
 
-            {/* Large SVG Icon - Absolutely Positioned to avoid stretching vertical height */}
-            <div className="absolute right-0 bottom-0 md:top-1/2 md:bottom-auto md:-translate-y-1/2 w-[160px] h-[160px] sm:w-[200px] sm:h-[200px] lg:w-[220px] lg:h-[220px] xl:w-[280px] xl:h-[280px] pointer-events-none z-0 opacity-15 md:opacity-100 mix-blend-multiply md:mix-blend-normal">
+            {/* Background SVG Icon */}
+            <div className="absolute right-[-10%] bottom-[-15%] md:right-[-5%] md:top-1/2 md:-translate-y-1/2 md:bottom-auto w-[200px] h-[200px] md:w-[350px] md:h-[350px] pointer-events-none opacity-20 md:opacity-100 mix-blend-multiply md:mix-blend-normal z-0">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.1 }}
-                  transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                  transition={{ duration: 0.4 }}
                   className="w-full h-full"
                 >
                   {current.icon}
                 </motion.div>
               </AnimatePresence>
-            </div>
-          </div>
-
-          {/* Bottom: PREV / NEXT */}
-          <div className="flex items-center justify-between mt-6 md:mt-8 border-t border-[#212e52]/10 pt-4 md:pt-6 z-10 relative">
-            <div className="flex gap-8">
-              <button
-                onClick={handlePrev}
-                disabled={active === 0}
-                className={`flex items-center gap-2 text-sm font-semibold uppercase tracking-wider group transition-colors duration-200 ${active === 0 ? 'text-[#212e52]/20 cursor-not-allowed' : 'text-[#212e52]/40 hover:text-[#212e52]'
-                  }`}
-              >
-                <svg className={`w-4 h-4 transition-transform duration-200 ${active !== 0 && 'group-hover:-translate-x-1'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                Prev
-              </button>
-              <button
-                onClick={handleNext}
-                disabled={active === industries.length - 1}
-                className={`flex items-center gap-2 text-sm font-semibold uppercase tracking-wider group transition-colors duration-200 ${active === industries.length - 1 ? 'text-[#212e52]/20 cursor-not-allowed' : 'text-[#212e52]/40 hover:text-[#212e52]'
-                  }`}
-              >
-                Next
-                <svg className={`w-4 h-4 transition-transform duration-200 ${active !== industries.length - 1 && 'group-hover:translate-x-1'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </button>
-            </div>
-
-            {/* Scroll Indicator */}
-            <div className="hidden md:flex items-center gap-3 text-[#212e52]/30 text-xs font-semibold uppercase tracking-widest">
-              <span>Scroll to explore</span>
-              <motion.div
-                animate={{ y: [0, 5, 0] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-              >
-                ↓
-              </motion.div>
             </div>
           </div>
 
