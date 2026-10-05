@@ -126,17 +126,20 @@ export default function Industries() {
           </div>
 
           {/* Tabs row */}
-          <div className="grid grid-cols-5 gap-0 mb-4 md:mb-6">
+          <div 
+            className="flex md:grid md:grid-cols-5 overflow-x-auto md:overflow-visible gap-8 md:gap-0 mb-4 md:mb-6 pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {industries.map((ind, i) => (
               <button
                 key={ind.label}
                 onClick={() => scrollToTab(i)}
-                className="text-left pr-1 md:pr-4 pb-3 group focus:outline-none overflow-hidden"
+                className="text-left shrink-0 md:shrink md:pr-4 pb-1 md:pb-3 group focus:outline-none"
               >
                 <span className={`block text-[10px] font-mono mb-1 transition-colors duration-300 ${active === i ? 'text-[#212e52]/60' : 'text-[#212e52]/25'}`}>
                   {ind.number}
                 </span>
-                <span className={`block text-[9px] md:text-xs font-semibold uppercase tracking-wider transition-colors duration-300 truncate ${active === i ? 'text-[#212e52]' : 'text-[#212e52]/30 group-hover:text-[#212e52]/60'}`}>
+                <span className={`block text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition-colors duration-300 ${active === i ? 'text-[#212e52]' : 'text-[#212e52]/30 group-hover:text-[#212e52]/60'}`}>
                   {ind.label}
                 </span>
                 {/* Active indicator bar */}
@@ -154,7 +157,7 @@ export default function Industries() {
           </div>
 
           {/* Content panel */}
-          <div className="relative min-h-[240px] sm:min-h-[260px] md:min-h-[240px]">
+          <div className="relative min-h-[220px] sm:min-h-[240px] md:min-h-[240px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -180,7 +183,7 @@ export default function Industries() {
             </AnimatePresence>
 
             {/* Large SVG Icon - Absolutely Positioned to avoid stretching vertical height */}
-            <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[150px] h-[150px] lg:w-[220px] lg:h-[220px] xl:w-[280px] xl:h-[280px] pointer-events-none z-0">
+            <div className="absolute right-0 bottom-0 md:top-1/2 md:bottom-auto md:-translate-y-1/2 w-[160px] h-[160px] sm:w-[200px] sm:h-[200px] lg:w-[220px] lg:h-[220px] xl:w-[280px] xl:h-[280px] pointer-events-none z-0 opacity-15 md:opacity-100 mix-blend-multiply md:mix-blend-normal">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active}

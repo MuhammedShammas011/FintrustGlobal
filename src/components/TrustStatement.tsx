@@ -69,7 +69,7 @@ function PixelatedIcon({ color, icon, baseDelay = 0 }: { color: string, icon: Re
               className={`w-full h-full ${color}`}
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: "0px" }}
               transition={{ delay, duration: 0.3, ease: "backOut" }}
             />
           )
@@ -81,7 +81,7 @@ function PixelatedIcon({ color, icon, baseDelay = 0 }: { color: string, icon: Re
         className="relative z-10"
         initial={{ opacity: 0, scale: 0.5 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: true, margin: "0px" }}
         transition={{ delay: baseDelay + 0.5, duration: 0.5, ease: "backOut" }}
       >
         {icon}

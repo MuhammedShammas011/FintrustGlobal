@@ -34,23 +34,23 @@ function FeatureCard({
       className="absolute inset-0 flex items-center justify-center pointer-events-none"
       style={{ opacity, scale }}
     >
-      <div className="w-full max-w-4xl px-8 md:px-12 relative z-50 flex flex-col items-center">
-        <div className="flex items-center gap-4 mb-6 md:mb-10">
-          <div className="w-4 h-4 md:w-5 md:h-5 rounded-sm flex-shrink-0" style={{ backgroundColor: dot }} />
-          <span className="text-white text-4xl md:text-6xl font-normal tracking-tight">
+      <div className="w-full max-w-4xl px-4 sm:px-8 md:px-12 relative z-50 flex flex-col items-center">
+        <div className="flex items-center gap-2 sm:gap-4 mb-3 sm:mb-6 md:mb-10">
+          <div className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-sm flex-shrink-0" style={{ backgroundColor: dot }} />
+          <span className="text-white text-2xl sm:text-4xl md:text-6xl font-normal tracking-tight">
             {label}
           </span>
-          <span className="text-white/20 text-2xl md:text-3xl font-mono ml-4">
+          <span className="text-white/20 text-lg sm:text-2xl md:text-3xl font-mono ml-2 sm:ml-4">
             {number}
           </span>
         </div>
-        <p className="text-white/60 text-lg md:text-2xl leading-relaxed mb-10 md:mb-12 text-center max-w-3xl">
+        <p className="text-white/60 text-sm sm:text-lg md:text-2xl leading-relaxed mb-4 sm:mb-10 md:mb-12 text-center max-w-3xl">
           {description}
         </p>
-        <ul className="list-none p-0 m-0 flex flex-col gap-4 md:gap-5 w-full max-w-xl">
+        <ul className="list-none p-0 m-0 flex flex-col gap-2 md:gap-5 w-full max-w-xl">
           {bullets.map(b => (
-            <li key={b} className="flex items-center gap-4 text-white/50 text-base md:text-xl">
-              <div className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: dot }} />
+            <li key={b} className="flex items-center justify-center sm:justify-start gap-2 sm:gap-4 text-white/50 text-xs sm:text-base md:text-xl">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: dot }} />
               {b}
             </li>
           ))}
@@ -136,46 +136,46 @@ export default function ProcessSteps() {
 
   return (
     <section ref={containerRef} className="bg-[#212e52] relative h-[700vh]" id="process">
-      <div className="sticky top-0 w-full h-screen flex items-center justify-center px-24 md:px-40 overflow-hidden">
-        <div className="relative w-full max-w-[1000px] h-[500px] md:h-[700px]">
+      <div className="sticky top-0 w-full h-screen flex items-center justify-center px-4 sm:px-12 md:px-24 lg:px-40 overflow-hidden">
+        <div className="relative w-full max-w-[1000px] h-[520px] sm:h-[600px] md:h-[700px]">
 
           {/* ── Rect 4 – innermost / Strategy ── */}
-          <motion.div className="absolute inset-y-16 inset-x-12 md:inset-20"
+          <motion.div className="absolute inset-y-8 inset-x-4 sm:inset-y-16 sm:inset-x-12 md:inset-20"
             style={{ scale: scale4, opacity: ro4, rotate }}>
             <BorderLines progress={lp4} />
             <div className="absolute -bottom-[6px] -left-[6px] flex items-center justify-end pr-5 md:pr-6 w-0">
-              <span className="text-[#a0a0a0] text-xs md:text-sm whitespace-nowrap">Strategy</span>
+              <span className="text-[#a0a0a0] text-[10px] sm:text-xs md:text-sm whitespace-nowrap">Strategy</span>
               <div className="w-3 h-3 bg-[#fca5a5] absolute right-0 top-1/2 -translate-y-1/2" />
             </div>
           </motion.div>
 
           {/* ── Rect 3 / Growth ── */}
-          <motion.div className="absolute inset-y-16 inset-x-12 md:inset-20"
+          <motion.div className="absolute inset-y-8 inset-x-4 sm:inset-y-16 sm:inset-x-12 md:inset-20"
             style={{ scale: scale3, opacity: ro3, rotate }}>
             <BorderLines progress={lp3} />
             <div className="absolute -bottom-[6px] -right-[6px] flex items-center pl-5 md:pl-6 w-0">
               <div className="w-3 h-3 bg-[#fde047] absolute left-0 top-1/2 -translate-y-1/2" />
-              <span className="text-[#a0a0a0] text-xs md:text-sm whitespace-nowrap">Growth</span>
+              <span className="text-[#a0a0a0] text-[10px] sm:text-xs md:text-sm whitespace-nowrap">Growth</span>
             </div>
           </motion.div>
 
           {/* ── Rect 2 / Diagnostic ── */}
-          <motion.div className="absolute inset-y-16 inset-x-12 md:inset-20"
+          <motion.div className="absolute inset-y-8 inset-x-4 sm:inset-y-16 sm:inset-x-12 md:inset-20"
             style={{ scale: scale2, opacity: ro2, rotate }}>
             <BorderLines progress={lp2} />
             <div className="absolute -top-[6px] -left-[6px] flex items-center justify-end pr-5 md:pr-6 w-0">
-              <span className="text-[#a0a0a0] text-xs md:text-sm whitespace-nowrap">Diagnostic</span>
+              <span className="text-[#a0a0a0] text-[10px] sm:text-xs md:text-sm whitespace-nowrap">Diagnostic</span>
               <div className="w-3 h-3 bg-[#9b9ef5] absolute right-0 top-1/2 -translate-y-1/2" />
             </div>
           </motion.div>
 
           {/* ── Rect 1 – outermost / Structure ── */}
-          <motion.div className="absolute inset-y-16 inset-x-12 md:inset-20"
+          <motion.div className="absolute inset-y-8 inset-x-4 sm:inset-y-16 sm:inset-x-12 md:inset-20"
             style={{ opacity: ro1, rotate }}>
             <BorderLines progress={lp1} />
             <div className="absolute -top-[6px] -right-[6px] flex items-center pl-5 md:pl-6 w-0">
               <div className="w-3 h-3 bg-[#6ee7b7] absolute left-0 top-1/2 -translate-y-1/2" />
-              <span className="text-[#a0a0a0] text-xs md:text-sm whitespace-nowrap">Structure</span>
+              <span className="text-[#a0a0a0] text-[10px] sm:text-xs md:text-sm whitespace-nowrap">Structure</span>
             </div>
           </motion.div>
 
@@ -184,7 +184,7 @@ export default function ProcessSteps() {
             className="absolute inset-0 flex items-center justify-center pointer-events-none"
             style={{ opacity: titleOpacity, scale: titleScale }}
           >
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-normal text-white tracking-tight text-center">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-normal text-white tracking-tight text-center px-4">
               The Fintrust Method
             </h2>
           </motion.div>

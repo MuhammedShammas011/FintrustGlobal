@@ -107,7 +107,7 @@ export default function WhyFintrust() {
                 className="p-8 sm:p-6 md:p-8 lg:p-10 rounded-[1.5rem] flex flex-col justify-start h-auto sm:min-h-[220px] md:min-h-[280px] group bg-white border border-[#212e52]/10 transition-all duration-300 shadow-sm hover:shadow-xl hover:bg-[#212e52]"
               >
                 <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center mb-10 bg-[#212e52] text-white transition-colors duration-300 group-hover:bg-white/10 group-hover:border group-hover:border-white/10"
+                  className="w-12 h-12 shrink-0 rounded-full flex items-center justify-center mb-10 bg-[#212e52] text-white transition-colors duration-300 group-hover:bg-white/10 group-hover:border group-hover:border-white/10"
                 >
                   {principle.icon}
                 </div>
