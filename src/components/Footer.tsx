@@ -1,3 +1,5 @@
+import footerLogo from '../assets/Vertical-Logo-Fintrust Global-03.png'
+
 export default function Footer() {
   const navLinks = [
     {
@@ -35,16 +37,16 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-off-white pb-16">
+    <footer className="bg-off-white pb-12 md:pb-16 pt-10 md:pt-16 border-t border-[#212e52]/10">
       {/* Main footer */}
-      <div className="container-site pt-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+      <div className="container-site pt-10 md:pt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-2 h-2 rounded-sm bg-accent" />
-              <span className="font-semibold tracking-tight text-near-black text-sm">
-                FINTRUST GLOBAL
+          <div className="col-span-1 sm:col-span-2 md:col-span-1">
+            <div className="flex items-center gap-0 mb-4">
+              <img src={footerLogo} alt="Fintrust Global Logo" className="h-10 md:h-12 w-auto object-contain -ml-4" />
+              <span className="font-semibold tracking-tight text-[#212e52] text-base uppercase -ml-2">
+                Fintrust Global
               </span>
             </div>
             <p className="text-xs text-muted leading-relaxed mb-6 max-w-[200px]">
@@ -104,7 +106,7 @@ export default function Footer() {
         </div>
 
         {/* Contact info */}
-        <div className="mt-14 pt-8 border-t border-border grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="mt-10 md:mt-14 pt-8 border-t border-border grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
           <div>
             <div className="text-[10px] font-semibold text-muted/60 uppercase tracking-[0.12em] mb-2">Address</div>
             <p className="text-xs text-muted leading-relaxed">
