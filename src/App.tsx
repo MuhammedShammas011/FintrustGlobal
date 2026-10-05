@@ -8,6 +8,12 @@ import CorporateTax from './pages/CorporateTax'
 import VatConsultancy from './pages/VatConsultancy'
 import ExciseTax from './pages/ExciseTax'
 import TaxAudit from './pages/TaxAudit'
+import VatPenalties from './pages/VatPenalties'
+import AmlCompliance from './pages/AmlCompliance'
+import EconomicSubstanceAdvisory from './pages/EconomicSubstanceAdvisory'
+import BudgetingForecasting from './pages/BudgetingForecasting'
+import CfoOutsourcing from './pages/CfoOutsourcing'
+import ErpAccounting from './pages/ErpAccounting'
 
 export default function App() {
   return (
@@ -21,6 +27,12 @@ export default function App() {
         <Route path="/vat-consultancy" element={<VatConsultancy />} />
         <Route path="/excise-tax" element={<ExciseTax />} />
         <Route path="/tax-audit" element={<TaxAudit />} />
+        <Route path="/vat-penalties" element={<VatPenalties />} />
+        <Route path="/aml-compliance" element={<AmlCompliance />} />
+        <Route path="/economic-substance-advisory" element={<EconomicSubstanceAdvisory />} />
+        <Route path="/budgeting-forecasting" element={<BudgetingForecasting />} />
+        <Route path="/cfo-outsourcing" element={<CfoOutsourcing />} />
+        <Route path="/erp-accounting" element={<ErpAccounting />} />
       </Routes>
       <Footer />
     </Router>

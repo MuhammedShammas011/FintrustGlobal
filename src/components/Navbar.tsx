@@ -25,18 +25,18 @@ const navLinks = [
           { label: 'Vat consultancy', href: '/vat-consultancy' },
           { label: 'Excise Tax Service', href: '/excise-tax' },
           { label: 'Tax Audit service', href: '/tax-audit' },
-          { label: 'VAT Administration penalties', href: '/#vat-penalties' }
+          { label: 'VAT Administration penalties', href: '/vat-penalties' }
         ]
       },
       { 
         label: 'Business Consultation', 
         href: '/#business-consultation',
         subDropdown: [
-          { label: 'AML Compliance', href: '/#aml-compliance' },
-          { label: 'Economic Substance Advisory', href: '/#esa' },
-          { label: 'Budgeting & Forecasting', href: '/#budgeting' },
-          { label: 'CFO Outsourcing', href: '/#cfo' },
-          { label: 'ERP / Accounting software', href: '/#erp' }
+          { label: 'AML Compliance', href: '/aml-compliance' },
+          { label: 'Economic Substance Advisory', href: '/economic-substance-advisory' },
+          { label: 'Budgeting & Forecasting', href: '/budgeting-forecasting' },
+          { label: 'CFO Outsourcing', href: '/cfo-outsourcing' },
+          { label: 'ERP / Accounting software', href: '/erp-accounting' }
         ]
       },
       { 
