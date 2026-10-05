@@ -6,6 +6,8 @@ import MonthlyBookkeeping from './pages/MonthlyBookkeeping'
 import PayrollManagement from './pages/PayrollManagement'
 import CorporateTax from './pages/CorporateTax'
 import VatConsultancy from './pages/VatConsultancy'
+import ExciseTax from './pages/ExciseTax'
+import TaxAudit from './pages/TaxAudit'
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
         <Route path="/payroll-management" element={<PayrollManagement />} />
         <Route path="/corporate-tax" element={<CorporateTax />} />
         <Route path="/vat-consultancy" element={<VatConsultancy />} />
+        <Route path="/excise-tax" element={<ExciseTax />} />
+        <Route path="/tax-audit" element={<TaxAudit />} />
       </Routes>
       <Footer />
     </Router>
