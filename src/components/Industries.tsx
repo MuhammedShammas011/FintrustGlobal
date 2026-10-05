@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useRef } from 'react'
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 
 const industries = [
   {
@@ -7,7 +7,7 @@ const industries = [
     number: '01',
     description: 'Building your financial foundation from day one — accounting, compliance and structure for early-stage businesses.',
     icon: (
-      <svg className="w-full h-full text-[#212e52]/15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
         <path d="m12 15-3-3a22 22 0 0 1 3.82-13 1.5 1.5 0 0 1 2.18 2.18A22 22 0 0 1 12 15z" />
         <path d="m15 12 3 3" />
@@ -21,7 +21,7 @@ const industries = [
     number: '02',
     description: 'Scaling businesses need financial clarity. Fintrust helps SMEs manage complexity and make informed growth decisions.',
     icon: (
-      <svg className="w-full h-full text-[#212e52]/15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
       </svg>
@@ -32,7 +32,7 @@ const industries = [
     number: '03',
     description: 'Enterprise-level accounting, tax strategy and due diligence for established businesses operating in the UAE.',
     icon: (
-      <svg className="w-full h-full text-[#212e52]/15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 21h18" /><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16" /><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4" /><path d="M9 7h6" /><path d="M9 11h6" />
       </svg>
     ),
@@ -42,7 +42,7 @@ const industries = [
     number: '04',
     description: 'Sole practitioners and independent consultants deserve the same financial clarity as any growing business.',
     icon: (
-      <svg className="w-full h-full text-[#212e52]/15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16" />
       </svg>
     ),
@@ -52,7 +52,7 @@ const industries = [
     number: '05',
     description: 'Navigating UAE financial requirements as an expatriate — Fintrust provides clarity, structure and ongoing support.',
     icon: (
-      <svg className="w-full h-full text-[#212e52]/15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
       </svg>
     ),
@@ -60,12 +60,37 @@ const industries = [
 ]
 
 export default function Industries() {
+  const containerRef = useRef<HTMLElement>(null)
   const [active, setActive] = useState(0)
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  })
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const index = Math.min(4, Math.floor(latest * 5))
+    if (index !== active) {
+      setActive(index)
+    }
+  })
+
+  const scrollToTab = (index: number) => {
+    if (!containerRef.current) return
+    const rect = containerRef.current.getBoundingClientRect()
+    const containerTop = rect.top + window.scrollY
+    const scrollSpace = rect.height - window.innerHeight
+    const targetProgress = (index + 0.5) / 5
+    const targetScroll = containerTop + (targetProgress * scrollSpace)
+    window.scrollTo({ top: targetScroll, behavior: 'smooth' })
+  }
+
   const current = industries[active]
 
   return (
-    <section className="bg-[#FCFBF8] py-24 md:py-32" id="industries">
-      <div className="container-site max-w-[1200px]">
+    <section ref={containerRef} className="bg-[#FCFBF8] h-[400vh] relative" id="industries">
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden py-12 md:py-0">
+        <div className="container-site max-w-[1200px] w-full">
         
         {/* Top row: label + heading + description */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-20">
@@ -96,14 +121,14 @@ export default function Industries() {
             {industries.map((ind, i) => (
               <button
                 key={ind.label}
-                onClick={() => setActive(i)}
-                className={`shrink-0 text-left py-4 px-5 md:px-6 rounded-2xl transition-all duration-300 border ${active === i ? 'bg-white border-[#212e52]/10 shadow-sm' : 'bg-transparent border-transparent hover:bg-white/50'}`}
+                onClick={() => scrollToTab(i)}
+                className={`shrink-0 text-left py-4 px-5 md:px-6 rounded-2xl transition-all duration-300 border ${active === i ? 'bg-[#212e52] border-[#212e52]/10 shadow-sm' : 'bg-transparent border-transparent hover:bg-white/50'}`}
               >
                 <div className="flex items-center gap-4">
                   <span className={`text-xs font-mono transition-colors ${active === i ? 'text-[#C9951A]' : 'text-[#212e52]/30'}`}>
                     {ind.number}
                   </span>
-                  <span className={`text-sm md:text-base font-semibold uppercase tracking-wider transition-colors ${active === i ? 'text-[#212e52]' : 'text-[#212e52]/50'}`}>
+                  <span className={`text-sm md:text-base font-semibold uppercase tracking-wider transition-colors ${active === i ? 'text-white' : 'text-[#212e52]/50'}`}>
                     {ind.label}
                   </span>
                 </div>
@@ -112,7 +137,7 @@ export default function Industries() {
           </div>
 
           {/* Right Column: Active Content */}
-          <div className="relative min-h-[280px] flex items-center bg-white border border-[#212e52]/5 rounded-3xl p-8 md:p-16 overflow-hidden shadow-sm">
+          <div className="relative min-h-[280px] flex items-center bg-[#212e52] border border-[#212e52]/5 rounded-3xl p-8 md:p-16 overflow-hidden shadow-xl">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -122,17 +147,17 @@ export default function Industries() {
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className="relative z-10 max-w-xl"
               >
-                <h3 className="text-3xl md:text-5xl font-normal tracking-tight text-[#212e52] mb-4 md:mb-6">
+                <h3 className="text-3xl md:text-5xl font-normal tracking-tight text-white mb-4 md:mb-6">
                   {current.label}
                 </h3>
-                <p className="text-[#212e52]/60 text-lg md:text-xl leading-relaxed">
+                <p className="text-white/70 text-lg md:text-xl leading-relaxed">
                   {current.description}
                 </p>
               </motion.div>
             </AnimatePresence>
 
             {/* Background SVG Icon */}
-            <div className="absolute right-[-10%] bottom-[-15%] md:right-[-5%] md:top-1/2 md:-translate-y-1/2 md:bottom-auto w-[200px] h-[200px] md:w-[350px] md:h-[350px] pointer-events-none opacity-20 md:opacity-100 mix-blend-multiply md:mix-blend-normal z-0">
+            <div className="absolute right-[-10%] bottom-[-15%] md:right-[-5%] md:top-1/2 md:-translate-y-1/2 md:bottom-auto w-[200px] h-[200px] md:w-[350px] md:h-[350px] pointer-events-none opacity-10 md:opacity-[0.15] text-white mix-blend-normal z-0">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active}
@@ -148,6 +173,7 @@ export default function Industries() {
             </div>
           </div>
 
+          </div>
         </div>
       </div>
     </section>
