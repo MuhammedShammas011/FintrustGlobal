@@ -58,9 +58,9 @@ export default function WhyFintrust() {
   }
 
   return (
-    <section ref={ref} className="py-24 md:py-32 bg-white" id="why-fintrust">
+    <section ref={ref} className="py-16 md:py-24 lg:py-32 bg-white" id="why-fintrust">
       <div className="container-site">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-12 xl:gap-24">
+        <div className="flex flex-col lg:flex-row gap-12 md:gap-16 lg:gap-12 xl:gap-24">
           
           {/* Left Column (Content) */}
           <motion.div 
@@ -75,7 +75,7 @@ export default function WhyFintrust() {
               </span>
             </div>
             
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight leading-[1.0] text-[#212e52] mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight leading-[1.05] text-[#212e52] mb-6 md:mb-8">
               <span className="block">More than</span>
               <span className="block text-[#212e52]">accounting.</span>
             </h2>
@@ -95,7 +95,7 @@ export default function WhyFintrust() {
 
           {/* Right Column (Cards Grid) */}
           <motion.div 
-            className="lg:w-[60%] grid sm:grid-cols-2 gap-4 md:gap-5"
+            className="lg:w-[60%] grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5"
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
@@ -104,7 +104,7 @@ export default function WhyFintrust() {
               <motion.div
                 key={principle.id}
                 variants={itemVariants}
-                className="p-6 md:p-8 lg:p-10 rounded-[1.5rem] flex flex-col justify-start min-h-[220px] md:min-h-[280px] group bg-white border border-[#212e52]/10 transition-all duration-300 shadow-sm hover:shadow-xl hover:bg-[#212e52]"
+                className="p-8 sm:p-6 md:p-8 lg:p-10 rounded-[1.5rem] flex flex-col justify-start h-auto sm:min-h-[220px] md:min-h-[280px] group bg-white border border-[#212e52]/10 transition-all duration-300 shadow-sm hover:shadow-xl hover:bg-[#212e52]"
               >
                 <div 
                   className="w-12 h-12 rounded-full flex items-center justify-center mb-10 bg-[#212e52] text-white transition-colors duration-300 group-hover:bg-white/10 group-hover:border group-hover:border-white/10"
