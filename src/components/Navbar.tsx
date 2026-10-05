@@ -43,17 +43,17 @@ const navLinks = [
         label: 'Due Diligence', 
         href: '/#due-diligence',
         subDropdown: [
-          { label: 'Operations due diligence', href: '/#operations-dd' },
-          { label: 'Accounts due diligence', href: '/#accounts-dd' },
-          { label: 'Commerce due diligence', href: '/#commerce-dd' },
-          { label: 'Tax Due Diligence', href: '/#tax-dd' }
+          { label: 'Operations due diligence', href: '/operations-due-diligence' },
+          { label: 'Accounts due diligence', href: '/accounts-due-diligence' },
+          { label: 'Commerce due diligence', href: '/commerce-due-diligence' },
+          { label: 'Tax Due Diligence', href: '/tax-due-diligence' }
         ]
       },
       { 
         label: 'Management', 
         href: '/#management',
         subDropdown: [
-          { label: '360 Business management', href: '/#360-management' }
+          { label: '360 Business management', href: '/360-business-management' }
         ]
       },
     ]

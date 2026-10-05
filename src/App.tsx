@@ -14,6 +14,11 @@ import EconomicSubstanceAdvisory from './pages/EconomicSubstanceAdvisory'
 import BudgetingForecasting from './pages/BudgetingForecasting'
 import CfoOutsourcing from './pages/CfoOutsourcing'
 import ErpAccounting from './pages/ErpAccounting'
+import OperationsDueDiligence from './pages/OperationsDueDiligence'
+import AccountsDueDiligence from './pages/AccountsDueDiligence'
+import CommerceDueDiligence from './pages/CommerceDueDiligence'
+import TaxDueDiligence from './pages/TaxDueDiligence'
+import BusinessManagement360 from './pages/BusinessManagement360'
 
 export default function App() {
   return (
@@ -33,6 +38,11 @@ export default function App() {
         <Route path="/budgeting-forecasting" element={<BudgetingForecasting />} />
         <Route path="/cfo-outsourcing" element={<CfoOutsourcing />} />
         <Route path="/erp-accounting" element={<ErpAccounting />} />
+        <Route path="/operations-due-diligence" element={<OperationsDueDiligence />} />
+        <Route path="/accounts-due-diligence" element={<AccountsDueDiligence />} />
+        <Route path="/commerce-due-diligence" element={<CommerceDueDiligence />} />
+        <Route path="/tax-due-diligence" element={<TaxDueDiligence />} />
+        <Route path="/360-business-management" element={<BusinessManagement360 />} />
       </Routes>
       <Footer />
     </Router>
