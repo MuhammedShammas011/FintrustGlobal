@@ -126,7 +126,7 @@ export default function Industries() {
           </div>
 
           {/* Tabs row */}
-          <div 
+          <div
             className="flex md:grid md:grid-cols-5 overflow-x-auto md:overflow-visible gap-8 md:gap-0 mb-4 md:mb-6 pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
