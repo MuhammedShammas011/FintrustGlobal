@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import logoImg from '../assets/Horizontal-Logo- Fintrust Global-01.png'
+import logoImg from '../assets/Horizontal-Logo- Fintrust Global-04.png'
 
 const navLinks = [
   { label: 'Home', href: '#' },
