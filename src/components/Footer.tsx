@@ -1,39 +1,59 @@
 import footerLogo from '../assets/Vertical-Logo-Fintrust Global-03.png'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 export default function Footer() {
   const navLinks = [
     {
       heading: 'Services',
       links: [
-        { label: 'Accounting', href: '#services' },
-        { label: 'Taxation', href: '#taxation' },
-        { label: 'Business Consultation', href: '#services' },
-        { label: 'Due Diligence', href: '#due-diligence' },
-        { label: 'Management', href: '#services' },
-        { label: 'ERP & Systems', href: '#solutions' },
+        { label: 'Accounting', href: '/#services' },
+        { label: 'Taxation', href: '/#taxation' },
+        { label: 'Business Consultation', href: '/#services' },
+        { label: 'Due Diligence', href: '/#due-diligence' },
+        { label: 'Management', href: '/#services' },
+        { label: 'ERP & Systems', href: '/#solutions' },
       ],
     },
     {
       heading: 'Company',
       links: [
-        { label: 'About', href: '#why-fintrust' },
-        { label: 'Our Method', href: '#process' },
-        { label: 'Insights', href: '#insights' },
-        { label: 'Contact', href: '#contact' },
+        { label: 'About', href: '/#why-fintrust' },
+        { label: 'Our Method', href: '/#process' },
+        { label: 'Insights', href: '/#insights' },
+        { label: 'Contact', href: '/#contact' },
       ],
     },
     {
       heading: 'Legal',
       links: [
-        { label: 'Privacy Policy', href: '#' },
-        { label: 'Terms of Service', href: '#' },
+        { label: 'Privacy Policy', href: '/' },
+        { label: 'Terms of Service', href: '/' },
       ],
     },
   ]
 
+  const navigate = useNavigate()
+  const location = useLocation()
+
   const scrollTo = (href: string) => {
-    const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    if (href.startsWith('/')) {
+      if (href.includes('#')) {
+        const [path, hash] = href.split('#')
+        if (location.pathname !== path) {
+           navigate(href)
+        } else {
+           const el = document.getElementById(hash)
+           if (el) el.scrollIntoView({ behavior: 'smooth' })
+           else navigate(href)
+        }
+      } else {
+        navigate(href)
+        window.scrollTo(0, 0)
+      }
+    } else {
+      const el = document.querySelector(href)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   return (
@@ -87,9 +107,9 @@ export default function Footer() {
                 {group.links.map((link) => (
                   <li key={link.label}>
                     <a
-                      href={link.href.startsWith('#') ? link.href : link.href}
+                      href={link.href}
                       onClick={(e) => {
-                        if (link.href.startsWith('#')) {
+                        if (link.href.startsWith('/')) {
                           e.preventDefault()
                           scrollTo(link.href)
                         }

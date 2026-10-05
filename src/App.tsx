@@ -1,34 +1,20 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import TrustStatement from './components/TrustStatement'
-import ScrollSteps from './components/ScrollSteps'
-import Services from './components/Services'
-import ProcessSteps from './components/ProcessSteps'
-import Industries from './components/Industries'
-import WhyFintrust from './components/WhyFintrust'
-import Testimonials from './components/Testimonials'
-import Insights from './components/Insights'
-import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
+import Home from './pages/Home'
+import MonthlyBookkeeping from './pages/MonthlyBookkeeping'
+import PayrollManagement from './pages/PayrollManagement'
+
 export default function App() {
   return (
-    <>
+    <Router>
       <Navbar />
-
-      <main>
-        <Hero />
-        <TrustStatement />
-        <Services />
-        <ProcessSteps />
-        <Industries />
-        <WhyFintrust />
-        <ScrollSteps />
-        <Testimonials />
-        <Insights />
-        <FinalCTA />
-      </main>
-
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/monthly-bookkeeping" element={<MonthlyBookkeeping />} />
+        <Route path="/payroll-management" element={<PayrollManagement />} />
+      </Routes>
       <Footer />
-    </>
+    </Router>
   )
 }

@@ -1,70 +1,73 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useNavigate, useLocation } from 'react-router-dom'
 import logoImg from '../assets/Horizontal-Logo- Fintrust Global-04.png'
 
 const navLinks = [
-  { label: 'Home', href: '#' },
+  { label: 'Home', href: '/' },
   { 
     label: 'Services', 
-    href: '#services',
+    href: '/#services',
     dropdown: [
       { 
         label: 'Accounting', 
-        href: '#accounting',
+        href: '/#accounting',
         subDropdown: [
-          { label: 'Monthly bookkeeping', href: '#monthly-bookkeeping' },
-          { label: 'Payroll Management', href: '#payroll-management' }
+          { label: 'Monthly bookkeeping', href: '/monthly-bookkeeping' },
+          { label: 'Payroll Management', href: '/payroll-management' }
         ]
       },
       { 
         label: 'Taxation', 
-        href: '#taxation',
+        href: '/#taxation',
         subDropdown: [
-          { label: 'Corporate tax', href: '#corporate-tax' },
-          { label: 'Vat consultancy', href: '#vat-consultancy' },
-          { label: 'Excise Tax Service', href: '#excise-tax' },
-          { label: 'Tax Audit service', href: '#tax-audit' },
-          { label: 'VAT Administration penalties', href: '#vat-penalties' }
+          { label: 'Corporate tax', href: '/#corporate-tax' },
+          { label: 'Vat consultancy', href: '/#vat-consultancy' },
+          { label: 'Excise Tax Service', href: '/#excise-tax' },
+          { label: 'Tax Audit service', href: '/#tax-audit' },
+          { label: 'VAT Administration penalties', href: '/#vat-penalties' }
         ]
       },
       { 
         label: 'Business Consultation', 
-        href: '#business-consultation',
+        href: '/#business-consultation',
         subDropdown: [
-          { label: 'AML Compliance', href: '#aml-compliance' },
-          { label: 'Economic Substance Advisory', href: '#esa' },
-          { label: 'Budgeting & Forecasting', href: '#budgeting' },
-          { label: 'CFO Outsourcing', href: '#cfo' },
-          { label: 'ERP / Accounting software', href: '#erp' }
+          { label: 'AML Compliance', href: '/#aml-compliance' },
+          { label: 'Economic Substance Advisory', href: '/#esa' },
+          { label: 'Budgeting & Forecasting', href: '/#budgeting' },
+          { label: 'CFO Outsourcing', href: '/#cfo' },
+          { label: 'ERP / Accounting software', href: '/#erp' }
         ]
       },
       { 
         label: 'Due Diligence', 
-        href: '#due-diligence',
+        href: '/#due-diligence',
         subDropdown: [
-          { label: 'Operations due diligence', href: '#operations-dd' },
-          { label: 'Accounts due diligence', href: '#accounts-dd' },
-          { label: 'Commerce due diligence', href: '#commerce-dd' },
-          { label: 'Tax Due Diligence', href: '#tax-dd' }
+          { label: 'Operations due diligence', href: '/#operations-dd' },
+          { label: 'Accounts due diligence', href: '/#accounts-dd' },
+          { label: 'Commerce due diligence', href: '/#commerce-dd' },
+          { label: 'Tax Due Diligence', href: '/#tax-dd' }
         ]
       },
       { 
         label: 'Management', 
-        href: '#management',
+        href: '/#management',
         subDropdown: [
-          { label: '360 Business management', href: '#360-management' }
+          { label: '360 Business management', href: '/#360-management' }
         ]
       },
     ]
   },
-  { label: 'Blog', href: '#insights' },
-  { label: 'Contact-Us', href: '#contact' },
+  { label: 'Blog', href: '/#insights' },
+  { label: 'Contact-Us', href: '/#contact' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [onProcessSection, setOnProcessSection] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.8)
@@ -91,11 +94,28 @@ export default function Navbar() {
 
   const scrollTo = (href: string) => {
     setMobileOpen(false)
-    const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    if (href.startsWith('/')) {
+      if (href.includes('#')) {
+        const [path, hash] = href.split('#')
+        if (location.pathname !== path) {
+           navigate(href)
+        } else {
+           const el = document.getElementById(hash)
+           if (el) el.scrollIntoView({ behavior: 'smooth' })
+           else navigate(href)
+        }
+      } else {
+        navigate(href)
+        window.scrollTo(0, 0)
+      }
+    } else {
+      const el = document.querySelector(href)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
-  const navVisible = scrolled && !onProcessSection
+  const isHomePage = location.pathname === '/'
+  const navVisible = !isHomePage || (scrolled && !onProcessSection)
 
   return (
     <>
@@ -107,13 +127,12 @@ export default function Navbar() {
       >
         <div className="container-site flex items-center justify-between">
           {/* Logo */}
-          <a
-            href="#"
+          <button
+            onClick={(e) => { e.preventDefault(); scrollTo('/') }}
             className="flex items-center group"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
           >
             <img src={logoImg} alt="Fintrust Global" className="h-16 md:h-20 w-auto object-contain scale-[1.15] md:scale-[1.3] origin-left" />
-          </a>
+          </button>
 
           {/* Desktop Nav */}
           <ul className="hidden md:flex items-center gap-8">
