@@ -255,7 +255,7 @@ export default function Hero() {
             MAIN CONTENT
         ══════════════════════════════════════════ */}
         <div className="w-full h-screen flex flex-col justify-center overflow-hidden">
-          <div className="w-full max-w-[1440px] mx-auto px-8 sm:px-8 md:px-8 relative z-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16 lg:gap-24 h-full min-h-[80vh]">
+          <div className="w-full max-w-[1440px] mx-auto px-4 relative z-10 flex flex-row items-center justify-center gap-4 sm:gap-6 md:gap-16 lg:gap-24 h-full min-h-[80vh]">
 
             {/* Logo Blocks */}
             <motion.div
@@ -264,7 +264,7 @@ export default function Hero() {
             >
               {/* Measurement bracket left of logo blocks */}
               <motion.div
-                className="absolute -left-6 md:-left-10 top-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none h-[60%]"
+                className="hidden sm:flex absolute -left-6 md:-left-10 top-1/2 -translate-y-1/2 flex-col items-center pointer-events-none h-[60%]"
                 style={{ opacity: rulerOpacity }}
               >
                 <div className="w-2 h-px bg-[#212e52]/30" />
@@ -273,13 +273,13 @@ export default function Hero() {
               </motion.div>
 
               <div className="w-full flex justify-start pointer-events-none">
-                <LogoBlock className="w-28 sm:w-40 md:w-56 lg:w-72 xl:w-[350px] h-8 sm:h-10 md:h-16 lg:h-24 xl:h-[100px]" />
+                <LogoBlock className="w-20 sm:w-40 md:w-56 lg:w-72 xl:w-[350px] h-6 sm:h-10 md:h-16 lg:h-24 xl:h-[100px]" />
               </div>
               <div className="w-full flex justify-start pointer-events-none">
-                <LogoBlock className="w-20 sm:w-32 md:w-44 lg:w-60 xl:w-[270px] h-8 sm:h-10 md:h-16 lg:h-24 xl:h-[100px]" />
+                <LogoBlock className="w-14 sm:w-32 md:w-44 lg:w-60 xl:w-[270px] h-6 sm:h-10 md:h-16 lg:h-24 xl:h-[100px]" />
               </div>
               <div className="w-full flex justify-start pointer-events-none">
-                <LogoBlock className="w-14 sm:w-24 md:w-32 lg:w-48 xl:w-[190px] h-8 sm:h-10 md:h-16 lg:h-24 xl:h-[100px]" />
+                <LogoBlock className="w-10 sm:w-24 md:w-32 lg:w-48 xl:w-[190px] h-6 sm:h-10 md:h-16 lg:h-24 xl:h-[100px]" />
               </div>
             </motion.div>
 
@@ -290,7 +290,7 @@ export default function Hero() {
             >
               {/* Measurement bracket above text */}
               <motion.div
-                className="absolute -top-6 left-0 right-0 flex items-center pointer-events-none"
+                className="hidden sm:flex absolute -top-6 left-0 right-0 items-center pointer-events-none"
                 style={{ opacity: rulerOpacity }}
               >
                 <div className="h-2 w-px bg-[#212e52]/30" />
@@ -302,7 +302,7 @@ export default function Hero() {
                 <div className="h-2 w-px bg-[#212e52]/30" />
               </motion.div>
 
-              <h1 className="text-[48px] sm:text-[66px] md:text-[105px] lg:text-[160px] xl:text-[170px] font-normal tracking-tight text-[#212e52] leading-[0.9]">
+              <h1 className="text-[40px] sm:text-[66px] md:text-[105px] lg:text-[160px] xl:text-[170px] font-normal tracking-tight text-[#212e52] leading-[0.9]">
                 Fintrust<br />Global
               </h1>
             </motion.div>
