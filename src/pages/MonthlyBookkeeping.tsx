@@ -41,7 +41,7 @@ export default function MonthlyBookkeeping() {
   const toggleFaq = (index: number) => {
     setActiveFaq(activeFaq === index ? null : index)
   }
-  
+
   // Parallax setup for Hero
   const { scrollY } = useScroll()
   const yHeroBg = useTransform(scrollY, [0, 1000], [0, 200])
@@ -67,42 +67,42 @@ export default function MonthlyBookkeeping() {
 
   return (
     <main className="bg-[#FCFBF8]">
-      
+
       {/* ─── HERO SECTION ─── */}
       <section className="relative pt-32 pb-24 md:pt-48 md:pb-32 overflow-hidden min-h-[90vh] flex items-center">
         {/* Animated Abstract Background Elements */}
-        <motion.div 
+        <motion.div
           style={{ y: yHeroBg }}
           className="absolute top-[-10%] right-[-5%] w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] bg-gradient-to-br from-[#212e52]/5 to-[#C9951A]/5 rounded-full blur-3xl pointer-events-none"
         />
         <div className="container-site max-w-[1400px] relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            
+
             {/* Left Content */}
             <div className="max-w-2xl relative z-10">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}
                 className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#C9951A]/30 bg-[#C9951A]/5 mb-8"
               >
                 <div className="w-2 h-2 rounded-full bg-[#C9951A] animate-pulse" />
                 <span className="text-[#C9951A] text-xs font-semibold uppercase tracking-widest">Accounting Services</span>
               </motion.div>
-              
-              <motion.h1 
+
+              <motion.h1
                 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
                 className="text-4xl md:text-5xl lg:text-[4rem] font-normal tracking-tight leading-[1.1] text-[#212e52] mb-6"
               >
                 We’ve Got the Numbers.
               </motion.h1>
-              
-              <motion.p 
+
+              <motion.p
                 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                 className="text-lg text-[#212e52]/60 mb-10 leading-relaxed font-light"
               >
                 Because one mistake can cost you more than time. Small errors stay small for a while, but once they pile up, they affect your business.
               </motion.p>
-              
-              <motion.div 
+
+              <motion.div
                 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                 className="space-y-4 mb-12"
               >
@@ -113,8 +113,8 @@ export default function MonthlyBookkeeping() {
                   </div>
                 ))}
               </motion.div>
-              
-              <motion.a 
+
+              <motion.a
                 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                 href="/#contact"
                 className="group relative inline-flex items-center justify-center bg-[#212e52] text-white px-8 py-3 text-sm rounded-full font-medium tracking-wide overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-[#212e52]/20"
@@ -126,23 +126,23 @@ export default function MonthlyBookkeeping() {
             </div>
 
             {/* Right Image (3D Tilt) */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
               className="relative hidden lg:block w-full h-[700px]"
             >
               <TiltCard className="w-full h-full">
                 {/* Back shadow element for depth */}
                 <div className="absolute inset-0 bg-[#C9951A]/10 rounded-[3rem] transform translate-x-8 translate-y-8 blur-xl transition-transform duration-500" style={{ transform: "translateZ(-50px)" }} />
-                
-                <img 
-                  src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1200" 
-                  alt="Professional bookkeeping" 
+
+                <img
+                  src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1200"
+                  alt="Professional bookkeeping"
                   className="absolute inset-0 z-10 rounded-[3rem] shadow-2xl w-full h-full object-cover"
                   style={{ transform: "translateZ(0px)" }}
                 />
-                
+
                 {/* Floating 3D Badge */}
-                <div 
+                <div
                   className="absolute -bottom-10 -left-10 z-20 bg-white/90 backdrop-blur-xl p-8 rounded-3xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-white flex items-center gap-5"
                   style={{ transform: "translateZ(80px)" }}
                 >
@@ -164,25 +164,25 @@ export default function MonthlyBookkeeping() {
       <section className="bg-white py-32 relative">
         <div className="container-site max-w-[1200px]">
           <div className="flex flex-col md:flex-row gap-20">
-            
+
             {/* Sticky Left */}
             <div className="md:w-1/2 relative">
               <div className="sticky top-40 space-y-8">
-                <motion.h2 
+                <motion.h2
                   initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
                   className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-[#212e52] leading-[1.1]"
                 >
-                  Precision You <br/><span className="text-[#C9951A] italic">Can Count On.</span>
+                  Precision You <br /><span className="text-[#C9951A] italic">Can Count On.</span>
                 </motion.h2>
-                <motion.p 
+                <motion.p
                   initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}
                   className="text-[#212e52]/60 text-base leading-relaxed max-w-md font-light"
                 >
                   Let’s ensure your finances stay clean, current, and compliant. No more scrambling during tax season. No more financial blind spots.
                 </motion.p>
-                
+
                 {/* 3D Decorative Element */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.3 }}
                   className="w-full h-64 mt-12 rounded-3xl bg-[#212e52]/5 relative overflow-hidden flex items-center justify-center group"
                 >
@@ -204,7 +204,7 @@ export default function MonthlyBookkeeping() {
                 { title: 'Insights That Move You Forward', desc: 'Good data explains the past. Great bookkeeping guides your future. We go beyond the numbers to help you understand what they mean, and what to do next.' },
                 { title: 'Tailored to Fit Your Business', desc: 'Every business is different, and so are our solutions. Whether you\'re starting up or scaling fast, we adapt our approach to meet your needs, goals, and pace.' },
               ].map((item, i) => (
-                <motion.div 
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -228,27 +228,27 @@ export default function MonthlyBookkeeping() {
         {/* Glow Effects */}
         <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-[#C9951A] rounded-full blur-[250px] opacity-[0.08] pointer-events-none" />
         <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-white rounded-full blur-[200px] opacity-[0.05] pointer-events-none" />
-        
+
         <div className="container-site max-w-[1200px] relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto mb-20"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight mb-6 leading-[1.1]">
-              Don’t Let Your Numbers <br/><span className="italic text-white/50">Work Against You.</span>
+              Don’t Let Your Numbers <br /><span className="italic text-white/50">Work Against You.</span>
             </h2>
             <p className="text-white/60 text-base leading-relaxed font-light">
               You didn’t build your business to chase receipts or stress over spreadsheets. When numbers get messy, growth takes the hit. Let's bring back control and calm to your finances.
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { icon: <polyline points="20 6 9 17 4 12" />, title: 'Updated Monthly', text: 'Your books are updated monthly, removing gaps, errors, and surprises, so you never guess your standing.' },
               { icon: <><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><line x1="3" y1="9" x2="21" y2="9" /><line x1="9" y1="21" x2="9" y2="9" /></>, title: 'Timely Reports', text: 'Clear, easily digestible pictures of your cash flow, profit margins, and overall performance.' },
               { icon: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />, title: 'Audit-Ready', text: 'Move forward without financial stress, knowing every transaction is fully compliant.' }
             ].map((feature, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -275,7 +275,7 @@ export default function MonthlyBookkeeping() {
       {/* ─── FAQ SECTION ─── */}
       <section className="bg-[#FCFBF8] pb-32">
         <div className="container-site max-w-[800px]">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
@@ -283,10 +283,10 @@ export default function MonthlyBookkeeping() {
               Frequently Asked Questions
             </h2>
           </motion.div>
-          
+
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -294,19 +294,19 @@ export default function MonthlyBookkeeping() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white border border-[#212e52]/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-[#C9951A]/30 transition-all duration-300"
               >
-                <button 
+                <button
                   onClick={() => toggleFaq(index)}
                   className="w-full text-left px-8 py-6 flex items-center justify-between focus:outline-none"
                 >
                   <span className="font-normal text-lg text-[#212e52] pr-8">{faq.q}</span>
-                  <motion.div 
+                  <motion.div
                     animate={{ rotate: activeFaq === index ? 45 : 0 }}
                     className="text-[#C9951A] text-xl flex-shrink-0"
                   >
                     +
                   </motion.div>
                 </button>
-                <motion.div 
+                <motion.div
                   initial={false}
                   animate={{ height: activeFaq === index ? 'auto' : 0, opacity: activeFaq === index ? 1 : 0 }}
                   className="overflow-hidden"
