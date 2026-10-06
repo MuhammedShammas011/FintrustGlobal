@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation, BrowserRouter as Router } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import PageTransition from './components/PageTransition'
 import Home from './pages/Home'
 import MonthlyBookkeeping from './pages/MonthlyBookkeeping'
 import PayrollManagement from './pages/PayrollManagement'
@@ -20,31 +21,44 @@ import CommerceDueDiligence from './pages/CommerceDueDiligence'
 import TaxDueDiligence from './pages/TaxDueDiligence'
 import BusinessManagement360 from './pages/BusinessManagement360'
 
+// Inner component so useLocation works inside Router context
+function AppRoutes() {
+  const location = useLocation()
+
+  return (
+    <>
+      <Navbar />
+      <PageTransition key={location.pathname}>
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/monthly-bookkeeping" element={<MonthlyBookkeeping />} />
+          <Route path="/payroll-management" element={<PayrollManagement />} />
+          <Route path="/corporate-tax" element={<CorporateTax />} />
+          <Route path="/vat-consultancy" element={<VatConsultancy />} />
+          <Route path="/excise-tax" element={<ExciseTax />} />
+          <Route path="/tax-audit" element={<TaxAudit />} />
+          <Route path="/vat-penalties" element={<VatPenalties />} />
+          <Route path="/aml-compliance" element={<AmlCompliance />} />
+          <Route path="/economic-substance-advisory" element={<EconomicSubstanceAdvisory />} />
+          <Route path="/budgeting-forecasting" element={<BudgetingForecasting />} />
+          <Route path="/cfo-outsourcing" element={<CfoOutsourcing />} />
+          <Route path="/erp-accounting" element={<ErpAccounting />} />
+          <Route path="/operations-due-diligence" element={<OperationsDueDiligence />} />
+          <Route path="/accounts-due-diligence" element={<AccountsDueDiligence />} />
+          <Route path="/commerce-due-diligence" element={<CommerceDueDiligence />} />
+          <Route path="/tax-due-diligence" element={<TaxDueDiligence />} />
+          <Route path="/360-business-management" element={<BusinessManagement360 />} />
+        </Routes>
+      </PageTransition>
+      <Footer />
+    </>
+  )
+}
+
 export default function App() {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/monthly-bookkeeping" element={<MonthlyBookkeeping />} />
-        <Route path="/payroll-management" element={<PayrollManagement />} />
-        <Route path="/corporate-tax" element={<CorporateTax />} />
-        <Route path="/vat-consultancy" element={<VatConsultancy />} />
-        <Route path="/excise-tax" element={<ExciseTax />} />
-        <Route path="/tax-audit" element={<TaxAudit />} />
-        <Route path="/vat-penalties" element={<VatPenalties />} />
-        <Route path="/aml-compliance" element={<AmlCompliance />} />
-        <Route path="/economic-substance-advisory" element={<EconomicSubstanceAdvisory />} />
-        <Route path="/budgeting-forecasting" element={<BudgetingForecasting />} />
-        <Route path="/cfo-outsourcing" element={<CfoOutsourcing />} />
-        <Route path="/erp-accounting" element={<ErpAccounting />} />
-        <Route path="/operations-due-diligence" element={<OperationsDueDiligence />} />
-        <Route path="/accounts-due-diligence" element={<AccountsDueDiligence />} />
-        <Route path="/commerce-due-diligence" element={<CommerceDueDiligence />} />
-        <Route path="/tax-due-diligence" element={<TaxDueDiligence />} />
-        <Route path="/360-business-management" element={<BusinessManagement360 />} />
-      </Routes>
-      <Footer />
+      <AppRoutes />
     </Router>
   )
 }
