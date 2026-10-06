@@ -174,7 +174,7 @@ export default function Blog() {
   const gridPosts = showFeatured ? filteredPosts.slice(1) : filteredPosts
 
   return (
-    <main className="bg-[#FCFBF8] min-h-screen text-[#212e52] selection:bg-[#C9951A] selection:text-white">
+    <main className="bg-[#FCFBF8] min-h-screen text-[#212e52] selection:bg-[#212e52] selection:text-white">
 
       {/* ─── EDITORIAL HEADER / HERO ─── */}
       <section className="pt-36 pb-16 md:pt-48 md:pb-20 border-b border-[#212e52]/10">
@@ -187,21 +187,21 @@ export default function Blog() {
               transition={{ duration: 0.6 }}
               className="flex items-center gap-3 mb-6"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C9951A]" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#C9951A]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#212e52]" />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#212e52]/70">
                 Fintrust Journal · UAE Financial Intelligence
               </span>
             </motion.div>
 
-            {/* Confident Editorial Headline */}
+            {/* Normal Heading (matching Home page typography) */}
             <motion.h1
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-normal tracking-tight leading-[1.08] mb-6 text-[#212e52]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-normal tracking-tight leading-[1.08] mb-6 text-[#1a1a1a]"
             >
               Perspectives on finance,{' '}
-              <span className="italic font-serif text-[#C9951A]">growth & compliance.</span>
+              <span className="block text-[#212e52]">growth & compliance.</span>
             </motion.h1>
 
             {/* Editorial Subtitle */}
@@ -263,7 +263,7 @@ export default function Blog() {
                 placeholder="Search articles..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 text-xs bg-white/70 border border-[#212e52]/15 rounded-full text-[#212e52] placeholder-[#212e52]/40 focus:outline-none focus:border-[#C9951A] focus:bg-white transition-colors"
+                className="w-full pl-10 pr-4 py-2 text-xs bg-white/70 border border-[#212e52]/15 rounded-full text-[#212e52] placeholder-[#212e52]/40 focus:outline-none focus:border-[#212e52] focus:bg-white transition-colors"
               />
               {searchQuery && (
                 <button
@@ -290,8 +290,8 @@ export default function Blog() {
               transition={{ duration: 0.7 }}
               className="mb-24 pb-20 border-b border-[#212e52]/10"
             >
-              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C9951A] mb-8 flex items-center gap-2">
-                <span className="w-6 h-px bg-[#C9951A]" />
+              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#212e52]/70 mb-8 flex items-center gap-2">
+                <span className="w-6 h-px bg-[#212e52]/30" />
                 Featured Perspective
               </div>
 
@@ -313,7 +313,7 @@ export default function Blog() {
                 {/* Editorial Content (5 cols on lg) */}
                 <div className="lg:col-span-5 flex flex-col justify-center">
                   <div className="flex items-center gap-3 text-xs text-[#212e52]/50 mb-4 tracking-wide">
-                    <span className="text-[#C9951A] font-medium uppercase tracking-wider text-[11px]">
+                    <span className="text-[#212e52] font-semibold uppercase tracking-wider text-[11px]">
                       {featuredPost.tag}
                     </span>
                     <span>·</span>
@@ -322,7 +322,7 @@ export default function Blog() {
                     <span>{featuredPost.readTime}</span>
                   </div>
 
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal tracking-tight text-[#212e52] leading-tight mb-5 group-hover:text-[#C9951A] transition-colors duration-300">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal tracking-tight text-[#1a1a1a] leading-tight mb-5 group-hover:text-[#212e52]/70 transition-colors duration-200">
                     {featuredPost.title}
                   </h2>
 
@@ -330,7 +330,7 @@ export default function Blog() {
                     {featuredPost.excerpt}
                   </p>
 
-                  <div className="inline-flex items-center gap-2 text-sm font-medium tracking-wide text-[#212e52] group-hover:text-[#C9951A] transition-colors duration-200">
+                  <div className="inline-flex items-center gap-2 text-sm font-medium tracking-wide text-[#212e52] group-hover:text-[#212e52]/70 transition-colors duration-200">
                     <span>Read full perspective</span>
                     <span className="transition-transform duration-300 group-hover:translate-x-1.5">→</span>
                   </div>
@@ -344,7 +344,7 @@ export default function Blog() {
             <div>
               {/* Section Header */}
               <div className="flex items-center justify-between mb-12">
-                <h3 className="text-sm uppercase tracking-[0.18em] font-medium text-[#212e52]/50">
+                <h3 className="text-sm uppercase tracking-[0.18em] font-medium text-[#212e52]/60">
                   {selectedCategory === 'All' ? 'All Articles' : selectedCategory} ({gridPosts.length})
                 </h3>
               </div>
@@ -375,8 +375,8 @@ export default function Blog() {
                       </div>
 
                       {/* Metadata */}
-                      <div className="flex items-center gap-2.5 text-xs text-[#212e52]/45 mb-3 tracking-wide">
-                        <span className="text-[#C9951A] font-semibold uppercase tracking-wider text-[10px]">
+                      <div className="flex items-center gap-2.5 text-xs text-[#212e52]/50 mb-3 tracking-wide">
+                        <span className="text-[#212e52] font-semibold uppercase tracking-wider text-[10px]">
                           {post.tag}
                         </span>
                         <span>·</span>
@@ -386,7 +386,7 @@ export default function Blog() {
                       </div>
 
                       {/* Title */}
-                      <h4 className="text-lg md:text-xl font-normal tracking-tight text-[#212e52] leading-snug mb-3 group-hover:text-[#C9951A] transition-colors duration-200">
+                      <h4 className="text-lg md:text-xl font-normal tracking-tight text-[#1a1a1a] leading-snug mb-3 group-hover:text-[#212e52]/70 transition-colors duration-200">
                         {post.title}
                       </h4>
 
@@ -396,7 +396,7 @@ export default function Blog() {
                       </p>
 
                       {/* Sleek Minimal CTA */}
-                      <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#212e52]/80 group-hover:text-[#C9951A] transition-colors duration-200 pt-4 border-t border-[#212e52]/8">
+                      <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#212e52]/70 group-hover:text-[#212e52] transition-colors duration-200 pt-4 border-t border-[#212e52]/8">
                         <span>Read article</span>
                         <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                       </div>
@@ -417,7 +417,7 @@ export default function Blog() {
                   setSelectedCategory('All')
                   setSearchQuery('')
                 }}
-                className="text-xs uppercase tracking-widest font-semibold text-[#C9951A] underline underline-offset-4"
+                className="text-xs uppercase tracking-widest font-semibold text-[#212e52] underline underline-offset-4 hover:text-[#111111]"
               >
                 Clear all filters
               </button>
@@ -429,12 +429,12 @@ export default function Blog() {
             <div className="rounded-2xl border border-[#212e52]/10 bg-white/60 p-8 sm:p-12 md:p-16 flex flex-col lg:flex-row lg:items-center justify-between gap-10">
               <div className="max-w-xl">
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C9951A]" />
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C9951A]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#212e52]" />
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#212e52]/70">
                     Fintrust Briefing
                   </span>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-normal tracking-tight text-[#212e52] mb-3">
+                <h3 className="text-2xl sm:text-3xl font-normal tracking-tight text-[#1a1a1a] mb-3">
                   Stay ahead of UAE financial regulations.
                 </h3>
                 <p className="text-[#212e52]/60 text-sm font-light leading-relaxed">
@@ -445,7 +445,7 @@ export default function Blog() {
               <div className="w-full lg:w-auto">
                 {subscribed ? (
                   <div className="inline-flex items-center gap-3 px-6 py-4 rounded-xl bg-[#212e52]/5 text-[#212e52] border border-[#212e52]/10 text-sm font-medium">
-                    <span className="text-[#C9951A]">✓</span>
+                    <span className="text-[#212e52]">✓</span>
                     <span>Thank you for subscribing. We&apos;ll be in touch.</span>
                   </div>
                 ) : (
@@ -456,11 +456,11 @@ export default function Blog() {
                       placeholder="Enter your corporate email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="px-5 py-3.5 text-xs bg-white border border-[#212e52]/15 rounded-full text-[#212e52] placeholder-[#212e52]/40 focus:outline-none focus:border-[#C9951A] min-w-[260px]"
+                      className="px-5 py-3.5 text-xs bg-white border border-[#212e52]/15 rounded-full text-[#212e52] placeholder-[#212e52]/40 focus:outline-none focus:border-[#212e52] min-w-[260px]"
                     />
                     <button
                       type="submit"
-                      className="px-6 py-3.5 bg-[#212e52] hover:bg-[#C9951A] text-white text-xs font-semibold uppercase tracking-wider rounded-full transition-colors duration-300 flex-shrink-0"
+                      className="px-6 py-3.5 bg-[#212e52] hover:bg-[#111111] text-white text-xs font-semibold uppercase tracking-wider rounded-full transition-colors duration-300 flex-shrink-0"
                     >
                       Subscribe
                     </button>
@@ -468,7 +468,7 @@ export default function Blog() {
                 )}
                 <p className="text-[11px] text-[#212e52]/40 mt-3 font-light">
                   Strictly business. No spam. Unsubscribe at any time. Or{' '}
-                  <Link to="/#contact" className="underline hover:text-[#C9951A]">
+                  <Link to="/#contact" className="underline hover:text-[#212e52]">
                     contact our advisory team
                   </Link>
                   .
