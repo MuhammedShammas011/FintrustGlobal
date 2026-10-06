@@ -20,6 +20,7 @@ import AccountsDueDiligence from './pages/AccountsDueDiligence'
 import CommerceDueDiligence from './pages/CommerceDueDiligence'
 import TaxDueDiligence from './pages/TaxDueDiligence'
 import BusinessManagement360 from './pages/BusinessManagement360'
+import Blog from './pages/Blog'
 
 // Inner component so useLocation works inside Router context
 function AppRoutes() {
@@ -48,6 +49,7 @@ function AppRoutes() {
           <Route path="/commerce-due-diligence" element={<CommerceDueDiligence />} />
           <Route path="/tax-due-diligence" element={<TaxDueDiligence />} />
           <Route path="/360-business-management" element={<BusinessManagement360 />} />
+          <Route path="/blog" element={<Blog />} />
         </Routes>
       </PageTransition>
       <Footer />

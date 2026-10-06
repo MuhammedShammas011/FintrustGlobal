@@ -58,7 +58,7 @@ const navLinks = [
       },
     ]
   },
-  { label: 'Blog', href: '/#insights' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Contact-Us', href: '/#contact' },
 ]
 

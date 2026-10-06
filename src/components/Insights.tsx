@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const articles = [
   {
@@ -70,17 +71,18 @@ export default function Insights() {
               </h2>
             </motion.div>
           </div>
-          <motion.a
-            href="https://fintrustglobal.ae/blog/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-ghost flex-shrink-0"
+          <motion.div
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            View all insights →
-          </motion.a>
+            <Link
+              to="/blog"
+              className="btn-ghost flex-shrink-0"
+            >
+              View all insights →
+            </Link>
+          </motion.div>
         </div>
 
         {/* Editorial grid */}
