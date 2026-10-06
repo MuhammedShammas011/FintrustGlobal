@@ -95,7 +95,7 @@ export default function AmlCompliance() {
                 <div className="absolute inset-0 bg-[#C9951A]/10 rounded-[3rem] transform translate-x-8 translate-y-8 blur-xl transition-transform duration-500" style={{ transform: "translateZ(-50px)" }} />
                 
                 <img 
-                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32b7?auto=format&fit=crop&q=80&w=1200" 
+                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200" 
                   alt="AML Compliance Security" 
                   className="absolute inset-0 z-10 rounded-[3rem] shadow-2xl w-full h-full object-cover"
                   style={{ transform: "translateZ(0px)" }}

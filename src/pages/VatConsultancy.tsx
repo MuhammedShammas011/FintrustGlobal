@@ -95,7 +95,7 @@ export default function VatConsultancy() {
                 <div className="absolute inset-0 bg-[#C9951A]/10 rounded-[3rem] transform translate-x-8 translate-y-8 blur-xl transition-transform duration-500" style={{ transform: "translateZ(-50px)" }} />
                 
                 <img 
-                  src="https://images.unsplash.com/photo-1554224154-26032ffc0dff?auto=format&fit=crop&q=80&w=1200" 
+                  src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1200" 
                   alt="VAT Consultancy" 
                   className="absolute inset-0 z-10 rounded-[3rem] shadow-2xl w-full h-full object-cover"
                   style={{ transform: "translateZ(0px)" }}
