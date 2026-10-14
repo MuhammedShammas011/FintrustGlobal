@@ -14,11 +14,13 @@ export default function Home() {
     <main>
       <Hero />
       <TrustStatement />
+      <div className="scroll-steps-wrapper">
+        <ScrollSteps />
+      </div>
       <Services />
       <ProcessSteps />
       <Industries />
       <WhyFintrust />
-      <ScrollSteps />
       <Testimonials />
       <Insights />
       <FinalCTA />

@@ -19,7 +19,7 @@ export default function ScrollSteps() {
   const w4 = useTransform(scrollYProgress, [0, 0.6], ["35%", "100%"])
 
   return (
-    <div ref={containerRef} className="relative w-full overflow-hidden bg-white py-12 md:py-20">
+    <div ref={containerRef} className="scroll-steps-container relative w-full overflow-hidden bg-white py-12 md:py-20">
 
       {/* Lines are flush left to create a connected alignment, but maintain separate gaps */}
 

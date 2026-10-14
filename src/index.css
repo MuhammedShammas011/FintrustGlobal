@@ -892,6 +892,21 @@ html.dark .process-line.active {
   background: #dbaa20 !important;
 }
 
+/* ─── SCROLL STEPS ANIMATION: Active in Both Themes ─── */
+html.dark .scroll-steps-wrapper {
+  display: block !important;
+}
+
+html.dark .scroll-steps-container {
+  background-color: var(--color-bg) !important;
+}
+
+/* In dark theme, change animation bars into white */
+html.dark .scroll-steps-container .bg-\[\#212e52\],
+html.dark .scroll-steps-container [class*="bg-[#212e52]"] {
+  background-color: #ffffff !important;
+}
+
 /* — Theme Toggle Button — */
 .theme-toggle-btn {
   position: relative;
