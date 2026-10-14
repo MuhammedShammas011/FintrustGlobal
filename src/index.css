@@ -517,9 +517,14 @@ html.dark h6 {
   color: #dbaa20 !important;
 }
 
-/* Dual-line headings: main statement in clean white, accent/secondary line in #dbaa20 */
-html.dark h1 > span:first-child:not([class*="text-[#212e52]"]):not([class*="text-[#C9951A]"]),
-html.dark h2 > span:first-child:not([class*="text-[#212e52]"]):not([class*="text-[#C9951A]"]) {
+/* When a heading has a highlighted or accented span, the main heading text is clean White and the highlight is #dbaa20 */
+html.dark h1:has(span),
+html.dark h2:has(span) {
+  color: #ffffff !important;
+}
+
+html.dark h1 > span:first-child,
+html.dark h2 > span:first-child {
   color: #ffffff !important;
 }
 
@@ -530,6 +535,9 @@ html.dark h3 span.text-\[\#212e52\],
 html.dark h1 span[class*="text-[#212e52]"],
 html.dark h2 span[class*="text-[#212e52]"],
 html.dark h3 span[class*="text-[#212e52]"],
+html.dark h1 span.text-\[\#C9951A\],
+html.dark h2 span.text-\[\#C9951A\],
+html.dark h3 span.text-\[\#C9951A\],
 html.dark span.italic {
   color: #dbaa20 !important;
 }
