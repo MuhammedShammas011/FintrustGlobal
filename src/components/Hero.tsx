@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 const LogoBlock = ({ className }: { className: string }) => (
   <div className={`relative overflow-hidden ${className}`}>
     <div
-      className="absolute top-0 bottom-0 bg-[#212e52] dark:bg-white w-[200%]"
+      className="absolute top-0 bottom-0 bg-[#212e52] w-[200%]"
       style={{
         transform: 'skewX(45deg)',
         transformOrigin: 'top left',
@@ -48,7 +48,7 @@ export default function Hero() {
     <>
       <div ref={containerRef} className="h-[150vh] w-full" id="hero" />
 
-      <section className="fixed top-0 left-0 right-0 h-screen bg-[#F4F3EE] -z-10 overflow-hidden">
+      <section className="hero-section fixed top-0 left-0 right-0 h-screen bg-[#F4F3EE] -z-10 overflow-hidden">
 
         {/* ─── Initial Shutter Reveal ─── */}
         <motion.div
@@ -302,7 +302,7 @@ export default function Hero() {
                 <div className="h-2 w-px bg-[#212e52]/30" />
               </motion.div>
 
-              <h1 className="text-[40px] sm:text-[66px] md:text-[105px] lg:text-[160px] xl:text-[170px] font-normal tracking-tight text-[#212e52] dark:text-white leading-[0.9]">
+              <h1 className="text-[40px] sm:text-[66px] md:text-[105px] lg:text-[160px] xl:text-[170px] font-normal tracking-tight text-[#212e52] leading-[0.9]">
                 Fintrust<br />Global
               </h1>
             </motion.div>

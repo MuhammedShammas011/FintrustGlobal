@@ -476,14 +476,13 @@ html.dark ::selection { background: #dbaa20; color: #212e52; }
 html.dark,
 html.dark body,
 html.dark main,
-html.dark section {
+html.dark section:not(.hero-section) {
   background-color: var(--color-bg) !important;
 }
 
 /* Background class overrides to dark primary #212e52 / elevated #1a2542 */
 html.dark .bg-\[\#FCFBF8\],
 html.dark .bg-\[\#F7F6F2\],
-html.dark .bg-\[\#F4F3EE\],
 html.dark .bg-off-white {
   background-color: var(--color-bg) !important;
 }
@@ -707,49 +706,85 @@ html.dark a span.bg-\[\#212e52\] {
   background-color: #dbaa20 !important;
 }
 
-/* ─── HERO SECTION ─── */
+/* ─── HERO SECTION: PRESERVE EXACT SAME LIGHT THEME DESIGN IN BOTH THEMES ─── */
+html.dark .hero-section,
 html.dark #hero + section,
 html.dark section.bg-\[\#F4F3EE\] {
+  background-color: #F4F3EE !important;
+}
+
+/* Hero Logo Blocks stay original navy #212e52 */
+html.dark .hero-section .bg-\[\#212e52\],
+html.dark #hero + section .bg-\[\#212e52\] {
   background-color: #212e52 !important;
 }
 
-/* Hero three animated logo blocks in white */
-html.dark .bg-\[\#212e52\].w-\[200\%\] {
-  background-color: #ffffff !important;
+/* Hero Heading stays original navy #212e52 */
+html.dark .hero-section h1,
+html.dark #hero + section h1 {
+  color: #212e52 !important;
 }
 
-/* Hero title text in white */
-html.dark #hero + section h1,
-html.dark section.bg-\[\#F4F3EE\] h1,
-html.dark #hero + section h1.text-\[\#212e52\],
-html.dark section.bg-\[\#F4F3EE\] h1.text-\[\#212e52\] {
-  color: #ffffff !important;
+/* Hero Watermark stays original navy */
+html.dark .hero-section .text-\[22vw\],
+html.dark #hero + section .text-\[22vw\] {
+  color: #212e52 !important;
+  opacity: 0.018 !important;
 }
 
-/* Hero watermark */
-html.dark .text-\[22vw\] {
-  color: #ffffff !important;
-  opacity: 0.03 !important;
+/* Hero rulers, ticks, brackets and lines stay original light theme */
+html.dark .hero-section [class*="bg-[#212e52]"],
+html.dark #hero + section [class*="bg-[#212e52]"] {
+  background-color: #212e52 !important;
 }
 
-/* Hero horizontal & vertical rulers */
-html.dark .bg-\[\#212e52\]\/15,
-html.dark .bg-\[\#212e52\]\/20,
-html.dark .bg-\[\#212e52\]\/25,
-html.dark .bg-\[\#212e52\]\/30 {
-  background-color: rgba(219, 170, 32, 0.35) !important;
+html.dark .hero-section [class*="text-[#212e52]"],
+html.dark #hero + section [class*="text-[#212e52]"] {
+  color: #212e52 !important;
 }
 
-html.dark span.text-\[\#212e52\]\/20,
-html.dark span.text-\[\#212e52\]\/30 {
-  color: rgba(255, 255, 255, 0.6) !important;
+html.dark .hero-section [class*="border-[#212e52]"],
+html.dark #hero + section [class*="border-[#212e52]"] {
+  border-color: #212e52 !important;
+}
+
+/* Opacity variations for horizontal & vertical ruler marks */
+html.dark .hero-section .bg-\[\#212e52\]\/15,
+html.dark #hero + section .bg-\[\#212e52\]\/15 {
+  background-color: rgba(33, 46, 82, 0.15) !important;
+}
+
+html.dark .hero-section .bg-\[\#212e52\]\/20,
+html.dark #hero + section .bg-\[\#212e52\]\/20 {
+  background-color: rgba(33, 46, 82, 0.20) !important;
+}
+
+html.dark .hero-section .bg-\[\#212e52\]\/25,
+html.dark #hero + section .bg-\[\#212e52\]\/25 {
+  background-color: rgba(33, 46, 82, 0.25) !important;
+}
+
+html.dark .hero-section .bg-\[\#212e52\]\/30,
+html.dark #hero + section .bg-\[\#212e52\]\/30 {
+  background-color: rgba(33, 46, 82, 0.30) !important;
+}
+
+html.dark .hero-section span.text-\[\#212e52\]\/20,
+html.dark #hero + section span.text-\[\#212e52\]\/20 {
+  color: rgba(33, 46, 82, 0.20) !important;
+}
+
+html.dark .hero-section span.text-\[\#212e52\]\/30,
+html.dark #hero + section span.text-\[\#212e52\]\/30 {
+  color: rgba(33, 46, 82, 0.30) !important;
 }
 
 /* Ruler readout badge */
-html.dark .bg-\[\#212e52\].px-2 {
-  background-color: #1a2542 !important;
-  border: 1px solid rgba(219, 170, 32, 0.4) !important;
+html.dark .hero-section .bg-\[\#212e52\].px-2,
+html.dark #hero + section .bg-\[\#212e52\].px-2 {
+  background-color: #212e52 !important;
   color: #ffffff !important;
+  border: none !important;
 }
 
 /* ─── CARDS, ROWS & BORDERS ─── */
