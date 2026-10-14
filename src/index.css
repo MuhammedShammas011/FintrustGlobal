@@ -506,39 +506,24 @@ html.dark .bg-\[\#212e52\]\/10 {
 
 /* ─── TYPOGRAPHY: All Blue & Black text converted to #dbaa20 and White ─── */
 
-/* 1. Headings, Titles & Key Accents -> #dbaa20 */
-html.dark h1,
-html.dark h2,
-html.dark h3,
-html.dark h4,
-html.dark h5,
-html.dark h6 {
-  color: #dbaa20 !important;
-}
-
-/* When a heading has a highlighted or accented span, the main heading text is clean White and the highlight is #dbaa20 */
-html.dark h1:has(span),
-html.dark h2:has(span) {
+/* 1. Section Headings & Titles in Dark Theme -> Crisp White */
+html.dark h1:not(.hero-section *),
+html.dark h2:not(.hero-section *),
+html.dark h3:not(.hero-section *),
+html.dark h4:not(.hero-section *),
+html.dark h5:not(.hero-section *),
+html.dark h6:not(.hero-section *) {
   color: #ffffff !important;
 }
 
-html.dark h1 > span:first-child,
-html.dark h2 > span:first-child {
+/* Ensure all text and child spans in section headings are white */
+html.dark h1:not(.hero-section *) span,
+html.dark h2:not(.hero-section *) span,
+html.dark h3:not(.hero-section *) span,
+html.dark h4:not(.hero-section *) span,
+html.dark h5:not(.hero-section *) span,
+html.dark h6:not(.hero-section *) span {
   color: #ffffff !important;
-}
-
-/* Any highlighted or emphasized spans within headings */
-html.dark h1 span.text-\[\#212e52\],
-html.dark h2 span.text-\[\#212e52\],
-html.dark h3 span.text-\[\#212e52\],
-html.dark h1 span[class*="text-[#212e52]"],
-html.dark h2 span[class*="text-[#212e52]"],
-html.dark h3 span[class*="text-[#212e52]"],
-html.dark h1 span.text-\[\#C9951A\],
-html.dark h2 span.text-\[\#C9951A\],
-html.dark h3 span.text-\[\#C9951A\],
-html.dark span.italic {
-  color: #dbaa20 !important;
 }
 
 /* 2. Body Text, Paragraphs, Descriptions & Subtitles -> White */
@@ -578,6 +563,17 @@ html.dark [class*="text-[#212e52]"] {
   color: #dbaa20 !important;
 }
 
+/* Section headings with text-[#212e52] stay crisp White */
+html.dark h1[class*="text-[#212e52]"]:not(.hero-section *),
+html.dark h2[class*="text-[#212e52]"]:not(.hero-section *),
+html.dark h3[class*="text-[#212e52]"]:not(.hero-section *),
+html.dark h4[class*="text-[#212e52]"]:not(.hero-section *),
+html.dark h1:not(.hero-section *) span[class*="text-[#212e52]"],
+html.dark h2:not(.hero-section *) span[class*="text-[#212e52]"],
+html.dark h3:not(.hero-section *) span[class*="text-[#212e52]"] {
+  color: #ffffff !important;
+}
+
 /* Paragraphs with text-[#212e52] stay crisp white for readability */
 html.dark p.text-\[\#212e52\],
 html.dark p[class*="text-[#212e52]/"],
@@ -599,20 +595,7 @@ html.dark .text-black {
   color: #ffffff !important;
 }
 
-/* Headings with near-black / black classes stay matching #dbaa20 */
-html.dark h1.text-near-black,
-html.dark h2.text-near-black,
-html.dark h3.text-near-black,
-html.dark h1.text-\[\#111111\],
-html.dark h2.text-\[\#111111\],
-html.dark h3.text-\[\#111111\],
-html.dark h1.text-\[\#1a1a1a\],
-html.dark h2.text-\[\#1a1a1a\],
-html.dark h3.text-\[\#1a1a1a\] {
-  color: #dbaa20 !important;
-}
-
-/* 5. Gold & Accent Text -> #dbaa20 */
+/* 5. Gold & Accent Text -> #dbaa20 (for badges, tags, active states, etc.) */
 html.dark .text-\[\#C9951A\],
 html.dark .text-accent {
   color: #dbaa20 !important;
