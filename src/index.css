@@ -19,11 +19,49 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+/* ─── Theme Variables ─── */
+:root {
+  --color-bg:        #F7F6F2;
+  --color-bg-alt:    #FCFBF8;
+  --color-bg-white:  #FFFFFF;
+  --color-text:      #111111;
+  --color-text-soft: #5a5a5a;
+  --color-text-muted:#6B6B6B;
+  --color-navy:      #212e52;
+  --color-accent:    #C9951A;
+  --color-border:    #E5E4E0;
+  --color-border-alt:#c8c4bc;
+  --color-card:      #FFFFFF;
+  --color-nav-bg:    rgba(247,246,242,0.95);
+  --color-overlay:   #111111;
+  --color-near-black:#111111;
+  --shadow-card:     0 4px 24px rgba(0,0,0,0.06);
+}
+
+html.dark {
+  --color-bg:        #212e52;
+  --color-bg-alt:    #1a2644;
+  --color-bg-white:  #1d2a4d;
+  --color-text:      #FFFFFF;
+  --color-text-soft: rgba(255, 255, 255, 0.88);
+  --color-text-muted:rgba(255, 255, 255, 0.68);
+  --color-navy:      #212e52;
+  --color-accent:    #dbaa20;
+  --color-border:    rgba(219, 170, 32, 0.22);
+  --color-border-alt:rgba(255, 255, 255, 0.12);
+  --color-card:      #1d2a4d;
+  --color-nav-bg:    rgba(33, 46, 82, 0.96);
+  --color-overlay:   #121b33;
+  --color-near-black:#FFFFFF;
+  --shadow-card:     0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
 body {
   font-family: 'Poppins', system-ui, sans-serif;
-  background-color: #F7F6F2;
-  color: #111111;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   overflow-x: hidden;
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 /* ─── Custom Cursor ─── */
@@ -420,4 +458,150 @@ body {
 
 .process-line.active {
   background: #2A5C45;
+}
+
+/* ═══════════════════════════════════════════════
+   DARK THEME OVERRIDES
+   ═══════════════════════════════════════════════ */
+
+/* — Scrollbar — */
+html.dark ::-webkit-scrollbar-track { background: var(--color-bg); }
+html.dark ::-webkit-scrollbar-thumb { background: #253050; }
+html.dark ::-webkit-scrollbar-thumb:hover { background: #dbaa20; }
+
+/* — Selection — */
+html.dark ::selection { background: #dbaa20; color: #0e1420; }
+
+/* — Navbar — */
+html.dark nav {
+  background-color: var(--color-nav-bg) !important;
+  border-color: var(--color-border) !important;
+}
+html.dark .mobile-nav-overlay {
+  background: #0a0f1c;
+}
+
+/* — Sections / Pages — */
+html.dark section,
+html.dark main {
+  background-color: var(--color-bg);
+}
+
+/* Specific bg overrides */
+html.dark .bg-\[\#FCFBF8\],
+html.dark .bg-\[\#F7F6F2\] {
+  background-color: var(--color-bg-alt) !important;
+}
+html.dark .bg-white {
+  background-color: var(--color-bg-white) !important;
+}
+html.dark .bg-off-white {
+  background-color: var(--color-bg-alt) !important;
+}
+html.dark .bg-\[\#212e52\] {
+  background-color: #1a2444 !important;
+}
+html.dark .bg-\[\#212e52\]\/5 {
+  background-color: rgba(33,46,82,0.3) !important;
+}
+
+/* — Text — */
+html.dark .text-near-black,
+html.dark .text-\[\#111111\],
+html.dark .text-\[\#1a1a1a\] {
+  color: var(--color-text) !important;
+}
+html.dark .text-\[\#212e52\] { color: #c8d0e8 !important; }
+html.dark .text-\[\#5a5a5a\],
+html.dark .text-muted,
+html.dark .text-\[\#6B6B6B\] { color: var(--color-text-soft) !important; }
+html.dark .text-\[\#C9951A\] { color: #dbaa20 !important; }
+
+/* — Borders — */
+html.dark .border-border,
+html.dark .border-\[\#E5E4E0\],
+html.dark .border-\[\#e0ddd8\],
+html.dark .border-\[\#c8c4bc\] {
+  border-color: var(--color-border) !important;
+}
+html.dark .border-\[\#212e52\]\/10 {
+  border-color: rgba(33,46,82,0.4) !important;
+}
+html.dark .border-\[\#212e52\]\/15 {
+  border-color: rgba(33,46,82,0.5) !important;
+}
+
+/* — Cards — */
+html.dark .service-row,
+html.dark .insight-card { border-color: var(--color-border) !important; }
+html.dark .testimonial-quote { color: var(--color-text) !important; }
+
+/* — Dropdowns — */
+html.dark .bg-white.border.border-border,
+html.dark div.bg-white { background-color: var(--color-bg-white) !important; }
+
+/* — Input fields — */
+html.dark input,
+html.dark textarea {
+  background-color: var(--color-bg-white);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+/* — CTA / dark sections that should stay dark — */
+html.dark .bg-\[\#212e52\].py-24,
+html.dark .bg-\[\#212e52\].py-32 {
+  background-color: #1a2444 !important;
+}
+
+/* — Scrollbar / thin rules — */
+html.dark .thin-rule { border-color: var(--color-border); }
+html.dark .industry-item { border-color: var(--color-border); }
+html.dark .erp-platform { border-color: var(--color-border); color: var(--color-text-soft); }
+html.dark .process-line { background: var(--color-border); }
+
+/* — Theme Toggle Button — */
+.theme-toggle-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 48px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-border-alt);
+  background: var(--color-bg);
+  cursor: pointer;
+  transition: background 0.35s ease, border-color 0.35s ease;
+  flex-shrink: 0;
+}
+
+html.dark .theme-toggle-btn {
+  background: #1a2444;
+  border-color: #253050;
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #212e52;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), background 0.35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+html.dark .theme-toggle-thumb {
+  transform: translateY(-50%) translateX(22px);
+  background: #dbaa20;
+}
+
+.theme-toggle-icon {
+  width: 10px;
+  height: 10px;
+  stroke-width: 2;
 }
