@@ -190,8 +190,8 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* CTA + Theme Toggle */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Actions: Theme Toggle (always visible in navbar) + Desktop CTA + Mobile hamburger */}
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
@@ -221,30 +221,32 @@ export default function Navbar() {
                 )}
               </span>
             </button>
+
+            {/* Desktop CTA */}
             <a
               href="#contact"
-              className="text-sm font-medium bg-[#212e52] text-white hover:bg-[#1a2542] px-5 py-2.5 rounded-full transition-colors duration-200 tracking-tight shadow-sm"
+              className="hidden md:inline-flex text-sm font-medium bg-[#212e52] text-white hover:bg-[#1a2542] px-5 py-2.5 rounded-full transition-colors duration-200 tracking-tight shadow-sm"
             >
               Book now
             </a>
-          </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden flex flex-col gap-1.5 p-2"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            <span
-              className={`block h-px w-6 bg-near-black transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-[0.4rem]' : ''}`}
-            />
-            <span
-              className={`block h-px w-4 bg-near-black transition-all duration-300 ${mobileOpen ? 'opacity-0 w-6' : ''}`}
-            />
-            <span
-              className={`block h-px w-6 bg-near-black transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-[0.4rem]' : ''}`}
-            />
-          </button>
+            {/* Mobile hamburger */}
+            <button
+              className="md:hidden flex flex-col gap-1.5 p-2 -mr-1"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              <span
+                className={`block h-px w-6 ${theme === 'dark' ? 'bg-white' : 'bg-near-black'} transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-[0.4rem]' : ''}`}
+              />
+              <span
+                className={`block h-px w-4 ${theme === 'dark' ? 'bg-white' : 'bg-near-black'} transition-all duration-300 ${mobileOpen ? 'opacity-0 w-6' : ''}`}
+              />
+              <span
+                className={`block h-px w-6 ${theme === 'dark' ? 'bg-white' : 'bg-near-black'} transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-[0.4rem]' : ''}`}
+              />
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -310,37 +312,6 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.45, duration: 0.5 }}
             >
-              {/* Mobile Theme Toggle */}
-              <div className="flex items-center gap-4 mb-2">
-                <span className="text-off-white/50 text-sm font-medium tracking-tight">
-                  {theme === 'dark' ? 'Dark mode' : 'Light mode'}
-                </span>
-                <button
-                  onClick={toggleTheme}
-                  className="theme-toggle-btn"
-                  aria-label="Toggle theme"
-                >
-                  <span className="theme-toggle-thumb">
-                    {theme === 'dark' ? (
-                      <svg className="theme-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="#0e1420" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                      </svg>
-                    ) : (
-                      <svg className="theme-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="#F7F6F2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="12" r="5" />
-                        <line x1="12" y1="1" x2="12" y2="3" />
-                        <line x1="12" y1="21" x2="12" y2="23" />
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                        <line x1="1" y1="12" x2="3" y2="12" />
-                        <line x1="21" y1="12" x2="23" y2="12" />
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                      </svg>
-                    )}
-                  </span>
-                </button>
-              </div>
               <a
                 href="tel:+971506029161"
                 className="text-off-white/50 text-sm font-medium tracking-tight"
