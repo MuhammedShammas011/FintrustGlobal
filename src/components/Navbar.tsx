@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
 import logoImg from '../assets/Horizontal-Logo- Fintrust Global-04.png'
+import logoDarkImg from '../assets/Horizontal-Logo- Fintrust Global-02.png'
 import { useTheme } from '../context/ThemeContext'
 
 const navLinks = [
@@ -133,7 +134,7 @@ export default function Navbar() {
             onClick={(e) => { e.preventDefault(); scrollTo('/') }}
             className="flex items-center group"
           >
-            <img src={logoImg} alt="Fintrust Global" className="h-16 md:h-20 w-auto object-contain scale-[1.15] md:scale-[1.3] origin-left" />
+            <img src={theme === 'dark' ? logoDarkImg : logoImg} alt="Fintrust Global" className="h-16 md:h-20 w-auto object-contain scale-[1.15] md:scale-[1.3] origin-left" />
           </button>
 
           {/* Desktop Nav */}

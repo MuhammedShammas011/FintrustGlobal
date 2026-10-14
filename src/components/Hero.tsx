@@ -33,23 +33,23 @@ export default function Hero() {
   const logoOpacity = useTransform(scrollYProgress, [0, 0.33, 0.5, 0.8], [1, 1, 1, 0])
 
   const rulerPointerX = useTransform(scrollYProgress, [0, 0.5], ['0%', '100%'])
-  const rulerReadout   = useTransform(scrollYProgress, [0, 0.5], [0, 100])
+  const rulerReadout = useTransform(scrollYProgress, [0, 0.5], [0, 100])
 
   const vRulerPointerY = useTransform(scrollYProgress, [0, 0.5], ['100%', '0%'])
-  const vReadout       = useTransform(scrollYProgress, [0, 0.5], [0, 100])
+  const vReadout = useTransform(scrollYProgress, [0, 0.5], [0, 100])
 
   const rulerOpacity = useTransform(scrollYProgress, [0, 0.15, 0.55, 0.8], [0, 1, 1, 0])
 
   // Derived string transforms — must be top-level
-  const hReadoutStr  = useTransform(rulerReadout, (v) => v.toFixed(1))
-  const vReadoutStr  = useTransform(vReadout,     (v) => v.toFixed(1))
-  const bracketStr   = useTransform(rulerReadout, (v) => `${(v * 1.7).toFixed(0)} px`)
+  const hReadoutStr = useTransform(rulerReadout, (v) => v.toFixed(1))
+  const vReadoutStr = useTransform(vReadout, (v) => v.toFixed(1))
+  const bracketStr = useTransform(rulerReadout, (v) => `${(v * 1.7).toFixed(0)} px`)
 
   return (
     <>
       <div ref={containerRef} className="h-[150vh] w-full" id="hero" />
 
-      <section 
+      <section
         className="hero-section fixed top-0 left-0 right-0 h-screen bg-[#F4F3EE] z-0 overflow-hidden"
         style={{ backgroundColor: '#F4F3EE' }}
       >
@@ -101,7 +101,7 @@ export default function Hero() {
         <svg className="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none">
           <defs>
             <pattern id="diag" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
-              <line x1="0" y1="0" x2="0" y2="80" stroke="rgba(33,46,82,0.04)" strokeWidth="1"/>
+              <line x1="0" y1="0" x2="0" y2="80" stroke="rgba(33,46,82,0.04)" strokeWidth="1" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#diag)" />
@@ -171,13 +171,6 @@ export default function Hero() {
               {/* Pointer diamond */}
               <div className="w-2 h-2 rounded-full bg-[#C9951A] shadow-md" style={{ marginTop: '2px' }} />
             </motion.div>
-          </div>
-
-          {/* Label */}
-          <div className="flex justify-between mt-3">
-            <span className="text-[8px] font-mono text-[#212e52]/20 uppercase tracking-widest">0</span>
-            <span className="text-[8px] font-mono text-[#212e52]/20 uppercase tracking-widest">Position offset</span>
-            <span className="text-[8px] font-mono text-[#212e52]/20 uppercase tracking-widest">100</span>
           </div>
         </motion.div>
 
@@ -292,7 +285,7 @@ export default function Hero() {
                 <div className="h-2 w-px bg-[#212e52]/30" />
               </motion.div>
 
-              <h1 
+              <h1
                 className="hero-heading text-[40px] sm:text-[66px] md:text-[105px] lg:text-[160px] xl:text-[170px] font-normal tracking-tight text-[#212e52] leading-[0.9]"
                 style={{ color: '#212e52' }}
               >
