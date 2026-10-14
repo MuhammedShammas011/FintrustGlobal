@@ -1,5 +1,7 @@
-import footerLogo from '../assets/Vertical-Logo-Fintrust Global-03.png'
+import footerLogoDark from '../assets/Vertical-Logo-Fintrust Global-01.png'
+import footerLogoLight from '../assets/Vertical-Logo-Fintrust Global-04.png'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useTheme } from '../context/ThemeContext'
 
 export default function Footer() {
   const navLinks = [
@@ -34,6 +36,7 @@ export default function Footer() {
 
   const navigate = useNavigate()
   const location = useLocation()
+  const { theme } = useTheme()
 
   const scrollTo = (href: string) => {
     if (href.startsWith('/')) {
@@ -57,14 +60,18 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-off-white pb-12 md:pb-16 pt-10 md:pt-16 border-t border-[#212e52]/10">
+    <footer className="relative z-20 bg-off-white pb-12 md:pb-16 pt-10 md:pt-16 border-t border-[#212e52]/10">
       {/* Main footer */}
       <div className="container-site pt-10 md:pt-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
           {/* Brand */}
           <div className="col-span-1 sm:col-span-2 md:col-span-1">
             <div className="flex items-center gap-0 mb-4">
-              <img src={footerLogo} alt="Fintrust Global Logo" className="h-10 md:h-12 w-auto object-contain -ml-4" />
+              <img
+                src={theme === 'dark' ? footerLogoDark : footerLogoLight}
+                alt="Fintrust Global Logo"
+                className="h-10 md:h-12 w-auto object-contain -ml-4"
+              />
               <span className="font-semibold tracking-tight text-[#212e52] text-base uppercase -ml-2">
                 Fintrust Global
               </span>
