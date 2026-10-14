@@ -40,20 +40,20 @@ html {
 
 html.dark {
   --color-bg:        #212e52;
-  --color-bg-alt:    #1a2644;
-  --color-bg-white:  #1d2a4d;
-  --color-text:      #FFFFFF;
+  --color-bg-alt:    #1a2542;
+  --color-bg-white:  #18233d;
+  --color-text:      #ffffff;
   --color-text-soft: rgba(255, 255, 255, 0.88);
-  --color-text-muted:rgba(255, 255, 255, 0.68);
+  --color-text-muted:rgba(255, 255, 255, 0.70);
   --color-navy:      #212e52;
   --color-accent:    #dbaa20;
   --color-border:    rgba(219, 170, 32, 0.22);
-  --color-border-alt:rgba(255, 255, 255, 0.12);
-  --color-card:      #1d2a4d;
+  --color-border-alt:rgba(255, 255, 255, 0.15);
+  --color-card:      #1a2542;
   --color-nav-bg:    rgba(33, 46, 82, 0.96);
-  --color-overlay:   #121b33;
-  --color-near-black:#FFFFFF;
-  --shadow-card:     0 8px 32px rgba(0, 0, 0, 0.35);
+  --color-overlay:   #131c33;
+  --color-near-black:#ffffff;
+  --shadow-card:     0 8px 32px rgba(0, 0, 0, 0.40);
 }
 
 body {
@@ -461,104 +461,402 @@ body {
 }
 
 /* ═══════════════════════════════════════════════
-   DARK THEME OVERRIDES
+   DARK THEME OVERRIDES (Primary: #212e52, Text: #dbaa20 & White)
    ═══════════════════════════════════════════════ */
 
 /* — Scrollbar — */
 html.dark ::-webkit-scrollbar-track { background: var(--color-bg); }
-html.dark ::-webkit-scrollbar-thumb { background: #253050; }
+html.dark ::-webkit-scrollbar-thumb { background: #1a2542; border: 1px solid rgba(219, 170, 32, 0.2); }
 html.dark ::-webkit-scrollbar-thumb:hover { background: #dbaa20; }
 
 /* — Selection — */
-html.dark ::selection { background: #dbaa20; color: #0e1420; }
+html.dark ::selection { background: #dbaa20; color: #212e52; }
 
-/* — Navbar — */
-html.dark nav {
-  background-color: var(--color-nav-bg) !important;
-  border-color: var(--color-border) !important;
-}
-html.dark .mobile-nav-overlay {
-  background: #0a0f1c;
-}
-
-/* — Sections / Pages — */
-html.dark section,
-html.dark main {
-  background-color: var(--color-bg);
+/* — Sections, Pages & Main Backgrounds — */
+html.dark,
+html.dark body,
+html.dark main,
+html.dark section {
+  background-color: var(--color-bg) !important;
 }
 
-/* Specific bg overrides */
+/* Background class overrides to dark primary #212e52 / elevated #1a2542 */
 html.dark .bg-\[\#FCFBF8\],
-html.dark .bg-\[\#F7F6F2\] {
-  background-color: var(--color-bg-alt) !important;
-}
-html.dark .bg-white {
-  background-color: var(--color-bg-white) !important;
-}
+html.dark .bg-\[\#F7F6F2\],
+html.dark .bg-\[\#F4F3EE\],
 html.dark .bg-off-white {
-  background-color: var(--color-bg-alt) !important;
-}
-html.dark .bg-\[\#212e52\] {
-  background-color: #1a2444 !important;
-}
-html.dark .bg-\[\#212e52\]\/5 {
-  background-color: rgba(33,46,82,0.3) !important;
+  background-color: var(--color-bg) !important;
 }
 
-/* — Text — */
+html.dark .bg-white {
+  background-color: var(--color-card) !important;
+}
+
+/* Containers with navy bg in light mode become elevated card shade #1a2542 with subtle gold border */
+html.dark section.bg-\[\#212e52\],
+html.dark div.bg-\[\#212e52\]:not(.theme-toggle-thumb) {
+  background-color: var(--color-card) !important;
+  border-color: rgba(219, 170, 32, 0.25) !important;
+}
+
+html.dark .bg-\[\#212e52\]\/5,
+html.dark .bg-\[\#212e52\]\/8,
+html.dark .bg-\[\#212e52\]\/10 {
+  background-color: rgba(219, 170, 32, 0.08) !important;
+}
+
+/* ─── TYPOGRAPHY: All Blue & Black text converted to #dbaa20 and White ─── */
+
+/* 1. Headings, Titles & Key Accents -> #dbaa20 */
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+  color: #dbaa20 !important;
+}
+
+/* Dual-line headings: main statement in clean white, accent/secondary line in #dbaa20 */
+html.dark h1 > span:first-child:not([class*="text-[#212e52]"]):not([class*="text-[#C9951A]"]),
+html.dark h2 > span:first-child:not([class*="text-[#212e52]"]):not([class*="text-[#C9951A]"]) {
+  color: #ffffff !important;
+}
+
+/* Any highlighted or emphasized spans within headings */
+html.dark h1 span.text-\[\#212e52\],
+html.dark h2 span.text-\[\#212e52\],
+html.dark h3 span.text-\[\#212e52\],
+html.dark h1 span[class*="text-[#212e52]"],
+html.dark h2 span[class*="text-[#212e52]"],
+html.dark h3 span[class*="text-[#212e52]"],
+html.dark span.italic {
+  color: #dbaa20 !important;
+}
+
+/* 2. Body Text, Paragraphs, Descriptions & Subtitles -> White */
+html.dark p,
+html.dark article,
+html.dark dd,
+html.dark li {
+  color: #ffffff !important;
+}
+
+/* Paragraphs & descriptions with blue/black/muted utility classes */
+html.dark p.text-near-black,
+html.dark p.text-\[\#111111\],
+html.dark p.text-\[\#1a1a1a\],
+html.dark p.text-\[\#212e52\],
+html.dark p[class*="text-[#212e52]"],
+html.dark p[class*="text-\[\#212e52\]"],
+html.dark p.text-\[\#5a5a5a\],
+html.dark p.text-muted,
+html.dark p.text-\[\#6B6B6B\],
+html.dark p.text-\[\#8a8a8a\] {
+  color: rgba(255, 255, 255, 0.90) !important;
+}
+
+/* Muted / secondary body descriptions */
+html.dark .text-muted,
+html.dark .text-\[\#5a5a5a\],
+html.dark .text-\[\#6B6B6B\],
+html.dark .text-\[\#8a8a8a\],
+html.dark .text-\[\#b0ada9\] {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+/* 3. Blue Text Classes (text-[#212e52] and opacities) */
+html.dark .text-\[\#212e52\],
+html.dark [class*="text-[#212e52]"] {
+  color: #dbaa20 !important;
+}
+
+/* Paragraphs with text-[#212e52] stay crisp white for readability */
+html.dark p.text-\[\#212e52\],
+html.dark p[class*="text-[#212e52]/"],
+html.dark p[class*="text-\[\#212e52\]\/"] {
+  color: rgba(255, 255, 255, 0.90) !important;
+}
+
+/* Spans with text-[#212e52]/... opacities (ruler brackets, counters) */
+html.dark span[class*="text-[#212e52]/"],
+html.dark div[class*="text-[#212e52]/"] {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* 4. Black Text Classes (text-near-black, text-[#111111], text-[#1a1a1a], text-black) */
 html.dark .text-near-black,
 html.dark .text-\[\#111111\],
-html.dark .text-\[\#1a1a1a\] {
-  color: var(--color-text) !important;
+html.dark .text-\[\#1a1a1a\],
+html.dark .text-black {
+  color: #ffffff !important;
 }
-html.dark .text-\[\#212e52\] { color: #c8d0e8 !important; }
-html.dark .text-\[\#5a5a5a\],
-html.dark .text-muted,
-html.dark .text-\[\#6B6B6B\] { color: var(--color-text-soft) !important; }
-html.dark .text-\[\#C9951A\] { color: #dbaa20 !important; }
 
-/* — Borders — */
+/* Headings with near-black / black classes stay matching #dbaa20 */
+html.dark h1.text-near-black,
+html.dark h2.text-near-black,
+html.dark h3.text-near-black,
+html.dark h1.text-\[\#111111\],
+html.dark h2.text-\[\#111111\],
+html.dark h3.text-\[\#111111\],
+html.dark h1.text-\[\#1a1a1a\],
+html.dark h2.text-\[\#1a1a1a\],
+html.dark h3.text-\[\#1a1a1a\] {
+  color: #dbaa20 !important;
+}
+
+/* 5. Gold & Accent Text -> #dbaa20 */
+html.dark .text-\[\#C9951A\],
+html.dark .text-accent {
+  color: #dbaa20 !important;
+}
+
+/* 6. Badges, Stat Numbers & Counters -> #dbaa20 */
+html.dark .font-mono,
+html.dark [class*="tracking-widest"],
+html.dark .text-label-tag {
+  color: #dbaa20 !important;
+}
+
+/* ─── NAVBAR & NAVIGATION ─── */
+html.dark nav {
+  background-color: var(--color-nav-bg) !important;
+  border-bottom: 1px solid rgba(219, 170, 32, 0.18) !important;
+}
+
+html.dark nav button,
+html.dark nav a {
+  color: #ffffff !important;
+}
+
+html.dark nav button:hover,
+html.dark nav a:hover {
+  color: #dbaa20 !important;
+}
+
+/* Dropdown menus */
+html.dark nav div.bg-white,
+html.dark nav div[class*="group-hover:visible"] {
+  background-color: #1a2542 !important;
+  border: 1px solid rgba(219, 170, 32, 0.25) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5) !important;
+}
+
+html.dark nav div.bg-white button,
+html.dark nav div.bg-white a {
+  color: #ffffff !important;
+}
+
+html.dark nav div.bg-white button:hover,
+html.dark nav div.bg-white a:hover {
+  color: #dbaa20 !important;
+  background-color: rgba(219, 170, 32, 0.10) !important;
+}
+
+/* Mobile Nav Overlay */
+html.dark .mobile-nav-overlay {
+  background: #1a2542 !important;
+}
+
+html.dark .mobile-nav-overlay a,
+html.dark .mobile-nav-overlay button {
+  color: #ffffff !important;
+}
+
+html.dark .mobile-nav-overlay a:hover,
+html.dark .mobile-nav-overlay button:hover {
+  color: #dbaa20 !important;
+}
+
+html.dark button[aria-label="Toggle menu"] span {
+  background-color: #ffffff !important;
+}
+
+/* ─── BUTTONS & CTA LINKS ─── */
+/* Primary Navy buttons become rich #dbaa20 gold buttons */
+html.dark a.bg-\[\#212e52\],
+html.dark button.bg-\[\#212e52\],
+html.dark .bg-\[\#212e52\].text-white:not(.theme-toggle-thumb) {
+  background-color: #dbaa20 !important;
+  color: #212e52 !important;
+  font-weight: 600 !important;
+  box-shadow: 0 6px 20px rgba(219, 170, 32, 0.3) !important;
+}
+
+html.dark a.bg-\[\#212e52\]:hover,
+html.dark button.bg-\[\#212e52\]:hover {
+  background-color: #e5b92e !important;
+  color: #212e52 !important;
+}
+
+/* Text link CTAs (Talk to an advisor, etc.) */
+html.dark a.text-\[\#212e52\] {
+  color: #dbaa20 !important;
+}
+
+/* Underline decoration */
+html.dark a span.bg-\[\#212e52\] {
+  background-color: #dbaa20 !important;
+}
+
+/* ─── HERO SECTION ─── */
+html.dark #hero + section,
+html.dark section.bg-\[\#F4F3EE\] {
+  background-color: #212e52 !important;
+}
+
+/* Hero animated logo blocks in gold #dbaa20 */
+html.dark .bg-\[\#212e52\].w-\[200\%\] {
+  background-color: #dbaa20 !important;
+}
+
+/* Hero watermark */
+html.dark .text-\[22vw\] {
+  color: #dbaa20 !important;
+  opacity: 0.04 !important;
+}
+
+/* Hero horizontal & vertical rulers */
+html.dark .bg-\[\#212e52\]\/15,
+html.dark .bg-\[\#212e52\]\/20,
+html.dark .bg-\[\#212e52\]\/25,
+html.dark .bg-\[\#212e52\]\/30 {
+  background-color: rgba(219, 170, 32, 0.35) !important;
+}
+
+html.dark span.text-\[\#212e52\]\/20,
+html.dark span.text-\[\#212e52\]\/30 {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Ruler readout badge */
+html.dark .bg-\[\#212e52\].px-2 {
+  background-color: #1a2542 !important;
+  border: 1px solid rgba(219, 170, 32, 0.4) !important;
+  color: #ffffff !important;
+}
+
+/* ─── CARDS, ROWS & BORDERS ─── */
 html.dark .border-border,
 html.dark .border-\[\#E5E4E0\],
 html.dark .border-\[\#e0ddd8\],
-html.dark .border-\[\#c8c4bc\] {
-  border-color: var(--color-border) !important;
-}
-html.dark .border-\[\#212e52\]\/10 {
-  border-color: rgba(33,46,82,0.4) !important;
-}
-html.dark .border-\[\#212e52\]\/15 {
-  border-color: rgba(33,46,82,0.5) !important;
+html.dark .border-\[\#c8c4bc\],
+html.dark .border-\[\#212e52\]\/5,
+html.dark .border-\[\#212e52\]\/10,
+html.dark .border-\[\#212e52\]\/15,
+html.dark .border-\[\#212e52\]\/20 {
+  border-color: rgba(219, 170, 32, 0.20) !important;
 }
 
-/* — Cards — */
 html.dark .service-row,
-html.dark .insight-card { border-color: var(--color-border) !important; }
-html.dark .testimonial-quote { color: var(--color-text) !important; }
+html.dark .insight-card {
+  border-color: rgba(219, 170, 32, 0.20) !important;
+}
 
-/* — Dropdowns — */
-html.dark .bg-white.border.border-border,
-html.dark div.bg-white { background-color: var(--color-bg-white) !important; }
+/* Service row accordion titles */
+html.dark button:hover span.text-\[\#1a1a1a\],
+html.dark span.text-\[\#1a1a1a\] {
+  color: #ffffff !important;
+}
 
-/* — Input fields — */
+/* Service row tags */
+html.dark li.text-\[\#212e52\] {
+  color: #dbaa20 !important;
+  background-color: rgba(219, 170, 32, 0.12) !important;
+  border-color: rgba(219, 170, 32, 0.3) !important;
+}
+
+/* Why Fintrust Principle cards */
+html.dark .rounded-\[1\.5rem\].bg-white {
+  background-color: #1a2542 !important;
+  border: 1px solid rgba(219, 170, 32, 0.20) !important;
+}
+
+html.dark .rounded-\[1\.5rem\]:hover {
+  border-color: rgba(219, 170, 32, 0.5) !important;
+}
+
+html.dark .rounded-\[1\.5rem\] div.bg-\[\#212e52\] {
+  background-color: rgba(219, 170, 32, 0.15) !important;
+  color: #dbaa20 !important;
+  border: 1px solid rgba(219, 170, 32, 0.3) !important;
+}
+
+/* ERP Platforms */
+html.dark .erp-platform {
+  background-color: #1a2542;
+  border-color: rgba(219, 170, 32, 0.20);
+  color: #ffffff;
+}
+
+html.dark .erp-platform:hover {
+  border-color: #dbaa20;
+  color: #dbaa20;
+  background: rgba(219, 170, 32, 0.10);
+}
+
+/* 3D Tilt Card floating badge (on service subpages) */
+html.dark .backdrop-blur-xl.bg-white\/90,
+html.dark div[class*="backdrop-blur"][class*="bg-white"] {
+  background-color: rgba(26, 37, 66, 0.95) !important;
+  border-color: rgba(219, 170, 32, 0.3) !important;
+}
+
+/* Testimonials */
+html.dark .testimonial-quote {
+  color: #ffffff !important;
+}
+
+/* Input fields & textareas */
 html.dark input,
 html.dark textarea {
-  background-color: var(--color-bg-white);
-  color: var(--color-text);
-  border-color: var(--color-border);
+  background-color: #1a2542 !important;
+  color: #ffffff !important;
+  border-color: rgba(219, 170, 32, 0.3) !important;
 }
 
-/* — CTA / dark sections that should stay dark — */
-html.dark .bg-\[\#212e52\].py-24,
-html.dark .bg-\[\#212e52\].py-32 {
-  background-color: #1a2444 !important;
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45) !important;
 }
 
-/* — Scrollbar / thin rules — */
-html.dark .thin-rule { border-color: var(--color-border); }
-html.dark .industry-item { border-color: var(--color-border); }
-html.dark .erp-platform { border-color: var(--color-border); color: var(--color-text-soft); }
-html.dark .process-line { background: var(--color-border); }
+/* ─── FOOTER ─── */
+html.dark footer {
+  background-color: #1a2542 !important;
+  border-top: 1px solid rgba(219, 170, 32, 0.22) !important;
+}
+
+html.dark footer .text-muted\/60,
+html.dark footer [class*="tracking-\[0.12em\]"] {
+  color: #dbaa20 !important;
+}
+
+html.dark footer a {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.dark footer a:hover {
+  color: #dbaa20 !important;
+}
+
+html.dark footer p {
+  color: rgba(255, 255, 255, 0.80) !important;
+}
+
+/* Thin rules & separators */
+html.dark .thin-rule,
+html.dark .border-t,
+html.dark .border-b {
+  border-color: rgba(219, 170, 32, 0.18) !important;
+}
+
+html.dark .process-line {
+  background: rgba(219, 170, 32, 0.25) !important;
+}
+
+html.dark .process-line.active {
+  background: #dbaa20 !important;
+}
 
 /* — Theme Toggle Button — */
 .theme-toggle-btn {
