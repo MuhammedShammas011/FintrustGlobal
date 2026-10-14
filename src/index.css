@@ -713,15 +713,23 @@ html.dark section.bg-\[\#F4F3EE\] {
   background-color: #212e52 !important;
 }
 
-/* Hero animated logo blocks in gold #dbaa20 */
+/* Hero three animated logo blocks in white */
 html.dark .bg-\[\#212e52\].w-\[200\%\] {
-  background-color: #dbaa20 !important;
+  background-color: #ffffff !important;
+}
+
+/* Hero title text in white */
+html.dark #hero + section h1,
+html.dark section.bg-\[\#F4F3EE\] h1,
+html.dark #hero + section h1.text-\[\#212e52\],
+html.dark section.bg-\[\#F4F3EE\] h1.text-\[\#212e52\] {
+  color: #ffffff !important;
 }
 
 /* Hero watermark */
 html.dark .text-\[22vw\] {
-  color: #dbaa20 !important;
-  opacity: 0.04 !important;
+  color: #ffffff !important;
+  opacity: 0.03 !important;
 }
 
 /* Hero horizontal & vertical rulers */
