@@ -849,6 +849,61 @@ html.dark .testimonial-quote {
   color: #ffffff !important;
 }
 
+/* Right Column: Quote Card in Testimonials section -> keep text in #212e52 in dark theme */
+html.dark .testimonial-quote-card,
+html.dark #testimonials .bg-\[\#F6F5EF\] {
+  background-color: #F6F5EF !important;
+  color: #212e52 !important;
+}
+
+html.dark .testimonial-quote-card h3,
+html.dark #testimonials .bg-\[\#F6F5EF\] h3 {
+  color: #212e52 !important;
+}
+
+html.dark .testimonial-quote-card .text-\[\#212e52\],
+html.dark .testimonial-quote-card [class*="text-[#212e52]"],
+html.dark #testimonials .bg-\[\#F6F5EF\] .text-\[\#212e52\],
+html.dark #testimonials .bg-\[\#F6F5EF\] [class*="text-[#212e52]"] {
+  color: #212e52 !important;
+}
+
+html.dark .testimonial-quote-card .text-\[\#212e52\]\/40,
+html.dark #testimonials .bg-\[\#F6F5EF\] .text-\[\#212e52\]\/40 {
+  color: rgba(33, 46, 82, 0.45) !important;
+}
+
+html.dark .testimonial-quote-card .text-\[\#212e52\]\/50,
+html.dark #testimonials .bg-\[\#F6F5EF\] .text-\[\#212e52\]\/50 {
+  color: rgba(33, 46, 82, 0.60) !important;
+}
+
+html.dark .testimonial-quote-card .text-\[\#212e52\]\/70,
+html.dark #testimonials .bg-\[\#F6F5EF\] .text-\[\#212e52\]\/70 {
+  color: rgba(33, 46, 82, 0.75) !important;
+}
+
+html.dark .testimonial-quote-card svg.fill-current,
+html.dark #testimonials .bg-\[\#F6F5EF\] svg.fill-current {
+  fill: #212e52 !important;
+}
+
+html.dark .testimonial-quote-card button,
+html.dark #testimonials .bg-\[\#F6F5EF\] button {
+  color: #212e52 !important;
+  border-color: rgba(33, 46, 82, 0.15) !important;
+}
+
+html.dark .testimonial-quote-card button svg,
+html.dark #testimonials .bg-\[\#F6F5EF\] button svg {
+  stroke: #212e52 !important;
+}
+
+html.dark .testimonial-quote-card .border-\[\#212e52\]\/10,
+html.dark #testimonials .bg-\[\#F6F5EF\] .border-\[\#212e52\]\/10 {
+  border-color: rgba(33, 46, 82, 0.12) !important;
+}
+
 /* Input fields & textareas */
 html.dark input,
 html.dark textarea {

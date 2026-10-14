@@ -108,7 +108,7 @@ export default function Testimonials() {
           </div>
 
           {/* Right Column: Quote Card */}
-          <div className="bg-[#F6F5EF] rounded-3xl p-8 md:p-10 lg:p-12 flex flex-col justify-between h-full">
+          <div className="testimonial-quote-card bg-[#F6F5EF] rounded-3xl p-8 md:p-10 lg:p-12 flex flex-col justify-between h-full">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
