@@ -690,20 +690,28 @@ html.dark a span.bg-\[\#212e52\] {
 }
 
 /* ─── HERO SECTION: PRESERVE EXACT SAME LIGHT THEME DESIGN IN BOTH THEMES ─── */
+.hero-section,
 html.dark .hero-section,
 html.dark #hero + section,
 html.dark section.bg-\[\#F4F3EE\] {
   background-color: #F4F3EE !important;
+  z-index: 0 !important;
 }
 
 /* Hero Logo Blocks stay original navy #212e52 */
+.hero-logo-block,
+html.dark .hero-logo-block,
+html.dark .hero-section .hero-logo-block,
 html.dark .hero-section .bg-\[\#212e52\],
 html.dark #hero + section .bg-\[\#212e52\] {
   background-color: #212e52 !important;
 }
 
 /* Hero Heading stays original navy #212e52 */
+.hero-heading,
+html.dark .hero-heading,
 html.dark .hero-section h1,
+html.dark .hero-section .hero-heading,
 html.dark #hero + section h1 {
   color: #212e52 !important;
 }

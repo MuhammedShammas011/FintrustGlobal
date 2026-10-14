@@ -13,20 +13,22 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <TrustStatement />
-      <div className="scroll-steps-wrapper">
-        <ScrollSteps />
+      <div className="relative z-10">
+        <TrustStatement />
+        <div className="scroll-steps-wrapper">
+          <ScrollSteps />
+        </div>
+        <Services />
+        <ProcessSteps />
+        <Industries />
+        <WhyFintrust />
+        <div className="scroll-steps-wrapper">
+          <ScrollSteps />
+        </div>
+        <Testimonials />
+        <Insights />
+        <FinalCTA />
       </div>
-      <Services />
-      <ProcessSteps />
-      <Industries />
-      <WhyFintrust />
-      <div className="scroll-steps-wrapper">
-        <ScrollSteps />
-      </div>
-      <Testimonials />
-      <Insights />
-      <FinalCTA />
     </main>
   )
 }

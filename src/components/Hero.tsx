@@ -50,7 +50,7 @@ export default function Hero() {
       <div ref={containerRef} className="h-[150vh] w-full" id="hero" />
 
       <section 
-        className="hero-section fixed top-0 left-0 right-0 h-screen bg-[#F4F3EE] -z-10 overflow-hidden"
+        className="hero-section fixed top-0 left-0 right-0 h-screen bg-[#F4F3EE] z-0 overflow-hidden"
         style={{ backgroundColor: '#F4F3EE' }}
       >
 
@@ -106,20 +106,6 @@ export default function Hero() {
           </defs>
           <rect width="100%" height="100%" fill="url(#diag)" />
         </svg>
-
-        {/* ─── Background: floating geometric rings ─── */}
-        <motion.div
-          className="absolute pointer-events-none rounded-full border border-[#212e52]/[0.05]"
-          style={{ width: '55vw', height: '55vw', top: '50%', left: '50%', x: '-50%', y: '-50%' }}
-          animate={{ scale: [0.9, 1.05, 0.9], rotate: [0, 20, 0] }}
-          transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute pointer-events-none rounded-full border border-[#C9951A]/[0.07]"
-          style={{ width: '35vw', height: '35vw', top: '50%', left: '50%', x: '-50%', y: '-50%' }}
-          animate={{ scale: [1.05, 0.9, 1.05], rotate: [0, -15, 0] }}
-          transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-        />
 
         {/* ─── Background: large faint watermark ─── */}
         <div
