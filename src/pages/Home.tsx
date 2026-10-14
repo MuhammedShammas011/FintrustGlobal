@@ -21,6 +21,9 @@ export default function Home() {
       <ProcessSteps />
       <Industries />
       <WhyFintrust />
+      <div className="scroll-steps-wrapper">
+        <ScrollSteps />
+      </div>
       <Testimonials />
       <Insights />
       <FinalCTA />
