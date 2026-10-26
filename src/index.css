@@ -2,6 +2,62 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* ─── Local Font Faces ─── */
+
+/* Nohemi — Variable (covers all weights) */
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/fonts/Nohemi-VF-BF6438cc58ad63d.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Nohemi — Light (400 fallback for older browsers) */
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/fonts/Nohemi-Light-BF6438cc583f70b.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Nohemi — Regular */
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/fonts/Nohemi-Regular-BF6438cc58b98fc.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Poppins — Medium */
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Poppins — Light Italic */
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Poppins — Medium Italic */
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* ─── Base Reset ─── */
 *,
 *::before,
@@ -62,6 +118,20 @@ body {
   color: var(--color-text);
   overflow-x: hidden;
   transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+/* ─── Nohemi for all headings ─── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nohemi', system-ui, sans-serif;
+}
+
+/* Utility classes for explicit font switching */
+.font-nohemi {
+  font-family: 'Nohemi', system-ui, sans-serif;
+}
+
+.font-poppins {
+  font-family: 'Poppins', system-ui, sans-serif;
 }
 
 /* ─── Custom Cursor ─── */

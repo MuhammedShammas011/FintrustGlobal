@@ -19,6 +19,8 @@ export default {
       },
       fontFamily: {
         sans: ['Poppins', 'system-ui', 'sans-serif'],
+        poppins: ['Poppins', 'system-ui', 'sans-serif'],
+        nohemi: ['Nohemi', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'display': ['clamp(3.5rem, 7vw, 7rem)', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
