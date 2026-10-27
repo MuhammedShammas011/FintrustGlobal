@@ -18,13 +18,16 @@ export default function ScrollSteps() {
   const w3 = useTransform(scrollYProgress, [0.1, 0.7], ["25%", "75%"])
   const w4 = useTransform(scrollYProgress, [0, 0.6], ["35%", "100%"])
 
+  const slopeOffset = "clamp(46px, 5.5vw, 65px)"
+  const slopeClipPath = `polygon(0% 0%, 100% 0%, calc(100% - ${slopeOffset}) 100%, 0% 100%)`
+
   return (
     <div ref={containerRef} className="scroll-steps-container relative w-full overflow-hidden bg-white py-12 md:py-20">
 
       {/* Lines are flush left to create a connected alignment, but maintain separate gaps */}
 
       <div className="flex flex-col w-full relative z-0">
-        {/* Step 1 - Increased vertical thickness */}
+        {/* Step 1 - Plain top bar */}
         <motion.div
           style={{ width: w1 }}
           className="h-20 md:h-28 bg-[#212e52] origin-left"
@@ -39,33 +42,39 @@ export default function ScrollSteps() {
           <div className="w-full h-10 md:h-16 bg-[#212e52]"></div>
           <div
             className="w-[50%] min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] shrink-0"
-            style={{ clipPath: 'polygon(0% 0%, 100% 0%, calc(100% - clamp(46px, 5.5vw, 65px)) 100%, 0% 100%)' }}
+            style={{ clipPath: slopeClipPath }}
           ></div>
         </motion.div>
         <div className="h-[0.2px]"></div> {/* Gap */}
 
-        {/* Step 3 — plain on left, sharp edge at top, slope down on right end */}
+        {/* Step 3 — step-up aligns with Bar 2 bottom pin point */}
         <motion.div
           style={{ width: w3 }}
           className="flex items-end origin-left"
         >
           <div className="w-full h-10 md:h-16 bg-[#212e52]"></div>
           <div
-            className="w-[33%] min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] shrink-0"
-            style={{ clipPath: 'polygon(0% 0%, 100% 0%, calc(100% - clamp(46px, 5.5vw, 65px)) 100%, 0% 100%)' }}
+            className="min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] shrink-0"
+            style={{
+              width: `calc(33.333% + ${slopeOffset})`,
+              clipPath: slopeClipPath
+            }}
           ></div>
         </motion.div>
         <div className="h-[0.2px]"></div> {/* Gap */}
 
-        {/* Step 4 — plain on left, sharp edge at top, slope down on right end */}
+        {/* Step 4 — step-up aligns with Bar 3 bottom pin point */}
         <motion.div
           style={{ width: w4 }}
           className="flex items-end origin-left"
         >
           <div className="w-full h-10 md:h-16 bg-[#212e52]"></div>
           <div
-            className="w-[25%] min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] shrink-0"
-            style={{ clipPath: 'polygon(0% 0%, 100% 0%, calc(100% - clamp(46px, 5.5vw, 65px)) 100%, 0% 100%)' }}
+            className="min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] shrink-0"
+            style={{
+              width: `calc(25% + ${slopeOffset})`,
+              clipPath: slopeClipPath
+            }}
           ></div>
         </motion.div>
       </div>
