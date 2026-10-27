@@ -31,7 +31,7 @@ export default function ScrollSteps() {
         ></motion.div>
         <div className="h-[0.2px]"></div> {/* Gap */}
 
-        {/* Step 2 — 30° slope on top-left of endpoint block */}
+        {/* Step 2 — plain on left, 30° slope on right end */}
         <motion.div
           style={{ width: w2 }}
           className="flex items-end origin-left"
@@ -39,12 +39,12 @@ export default function ScrollSteps() {
           <div className="w-full h-10 md:h-16 bg-[#212e52]"></div>
           <div
             className="w-[50%] min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] shrink-0"
-            style={{ clipPath: 'polygon(clamp(46px, 5.5vw, 65px) 0%, 100% 0%, 100% 100%, 0% 100%)' }}
+            style={{ clipPath: 'polygon(0% 0%, calc(100% - clamp(46px, 5.5vw, 65px)) 0%, 100% 100%, 0% 100%)' }}
           ></div>
         </motion.div>
         <div className="h-[0.2px]"></div> {/* Gap */}
 
-        {/* Step 3 — 30° slope on top-left of endpoint block */}
+        {/* Step 3 — plain on left, 30° slope on right end */}
         <motion.div
           style={{ width: w3 }}
           className="flex items-end origin-left"
@@ -52,12 +52,12 @@ export default function ScrollSteps() {
           <div className="w-full h-10 md:h-16 bg-[#212e52]"></div>
           <div
             className="w-[33%] min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] shrink-0"
-            style={{ clipPath: 'polygon(clamp(46px, 5.5vw, 65px) 0%, 100% 0%, 100% 100%, 0% 100%)' }}
+            style={{ clipPath: 'polygon(0% 0%, calc(100% - clamp(46px, 5.5vw, 65px)) 0%, 100% 100%, 0% 100%)' }}
           ></div>
         </motion.div>
         <div className="h-[0.2px]"></div> {/* Gap */}
 
-        {/* Step 4 — 30° slope on top-left of endpoint block */}
+        {/* Step 4 — plain on left, 30° slope on right end */}
         <motion.div
           style={{ width: w4 }}
           className="flex items-end origin-left"
@@ -65,7 +65,7 @@ export default function ScrollSteps() {
           <div className="w-full h-10 md:h-16 bg-[#212e52]"></div>
           <div
             className="w-[25%] min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] shrink-0"
-            style={{ clipPath: 'polygon(clamp(46px, 5.5vw, 65px) 0%, 100% 0%, 100% 100%, 0% 100%)' }}
+            style={{ clipPath: 'polygon(0% 0%, calc(100% - clamp(46px, 5.5vw, 65px)) 0%, 100% 100%, 0% 100%)' }}
           ></div>
         </motion.div>
       </div>
