@@ -1,5 +1,6 @@
 import Hero from '../components/Hero'
 import TrustStatement from '../components/TrustStatement'
+import LogoBlocksScroll from '../components/LogoBlocksScroll'
 import ScrollSteps from '../components/ScrollSteps'
 import Services from '../components/Services'
 import ProcessSteps from '../components/ProcessSteps'
@@ -15,9 +16,7 @@ export default function Home() {
       <Hero />
       <div className="relative z-10">
         <TrustStatement />
-        <div className="scroll-steps-wrapper">
-          <ScrollSteps />
-        </div>
+        <LogoBlocksScroll />
         <Services />
         <ProcessSteps />
         <Industries />

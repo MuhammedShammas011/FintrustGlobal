@@ -53,7 +53,7 @@ export default function Services() {
 
       {/* ── Header ─────────────────────────────────────────────────── */}
       <div className="border-b border-[#e0ddd8]">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 py-16 md:py-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 pt-8 md:pt-12 pb-16 md:pb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
