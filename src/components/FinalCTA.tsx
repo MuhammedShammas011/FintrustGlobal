@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
+import WordBlockReveal from './WordBlockReveal'
 
 export default function FinalCTA() {
   const ref = useRef<HTMLElement>(null)
@@ -54,8 +55,12 @@ export default function FinalCTA() {
                   : 'text-3xl sm:text-4xl md:text-6xl lg:text-[5.5rem]'
               }`}
             >
-              <span className="block">''Your business is moving forward.</span>
-              <span className="block text-[#212e52]/30 mt-2">Make sure your finances are too.''</span>
+              <span className="block">
+                <WordBlockReveal text="''Your business is moving forward." />
+              </span>
+              <span className="block text-[#212e52]/30 mt-2">
+                <WordBlockReveal text="Make sure your finances are too.''" delayOffset={0.2} />
+              </span>
             </h2>
 
             <button
