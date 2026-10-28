@@ -30,7 +30,7 @@ export default function ScrollSteps() {
         {/* Step 1 - Plain top bar */}
         <motion.div
           style={{ width: w1 }}
-          className="h-20 md:h-28 bg-[#212e52] origin-left"
+          className="h-20 md:h-28 bg-[#212e52] dark:bg-white scroll-steps-bar origin-left"
         ></motion.div>
         <div className="h-[0.2px]"></div> {/* Gap */}
 
@@ -39,9 +39,9 @@ export default function ScrollSteps() {
           style={{ width: w2 }}
           className="flex items-end origin-left"
         >
-          <div className="w-full h-10 md:h-16 bg-[#212e52]"></div>
+          <div className="w-full h-10 md:h-16 bg-[#212e52] dark:bg-white scroll-steps-bar"></div>
           <div
-            className="w-[50%] min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] shrink-0"
+            className="w-[50%] min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] dark:bg-white scroll-steps-bar shrink-0"
             style={{ clipPath: slopeClipPath }}
           ></div>
         </motion.div>
@@ -52,9 +52,9 @@ export default function ScrollSteps() {
           style={{ width: w3 }}
           className="flex items-end origin-left"
         >
-          <div className="w-full h-10 md:h-16 bg-[#212e52]"></div>
+          <div className="w-full h-10 md:h-16 bg-[#212e52] dark:bg-white scroll-steps-bar"></div>
           <div
-            className="min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] shrink-0"
+            className="min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] dark:bg-white scroll-steps-bar shrink-0"
             style={{
               width: `calc(33.333% + ${slopeOffset})`,
               clipPath: slopeClipPath
@@ -68,9 +68,9 @@ export default function ScrollSteps() {
           style={{ width: w4 }}
           className="flex items-end origin-left"
         >
-          <div className="w-full h-10 md:h-16 bg-[#212e52]"></div>
+          <div className="w-full h-10 md:h-16 bg-[#212e52] dark:bg-white scroll-steps-bar"></div>
           <div
-            className="min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] shrink-0"
+            className="min-w-[100px] md:min-w-[200px] h-20 md:h-28 bg-[#212e52] dark:bg-white scroll-steps-bar shrink-0"
             style={{
               width: `calc(25% + ${slopeOffset})`,
               clipPath: slopeClipPath

@@ -563,9 +563,14 @@ html.dark .bg-white {
 
 /* Containers with navy bg in light mode become elevated card shade #1a2542 with subtle gold border */
 html.dark section.bg-\[\#212e52\],
-html.dark div.bg-\[\#212e52\]:not(.theme-toggle-thumb) {
+html.dark div.bg-\[\#212e52\]:not(.theme-toggle-thumb):not(.scroll-steps-bar) {
   background-color: var(--color-card) !important;
   border-color: rgba(219, 170, 32, 0.25) !important;
+}
+
+html.dark .scroll-steps-bar {
+  background-color: #ffffff !important;
+  border-color: transparent !important;
 }
 
 html.dark .bg-\[\#212e52\]\/5,
@@ -1034,10 +1039,11 @@ html.dark .scroll-steps-container {
   background-color: var(--color-bg) !important;
 }
 
-/* In dark theme, change animation bars into black */
+/* In dark theme, change animation bars into white */
 html.dark .scroll-steps-container .bg-\[\#212e52\],
-html.dark .scroll-steps-container [class*="bg-[#212e52]"] {
-  background-color: #000000 !important;
+html.dark .scroll-steps-container [class*="bg-[#212e52]"],
+html.dark .scroll-steps-container .scroll-steps-bar {
+  background-color: #ffffff !important;
 }
 
 /* — Theme Toggle Button — */
