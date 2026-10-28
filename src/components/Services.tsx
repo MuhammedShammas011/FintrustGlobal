@@ -49,7 +49,7 @@ export default function Services() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
   return (
-    <section ref={ref} className="bg-[#FCFBF8]" id="services">
+    <section ref={ref} className="bg-[#FCFBF8] border-t border-[#e0ddd8]" id="services">
 
       {/* ── Header ─────────────────────────────────────────────────── */}
       <div className="border-b border-[#e0ddd8]">
