@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
+import WordBlockReveal from './WordBlockReveal'
 
 const features = [
   { 
@@ -143,13 +144,13 @@ export default function TrustStatement() {
                 className="block origin-bottom" 
                 style={{ opacity: line1Opacity, y: line1Y, rotateX: line1Rotate }}
               >
-                Numbers tell you where you are.
+                <WordBlockReveal text="Numbers tell you where you are." />
               </motion.span>
               <motion.span 
                 className="text-[#212e52] drop-shadow-sm block origin-bottom"
                 style={{ opacity: line2Opacity, y: line2Y, rotateX: line2Rotate }}
               >
-                We help you understand where you're going.
+                <WordBlockReveal text="We help you understand where you're going." delayOffset={0.2} />
               </motion.span>
             </h2>
           </div>
