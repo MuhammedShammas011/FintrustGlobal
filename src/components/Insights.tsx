@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import WordBlockReveal from './WordBlockReveal'
 
 const articles = [
   {
@@ -66,8 +67,12 @@ export default function Insights() {
                 </span>
               </div>
               <h2 className="text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] leading-[1.1] text-near-black font-normal tracking-tight flex flex-col gap-2">
-                <span className="block">Ideas for businesses</span>
-                <span className="block text-[#212e52]">that want to move forward.</span>
+                <span className="block">
+                  <WordBlockReveal text="Ideas for businesses" />
+                </span>
+                <span className="block text-[#212e52]">
+                  <WordBlockReveal text="that want to move forward." delayOffset={0.18} />
+                </span>
               </h2>
             </motion.div>
           </div>

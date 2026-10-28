@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import WordBlockReveal from './WordBlockReveal'
 
 const testimonials = [
   {
@@ -62,7 +63,8 @@ export default function Testimonials() {
             GOOD PEOPLE. HONEST WORDS.
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#212e52] font-normal tracking-tight leading-[1.1]">
-            The work speaks.<br/>So do the people.
+            <WordBlockReveal text="The work speaks." /><br/>
+            <WordBlockReveal text="So do the people." delayOffset={0.18} />
           </h2>
         </div>
 

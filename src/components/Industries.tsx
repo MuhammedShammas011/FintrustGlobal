@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
+import WordBlockReveal from './WordBlockReveal'
 
 const industries = [
   {
@@ -101,8 +102,12 @@ export default function Industries() {
               </span>
             </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight leading-[1.1] text-[#212e52]">
-              <span className="block">Built for businesses</span>
-              <span className="block text-[#212e52]/40">at every stage.</span>
+              <span className="block">
+                <WordBlockReveal text="Built for businesses" />
+              </span>
+              <span className="block text-[#212e52]/40">
+                <WordBlockReveal text="at every stage." delayOffset={0.15} />
+              </span>
             </h2>
           </div>
           <p className="text-[#212e52]/60 text-base md:text-lg leading-relaxed max-w-sm md:text-right md:pb-2">
