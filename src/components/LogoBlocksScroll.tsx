@@ -226,7 +226,7 @@ export default function LogoBlocksScroll() {
           {/* ── RIGHT SIDE EXPLANATION POINTS (Desktop) ── */}
           <motion.div
             style={{ opacity: sideOpacity }}
-            className="hidden lg:block w-full max-w-[320px] xl:max-w-[360px] justify-self-start min-h-[180px]"
+            className="hidden lg:block w-full max-w-[320px] xl:max-w-[360px] justify-self-start lg:translate-x-8 xl:translate-x-14 min-h-[180px]"
           >
             <AnimatePresence mode="wait">
               {hovered !== null && (
