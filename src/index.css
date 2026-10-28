@@ -741,7 +741,7 @@ html.dark button[aria-label="Toggle menu"] span {
 /* Primary Navy buttons become rich #dbaa20 gold buttons */
 html.dark a.bg-\[\#212e52\],
 html.dark button.bg-\[\#212e52\],
-html.dark .bg-\[\#212e52\].text-white:not(.theme-toggle-thumb) {
+html.dark .bg-\[\#212e52\].text-white:not(.theme-toggle-thumb):not(.principle-icon-box):not(.scroll-steps-bar) {
   background-color: #dbaa20 !important;
   color: #212e52 !important;
   font-weight: 600 !important;
@@ -1090,4 +1090,32 @@ html.dark .theme-toggle-thumb {
   width: 10px;
   height: 10px;
   stroke-width: 2;
+}
+
+/* ─── OUR PRINCIPLES (Why Fintrust) in Dark Mode ─── */
+html.dark #why-fintrust {
+  background-color: #131c33 !important;
+}
+
+html.dark .principle-card {
+  background-color: #18233d !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+html.dark .principle-card:hover {
+  background-color: #1e2c4c !important;
+  border-color: rgba(219, 170, 32, 0.35) !important;
+}
+
+html.dark .principle-icon-box {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+html.dark .principle-icon-box svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
 }
