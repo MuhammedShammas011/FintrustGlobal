@@ -43,20 +43,16 @@ export default function FinalCTA() {
             initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="flex flex-col items-center lg:items-start text-center lg:text-left"
-            style={{
-              width: formOpen ? '50%' : '100%',
-              maxWidth: formOpen ? 'none' : '64rem',
-              margin: formOpen ? '0' : '0 auto',
-              transition: 'width 0.7s cubic-bezier(0.25,0.1,0.25,1), max-width 0.7s cubic-bezier(0.25,0.1,0.25,1), margin 0.7s cubic-bezier(0.25,0.1,0.25,1)',
-            }}
+            className={`flex flex-col items-center lg:items-start text-center lg:text-left transition-all duration-700 ${
+              formOpen ? 'lg:w-1/2' : 'w-full max-w-5xl mx-auto'
+            }`}
           >
             <h2
-              className="text-3xl sm:text-4xl md:text-6xl lg:text-[5.5rem] font-normal tracking-tighter text-[#212e52] mb-10 md:mb-16 leading-[1.05] origin-top-left"
-              style={{
-                transform: formOpen ? 'scale(0.64)' : 'scale(1)',
-                transition: 'transform 0.7s cubic-bezier(0.25,0.1,0.25,1)',
-              }}
+              className={`font-normal tracking-tighter text-[#212e52] mb-10 md:mb-16 leading-[1.05] transition-all duration-700 ${
+                formOpen
+                  ? 'text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem]'
+                  : 'text-3xl sm:text-4xl md:text-6xl lg:text-[5.5rem]'
+              }`}
             >
               <span className="block">''Your business is moving forward.</span>
               <span className="block text-[#212e52]/30 mt-2">Make sure your finances are too.''</span>
