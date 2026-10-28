@@ -58,7 +58,7 @@ export default function WhyFintrust() {
   }
 
   return (
-    <section ref={ref} className="py-16 md:py-24 lg:py-32 bg-white" id="why-fintrust">
+    <section ref={ref} className="py-16 md:py-24 lg:py-32 bg-white dark:bg-[#131c33]" id="why-fintrust">
       <div className="container-site">
         <div className="flex flex-col lg:flex-row gap-12 md:gap-16 lg:gap-12 xl:gap-24">
           
@@ -104,10 +104,10 @@ export default function WhyFintrust() {
               <motion.div
                 key={principle.id}
                 variants={itemVariants}
-                className="p-8 sm:p-6 md:p-8 lg:p-10 rounded-[1.5rem] flex flex-col justify-start h-auto sm:min-h-[220px] md:min-h-[280px] group bg-white border border-[#212e52]/10 transition-all duration-300 shadow-sm hover:shadow-xl hover:bg-[#212e52]"
+                className="principle-card p-8 sm:p-6 md:p-8 lg:p-10 rounded-[1.5rem] flex flex-col justify-start h-auto sm:min-h-[220px] md:min-h-[280px] group bg-white dark:bg-[#18233d] border border-[#212e52]/10 dark:border-white/10 transition-all duration-300 shadow-sm hover:shadow-xl hover:bg-[#212e52] dark:hover:bg-[#1e2c4c] dark:hover:border-[#dbaa20]/35"
               >
                 <div 
-                  className="w-12 h-12 shrink-0 rounded-full flex items-center justify-center mb-10 bg-[#212e52] text-white transition-colors duration-300 group-hover:bg-white/10 group-hover:border group-hover:border-white/10"
+                  className="principle-icon-box w-12 h-12 shrink-0 rounded-full flex items-center justify-center mb-10 bg-[#212e52] dark:bg-white/10 text-white dark:text-white transition-colors duration-300 group-hover:bg-white/10 group-hover:border group-hover:border-white/10 dark:border dark:border-white/20"
                 >
                   {principle.icon}
                 </div>
