@@ -17,19 +17,19 @@ export default function Footer() {
       ],
     },
     {
+      heading: 'Legal',
+      links: [
+        { label: 'Privacy Policy', href: '/' },
+        { label: 'Terms of Service', href: '/' },
+      ],
+    },
+    {
       heading: 'Company',
       links: [
         { label: 'About', href: '/#why-fintrust' },
         { label: 'Our Method', href: '/#process' },
         { label: 'Insights', href: '/#insights' },
         { label: 'Contact', href: '/#contact' },
-      ],
-    },
-    {
-      heading: 'Legal',
-      links: [
-        { label: 'Privacy Policy', href: '/' },
-        { label: 'Terms of Service', href: '/' },
       ],
     },
   ]
@@ -63,9 +63,9 @@ export default function Footer() {
     <footer className="relative z-20 bg-off-white pb-12 md:pb-16 pt-10 md:pt-16 border-t border-[#212e52]/10">
       {/* Main footer */}
       <div className="container-site pt-10 md:pt-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-12">
           {/* Brand */}
-          <div className="col-span-1 sm:col-span-2 md:col-span-1">
+          <div className="md:max-w-xs shrink-0">
             <div className="flex items-center gap-0 mb-4">
               <img
                 src={theme === 'dark' ? footerLogoDark : footerLogoLight}
@@ -105,31 +105,33 @@ export default function Footer() {
           </div>
 
           {/* Navigation columns */}
-          {navLinks.map((group) => (
-            <div key={group.heading}>
-              <div className="text-[10px] font-semibold text-muted/60 uppercase tracking-[0.12em] mb-5">
-                {group.heading}
+          <div className="grid grid-cols-3 gap-8 sm:gap-12 md:gap-16 lg:gap-24 w-full md:w-auto">
+            {navLinks.map((group) => (
+              <div key={group.heading} className="min-w-0">
+                <div className="text-[10px] font-semibold text-muted/60 uppercase tracking-[0.12em] mb-5">
+                  {group.heading}
+                </div>
+                <ul className="space-y-3">
+                  {group.links.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        onClick={(e) => {
+                          if (link.href.startsWith('/')) {
+                            e.preventDefault()
+                            scrollTo(link.href)
+                          }
+                        }}
+                        className="text-xs text-near-black/60 hover:text-near-black transition-colors duration-200 font-medium"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-3">
-                {group.links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      onClick={(e) => {
-                        if (link.href.startsWith('/')) {
-                          e.preventDefault()
-                          scrollTo(link.href)
-                        }
-                      }}
-                      className="text-xs text-near-black/60 hover:text-near-black transition-colors duration-200 font-medium"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Contact info */}
