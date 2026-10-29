@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import WordBlockReveal from './WordBlockReveal'
 
 const services = [
   {
@@ -65,10 +64,8 @@ export default function Services() {
               Our Services
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[5rem] leading-[1.05] text-[#1a1a1a] font-normal tracking-tight max-w-2xl">
-              <WordBlockReveal text="Everything your business needs" />{' '}
-              <span className="text-[#212e52]">
-                <WordBlockReveal text="behind the numbers." delayOffset={0.2} />
-              </span>
+              Everything your business needs{' '}
+              <span className="text-[#212e52]">behind the numbers.</span>
             </h2>
           </motion.div>
 

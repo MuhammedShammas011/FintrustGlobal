@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion'
-import WordBlockReveal from './WordBlockReveal'
 
 // ── Animated border lines — draw-in and retract via scaleX/Y ──────────────
 function BorderLines({ progress }: { progress: MotionValue<number> }) {
@@ -186,7 +185,7 @@ export default function ProcessSteps() {
             style={{ opacity: titleOpacity, scale: titleScale }}
           >
             <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-normal text-white tracking-tight text-center px-4">
-              <WordBlockReveal text="The Fintrust Method" />
+              The Fintrust Method
             </h2>
           </motion.div>
 

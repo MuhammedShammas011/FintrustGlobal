@@ -158,7 +158,7 @@ export default function Footer() {
           <div>
             <div className="text-[10px] font-semibold text-muted/60 uppercase tracking-[0.12em] mb-2">Hours</div>
             <p className="text-xs text-muted leading-relaxed">
-              Sunday — Friday<br />
+              Monday — Saturday<br />
               09:00 — 17:00
             </p>
           </div>

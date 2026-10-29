@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import WordBlockReveal from './WordBlockReveal'
 
 const principles = [
   {
@@ -77,12 +76,8 @@ export default function WhyFintrust() {
             </div>
             
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight leading-[1.05] text-[#212e52] mb-6 md:mb-8">
-              <span className="block">
-                <WordBlockReveal text="More than" />
-              </span>
-              <span className="block text-[#212e52]">
-                <WordBlockReveal text="accounting." delayOffset={0.12} />
-              </span>
+              <span className="block">More than</span>
+              <span className="block text-[#212e52]">accounting.</span>
             </h2>
             
             <p className="text-[#212e52]/50 text-base leading-relaxed mb-10 max-w-md">
