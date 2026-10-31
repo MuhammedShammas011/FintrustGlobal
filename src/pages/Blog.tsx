@@ -145,14 +145,49 @@ const categories = ['All', 'Tax & VAT', 'Accounting', 'Advisory', 'Compliance']
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
+  const [subscribing, setSubscribing] = useState(false)
   const [subscribed, setSubscribed] = useState(false)
   const [email, setEmail] = useState('')
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (email.trim()) {
+    if (!email.trim()) return
+
+    setSubscribing(true)
+    try {
+      await Promise.allSettled([
+        fetch('https://formsubmit.co/ajax/info@fintrustglobal.ae', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            _subject: 'New Newsletter Subscription - Fintrust Global',
+            _replyto: email,
+          }),
+        }),
+        fetch('https://formspree.io/f/xwllnadp', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            _replyto: email,
+            _subject: 'New Newsletter Subscription - Fintrust Global',
+          }),
+        }),
+      ])
       setSubscribed(true)
       setEmail('')
+    } catch (err) {
+      console.error('Newsletter error:', err)
+      setSubscribed(true)
+    } finally {
+      setSubscribing(false)
     }
   }
 
@@ -460,9 +495,10 @@ export default function Blog() {
                     />
                     <button
                       type="submit"
-                      className="px-6 py-3.5 bg-[#212e52] hover:bg-[#111111] text-white text-xs font-semibold uppercase tracking-wider rounded-full transition-colors duration-300 flex-shrink-0"
+                      disabled={subscribing}
+                      className="px-6 py-3.5 bg-[#212e52] hover:bg-[#111111] text-white text-xs font-semibold uppercase tracking-wider rounded-full transition-colors duration-300 flex-shrink-0 disabled:opacity-75 disabled:cursor-wait"
                     >
-                      Subscribe
+                      {subscribing ? 'Subscribing...' : 'Subscribe'}
                     </button>
                   </form>
                 )}

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 
 export default function FinalCTA() {
@@ -6,6 +6,8 @@ export default function FinalCTA() {
   const inView = useInView(ref, { once: true, margin: '-10%' })
   const [formOpen, setFormOpen] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,13 +17,87 @@ export default function FinalCTA() {
     message: '',
   })
 
+  // Open the form automatically if user navigates to #contact
+  useEffect(() => {
+    const handleHash = () => {
+      if (window.location.hash === '#contact') {
+        setFormOpen(true)
+      }
+    }
+    handleHash()
+    window.addEventListener('hashchange', handleHash)
+    return () => window.removeEventListener('hashchange', handleHash)
+  }, [])
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setIsSubmitting(true)
+    setErrorMessage(null)
+
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone || 'Not specified',
+      company: formData.company || 'Not specified',
+      service: formData.service || 'General Consultation',
+      message: formData.message || 'No additional note provided',
+      _subject: `New Consultation Request: ${formData.name}${formData.company ? ` (${formData.company})` : ''}`,
+      _replyto: formData.email,
+      _template: 'table',
+      _captcha: 'false',
+    }
+
+    try {
+      // Dispatch simultaneously to FormSubmit (direct to info@fintrustglobal.ae) and Formspree (xwllnadp)
+      const results = await Promise.allSettled([
+        fetch('https://formsubmit.co/ajax/info@fintrustglobal.ae', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        }),
+        fetch('https://formspree.io/f/xwllnadp', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        }),
+      ])
+
+      const anySuccess = results.some(
+        res => res.status === 'fulfilled' && res.value.ok
+      )
+
+      if (anySuccess) {
+        setSubmitted(true)
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: '',
+          message: '',
+        })
+      } else {
+        setErrorMessage(
+          'Could not complete automated delivery. Please email info@fintrustglobal.ae or contact us via WhatsApp.'
+        )
+      }
+    } catch {
+      setErrorMessage(
+        'Network error. Please check your connection or email info@fintrustglobal.ae directly.'
+      )
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -112,8 +188,12 @@ export default function FinalCTA() {
                         One of our advisors will reach out to you within 1 business day.
                       </p>
                       <button
-                        onClick={() => { setSubmitted(false); setFormData({ name:'', email:'', phone:'', company:'', service:'', message:'' }) }}
-                        className="text-sm text-[#C9951A] underline underline-offset-4"
+                        onClick={() => {
+                          setSubmitted(false)
+                          setErrorMessage(null)
+                          setFormData({ name: '', email: '', phone: '', company: '', service: '', message: '' })
+                        }}
+                        className="text-sm text-[#C9951A] underline underline-offset-4 hover:opacity-80 transition-opacity"
                       >
                         Send another message
                       </button>
@@ -228,16 +308,63 @@ export default function FinalCTA() {
                         />
                       </div>
 
+                      {/* Honeypot field for bot spam prevention */}
+                      <input
+                        type="text"
+                        name="_honey"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        className="hidden"
+                        style={{ display: 'none' }}
+                      />
+
+                      {/* Error Alert with direct email link fallback */}
+                      {errorMessage && (
+                        <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex flex-col gap-2">
+                          <div className="flex items-start gap-2">
+                            <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span className="leading-relaxed">{errorMessage}</span>
+                          </div>
+                          <a
+                            href={`mailto:info@fintrustglobal.ae?subject=${encodeURIComponent(
+                              `Consultation Request: ${formData.name || 'Website Inquiry'}`
+                            )}&body=${encodeURIComponent(
+                              `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nCompany: ${formData.company}\nService: ${formData.service}\n\nMessage:\n${formData.message}`
+                            )}`}
+                            className="inline-flex items-center gap-1.5 text-[#212e52] font-semibold underline underline-offset-2 hover:text-[#C9951A] transition-colors pl-6"
+                          >
+                            <span>Send directly via your email app →</span>
+                          </a>
+                        </div>
+                      )}
+
                       {/* Submit */}
                       <motion.button
                         type="submit"
-                        whileHover={{ scale: 1.01 }}
-                        whileTap={{ scale: 0.99 }}
-                        className="group relative w-full inline-flex items-center justify-center bg-[#212e52] text-white px-8 py-3.5 text-sm rounded-full font-medium tracking-wide overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-[#212e52]/20 mt-1"
+                        disabled={isSubmitting}
+                        whileHover={!isSubmitting ? { scale: 1.01 } : {}}
+                        whileTap={!isSubmitting ? { scale: 0.99 } : {}}
+                        className={`group relative w-full inline-flex items-center justify-center bg-[#212e52] text-white px-8 py-3.5 text-sm rounded-full font-medium tracking-wide overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-[#212e52]/20 mt-1 ${
+                          isSubmitting ? 'opacity-85 cursor-wait' : 'cursor-pointer'
+                        }`}
                       >
-                        <span className="relative z-10 transition-transform duration-500 group-hover:-translate-y-10">Schedule My Free Consultation</span>
-                        <span className="absolute z-10 transition-transform duration-500 translate-y-10 group-hover:translate-y-0">Let's Talk →</span>
-                        <div className="absolute inset-0 bg-[#C9951A] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 ease-out" />
+                        {isSubmitting ? (
+                          <span className="relative z-10 flex items-center justify-center gap-2 py-0.5">
+                            <svg className="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24" fill="none">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                            </svg>
+                            <span>Sending request...</span>
+                          </span>
+                        ) : (
+                          <>
+                            <span className="relative z-10 transition-transform duration-500 group-hover:-translate-y-10">Schedule My Free Consultation</span>
+                            <span className="absolute z-10 transition-transform duration-500 translate-y-10 group-hover:translate-y-0">Let's Talk →</span>
+                            <div className="absolute inset-0 bg-[#C9951A] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 ease-out" />
+                          </>
+                        )}
                       </motion.button>
 
                       <p className="text-center text-[#212e52]/30 text-xs">
