@@ -46,7 +46,7 @@ const BLOCKS: BlockItem[] = [
     ],
   },
   {
-    heading: 'Strategy & Growth',
+    heading: 'strategy',
     shortHeading: 'Strategy',
     tabLabel: 'Strategy',
     tag: 'Pillar 03 · Vision',
@@ -188,13 +188,12 @@ export default function LogoBlocksScroll() {
 
                     {/* Heading inside the block — RIGHT ALIGNED, NO DOT */}
                     <div
-                      className={`relative z-10 h-full w-full flex items-center justify-end ${block.paddingRightClass} select-none transition-all duration-300 ${
-                        isBlockActive
+                      className={`relative z-10 h-full w-full flex items-center justify-end ${block.paddingRightClass} select-none transition-all duration-300 ${isBlockActive
                           ? 'opacity-100 translate-x-0'
                           : isMobile
                             ? 'opacity-75 translate-x-0'
                             : 'opacity-0 translate-x-2 pointer-events-none'
-                      }`}
+                        }`}
                     >
                       <span className="font-semibold tracking-tight uppercase whitespace-nowrap text-white dark:text-[#212e52] text-[10px] sm:text-xs md:text-sm lg:text-base">
                         <span className="hidden sm:inline">{block.heading}</span>
@@ -265,11 +264,10 @@ export default function LogoBlocksScroll() {
                           key={i}
                           type="button"
                           onClick={() => handleBlockSelect(i)}
-                          className={`px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase transition-all duration-200 ${
-                            activeBlock === i
+                          className={`px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase transition-all duration-200 ${activeBlock === i
                               ? 'bg-[#212e52] text-white dark:bg-white dark:text-[#212e52] shadow-sm'
                               : 'bg-black/5 dark:bg-white/5 text-[#212e52]/60 dark:text-white/60 hover:text-[#212e52] dark:hover:text-white'
-                          }`}
+                            }`}
                         >
                           {b.tabLabel}
                         </button>
