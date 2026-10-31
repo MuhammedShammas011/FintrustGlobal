@@ -1119,3 +1119,22 @@ html.dark .principle-icon-box svg {
   color: #ffffff !important;
   stroke: #ffffff !important;
 }
+
+/* WhatsApp Floating Action Button */
+.whatsapp-float-btn {
+  background-color: #25D366 !important;
+  color: #ffffff !important;
+}
+
+html.dark .whatsapp-float-btn {
+  background-color: #25D366 !important;
+  color: #ffffff !important;
+}
+
+.whatsapp-float-btn svg {
+  fill: #ffffff !important;
+}
+
+html.dark .whatsapp-float-btn svg {
+  fill: #ffffff !important;
+}

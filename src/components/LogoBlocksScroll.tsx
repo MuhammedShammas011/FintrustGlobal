@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 
 interface BlockItem {
@@ -16,8 +16,8 @@ const BLOCKS: BlockItem[] = [
     heading: 'Accounting & Compliance',
     shortHeading: 'Compliance',
     tag: 'Pillar 01 · Integrity',
-    widthClass: 'w-36 sm:w-52 md:w-68 lg:w-[360px] xl:w-[420px]',
-    paddingRightClass: 'pr-3 sm:pr-4 md:pr-5 lg:pr-6 xl:pr-7',
+    widthClass: 'w-[84vw] max-w-[320px] sm:w-[360px] md:w-[390px] lg:w-[360px] xl:w-[420px]',
+    paddingRightClass: 'pr-3.5 sm:pr-4 md:pr-5 lg:pr-6 xl:pr-7',
     leftPoints: [
       'UAE FTA & Regulatory Alignment',
       'End-to-End Bookkeeping & Payroll',
@@ -31,8 +31,8 @@ const BLOCKS: BlockItem[] = [
     heading: 'Taxation & Advisory',
     shortHeading: 'Taxation',
     tag: 'Pillar 02 · Precision',
-    widthClass: 'w-26 sm:w-40 md:w-52 lg:w-[280px] xl:w-[320px]',
-    paddingRightClass: 'pr-2 sm:pr-2.5 md:pr-3 lg:pr-3.5 xl:pr-4',
+    widthClass: 'w-[66vw] max-w-[250px] sm:w-[280px] md:w-[305px] lg:w-[280px] xl:w-[320px]',
+    paddingRightClass: 'pr-3 sm:pr-3 md:pr-3.5 lg:pr-3.5 xl:pr-4',
     leftPoints: [
       'Corporate Tax (9%) Optimization',
       'Proactive VAT Reviews & Filing',
@@ -46,8 +46,8 @@ const BLOCKS: BlockItem[] = [
     heading: 'Strategy',
     shortHeading: 'Strategy',
     tag: 'Pillar 03 · Vision',
-    widthClass: 'w-18 sm:w-28 md:w-38 lg:w-[200px] xl:w-[230px]',
-    paddingRightClass: 'pr-4 sm:pr-6 md:pr-8 lg:pr-11 xl:pr-14',
+    widthClass: 'w-[48vw] max-w-[185px] sm:w-[200px] md:w-[220px] lg:w-[200px] xl:w-[230px]',
+    paddingRightClass: 'pr-3 sm:pr-4 md:pr-6 lg:pr-9 xl:pr-12',
     leftPoints: [
       'Fractional CFO Leadership',
       'Pre-Acquisition Due Diligence',
@@ -62,6 +62,22 @@ const BLOCKS: BlockItem[] = [
 export default function LogoBlocksScroll() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [hovered, setHovered] = useState<number | null>(null)
+  const [activeTab, setActiveTab] = useState<number>(0)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Active block index:
+  // On desktop (lg+), hover controls active state (null when mouse leaves)
+  // On mobile (<lg), activeTab (default 0) ensures mobile users always have a clear active pillar & details
+  const activeBlock = isMobile
+    ? (hovered !== null ? hovered : activeTab)
+    : hovered
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -71,17 +87,22 @@ export default function LogoBlocksScroll() {
   // In the time of scrolling, come from left side and stick in the center
   const x = useTransform(
     scrollYProgress,
-    [0, 0.4, 0.75, 1],
-    ['-75vw', '-35vw', '-6vw', '0vw']
+    [0, 0.35, 0.7, 1],
+    ['-70vw', '-25vw', '0vw', '0vw']
   )
 
   const opacity = useTransform(scrollYProgress, [0, 0.25], [0.3, 1])
   const sideOpacity = useTransform(scrollYProgress, [0.6, 1], [0, 1])
 
+  const handleBlockSelect = (index: number) => {
+    setHovered(index)
+    setActiveTab(index)
+  }
+
   return (
     <div ref={containerRef} className="relative py-8 md:py-14 bg-[#FCFBF8] overflow-hidden">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8">
-        <div className="flex flex-col lg:grid lg:grid-cols-[1fr_auto_1fr] items-center gap-8 lg:gap-8 xl:gap-14">
+        <div className="flex flex-col lg:grid lg:grid-cols-[1fr_auto_1fr] items-center gap-6 lg:gap-8 xl:gap-14">
 
           {/* ── LEFT SIDE EXPLANATION POINTS (Desktop) ── */}
           <motion.div
@@ -126,27 +147,27 @@ export default function LogoBlocksScroll() {
           <motion.div
             style={{ x, opacity }}
             onMouseLeave={() => setHovered(null)}
-            className="flex flex-col items-start justify-center gap-[2px] md:gap-[2.5px] shrink-0"
+            className="flex flex-col items-start justify-center gap-[3px] md:gap-[3px] shrink-0 translate-x-2 sm:translate-x-0"
           >
             {BLOCKS.map((block, index) => {
-              const isHovered = hovered === index
-              const isOtherHovered = hovered !== null && !isHovered
+              const isBlockActive = activeBlock === index
+              const isBlockOtherActive = activeBlock !== null && !isBlockActive
 
-              // When hovered: expand. When other is hovered (small blocks): shrink to sleek profile. Otherwise: default.
-              const heightClass = isHovered
-                ? 'h-10 sm:h-14 md:h-20 lg:h-26 xl:h-[115px]'
-                : isOtherHovered
-                  ? 'h-2 sm:h-3.5 md:h-5 lg:h-6 xl:h-[30px]'
-                  : 'h-6 sm:h-9 md:h-12 lg:h-16 xl:h-[72px]'
+              // When active: expand. When other is active (small blocks): sleek profile. Otherwise: default.
+              const heightClass = isBlockActive
+                ? 'h-12 sm:h-14 md:h-20 lg:h-24 xl:h-[110px]'
+                : isBlockOtherActive
+                  ? 'h-4 sm:h-5 md:h-6 lg:h-6 xl:h-[30px]'
+                  : 'h-7 sm:h-9 md:h-12 lg:h-16 xl:h-[68px]'
 
-              const opacityClass = isOtherHovered ? 'opacity-70' : 'opacity-100'
+              const opacityClass = isBlockOtherActive ? 'opacity-70' : 'opacity-100'
 
               return (
                 <div
                   key={index}
-                  className="w-full flex justify-start"
+                  className="w-full flex justify-start py-0.5 sm:py-0 cursor-pointer touch-manipulation"
                   onMouseEnter={() => setHovered(index)}
-                  onClick={() => setHovered(index)}
+                  onClick={() => handleBlockSelect(index)}
                 >
                   <div
                     className={`relative overflow-hidden cursor-pointer transition-all duration-300 ease-out ${block.widthClass} ${heightClass} ${opacityClass}`}
@@ -161,16 +182,16 @@ export default function LogoBlocksScroll() {
                       }}
                     />
 
-                    {/* Heading inside the block — RIGHT ALIGNED, ONLY shown on hover */}
+                    {/* Heading inside the block — RIGHT ALIGNED, shown when active */}
                     <div
-                      className={`relative z-10 h-full w-full flex items-center justify-end ${block.paddingRightClass} select-none transition-all duration-300 ${isHovered
+                      className={`relative z-10 h-full w-full flex items-center justify-end ${block.paddingRightClass} select-none transition-all duration-300 ${isBlockActive
                         ? 'opacity-100 translate-x-0'
                         : 'opacity-0 translate-x-2 pointer-events-none'
                         }`}
                     >
-                      <div className="flex items-center gap-2 sm:gap-2.5">
+                      <div className="flex items-center gap-1.5 sm:gap-2.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#C9951A] scale-125 shrink-0" />
-                        <span className="font-semibold tracking-tight uppercase whitespace-nowrap text-white dark:text-[#212e52] text-[10px] sm:text-xs md:text-sm lg:text-base">
+                        <span className="font-semibold tracking-tight uppercase whitespace-nowrap text-white dark:text-[#212e52] text-[11px] sm:text-xs md:text-sm lg:text-base">
                           <span className="hidden sm:inline">{block.heading}</span>
                           <span className="sm:hidden">{block.shortHeading}</span>
                         </span>
@@ -221,45 +242,70 @@ export default function LogoBlocksScroll() {
           </motion.div>
 
           {/* ── MOBILE / TABLET EXPLANATION POINTS (Below the blocks) ── */}
-          <div className="lg:hidden w-full max-w-xl mx-auto mt-2 min-h-[100px]">
+          <div className="lg:hidden w-full max-w-xl mx-auto mt-2 sm:mt-4 min-h-[140px]">
             <AnimatePresence mode="wait">
-              {hovered !== null && (
+              {activeBlock !== null && (
                 <motion.div
-                  key={hovered}
+                  key={activeBlock}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.25, ease: 'easeOut' }}
-                  className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white/70 dark:bg-white/5 p-4 rounded-2xl border border-[#212e52]/10 dark:border-white/10"
+                  className="bg-white dark:bg-[#18233d] p-4 sm:p-5 rounded-2xl border border-[#212e52]/10 dark:border-white/10 shadow-sm"
                 >
-                  {/* Left Points */}
-                  <div className="space-y-2.5 text-left">
-                    <span className="text-[#C9951A] text-[10px] font-semibold uppercase tracking-wider block text-left">
-                      {BLOCKS[hovered].tag}
+                  {/* Interactive Pillar Selector Tabs on Mobile */}
+                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#212e52]/10 dark:border-white/10">
+                    <div className="flex items-center gap-1.5">
+                      {BLOCKS.map((b, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          onClick={() => handleBlockSelect(i)}
+                          className={`px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase transition-all duration-200 ${
+                            activeBlock === i
+                              ? 'bg-[#212e52] text-white dark:bg-white dark:text-[#212e52] shadow-sm'
+                              : 'bg-black/5 dark:bg-white/5 text-[#212e52]/60 dark:text-white/60 hover:text-[#212e52] dark:hover:text-white'
+                          }`}
+                        >
+                          {b.shortHeading}
+                        </button>
+                      ))}
+                    </div>
+                    <span className="text-[10px] text-[#C9951A] font-semibold uppercase tracking-widest">
+                      {BLOCKS[activeBlock].tag.split('·')[0].trim()}
                     </span>
-                    {BLOCKS[hovered].leftPoints.map((pt, i) => (
-                      <div key={i} className="flex items-start gap-2 text-left">
-                        <span className="text-[#C9951A] text-xs mt-0.5 leading-none font-bold">▪</span>
-                        <span className="text-xs sm:text-sm font-semibold text-[#212e52] dark:text-white tracking-tight">
-                          {pt}
-                        </span>
-                      </div>
-                    ))}
                   </div>
 
-                  {/* Right Points */}
-                  <div className="space-y-2.5 text-left">
-                    <span className="text-[#212e52]/70 dark:text-white/70 text-[10px] font-semibold uppercase tracking-wider block text-left">
-                      Impact & Outcomes
-                    </span>
-                    {BLOCKS[hovered].rightPoints.map((pt, i) => (
-                      <div key={i} className="flex items-start gap-2 text-left">
-                        <span className="text-[#C9951A] text-xs mt-0.5 leading-none font-bold">▪</span>
-                        <span className="text-xs sm:text-sm font-semibold text-[#212e52] dark:text-white tracking-tight">
-                          {pt}
-                        </span>
-                      </div>
-                    ))}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+                    {/* Left Points */}
+                    <div className="space-y-2 text-left">
+                      <span className="text-[#C9951A] text-[10px] font-semibold uppercase tracking-wider block text-left">
+                        {BLOCKS[activeBlock].tag}
+                      </span>
+                      {BLOCKS[activeBlock].leftPoints.map((pt, i) => (
+                        <div key={i} className="flex items-start gap-2 text-left">
+                          <span className="text-[#C9951A] text-xs mt-0.5 leading-none font-bold">▪</span>
+                          <span className="text-xs sm:text-sm font-semibold text-[#212e52] dark:text-white tracking-tight leading-snug">
+                            {pt}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Right Points */}
+                    <div className="space-y-2 text-left">
+                      <span className="text-[#212e52]/70 dark:text-white/70 text-[10px] font-semibold uppercase tracking-wider block text-left">
+                        Impact & Outcomes
+                      </span>
+                      {BLOCKS[activeBlock].rightPoints.map((pt, i) => (
+                        <div key={i} className="flex items-start gap-2 text-left">
+                          <span className="text-[#C9951A] text-xs mt-0.5 leading-none font-bold">▪</span>
+                          <span className="text-xs sm:text-sm font-semibold text-[#212e52] dark:text-white tracking-tight leading-snug">
+                            {pt}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
               )}

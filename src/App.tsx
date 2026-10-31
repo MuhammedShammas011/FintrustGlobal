@@ -2,6 +2,7 @@ import { Routes, Route, useLocation, BrowserRouter as Router } from 'react-route
 import { ThemeProvider } from './context/ThemeContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import WhatsAppButton from './components/WhatsAppButton'
 import PageTransition from './components/PageTransition'
 import Home from './pages/Home'
 import MonthlyBookkeeping from './pages/MonthlyBookkeeping'
@@ -54,6 +55,7 @@ function AppRoutes() {
         </Routes>
       </PageTransition>
       <Footer />
+      <WhatsAppButton />
     </>
   )
 }
