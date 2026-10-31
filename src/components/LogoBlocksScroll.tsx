@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 interface BlockItem {
   heading: string
   shortHeading: string
+  tabLabel: string
   tag: string
   widthClass: string
   paddingRightClass: string
@@ -14,10 +15,11 @@ interface BlockItem {
 const BLOCKS: BlockItem[] = [
   {
     heading: 'Accounting & Compliance',
-    shortHeading: 'Compliance',
+    shortHeading: 'Accounting & Compliance',
+    tabLabel: 'Compliance',
     tag: 'Pillar 01 · Integrity',
-    widthClass: 'w-[84vw] max-w-[320px] sm:w-[360px] md:w-[390px] lg:w-[360px] xl:w-[420px]',
-    paddingRightClass: 'pr-3.5 sm:pr-4 md:pr-5 lg:pr-6 xl:pr-7',
+    widthClass: 'w-[88vw] max-w-[340px] sm:w-[380px] md:w-[410px] lg:w-[380px] xl:w-[440px]',
+    paddingRightClass: 'pr-4 sm:pr-5 md:pr-6 lg:pr-7 xl:pr-8',
     leftPoints: [
       'UAE FTA & Regulatory Alignment',
       'End-to-End Bookkeeping & Payroll',
@@ -29,10 +31,11 @@ const BLOCKS: BlockItem[] = [
   },
   {
     heading: 'Taxation & Advisory',
-    shortHeading: 'Taxation',
+    shortHeading: 'Taxation & Advisory',
+    tabLabel: 'Taxation',
     tag: 'Pillar 02 · Precision',
-    widthClass: 'w-[66vw] max-w-[250px] sm:w-[280px] md:w-[305px] lg:w-[280px] xl:w-[320px]',
-    paddingRightClass: 'pr-3 sm:pr-3 md:pr-3.5 lg:pr-3.5 xl:pr-4',
+    widthClass: 'w-[70vw] max-w-[270px] sm:w-[300px] md:w-[325px] lg:w-[290px] xl:w-[335px]',
+    paddingRightClass: 'pr-2 sm:pr-2.5 md:pr-3 lg:pr-3.5 xl:pr-4',
     leftPoints: [
       'Corporate Tax (9%) Optimization',
       'Proactive VAT Reviews & Filing',
@@ -43,11 +46,12 @@ const BLOCKS: BlockItem[] = [
     ],
   },
   {
-    heading: 'Strategy',
+    heading: 'Strategy & Growth',
     shortHeading: 'Strategy',
+    tabLabel: 'Strategy',
     tag: 'Pillar 03 · Vision',
-    widthClass: 'w-[48vw] max-w-[185px] sm:w-[200px] md:w-[220px] lg:w-[200px] xl:w-[230px]',
-    paddingRightClass: 'pr-3 sm:pr-4 md:pr-6 lg:pr-9 xl:pr-12',
+    widthClass: 'w-[52vw] max-w-[200px] sm:w-[220px] md:w-[240px] lg:w-[200px] xl:w-[235px]',
+    paddingRightClass: 'pr-3.5 sm:pr-5 md:pr-7 lg:pr-9 xl:pr-11',
     leftPoints: [
       'Fractional CFO Leadership',
       'Pre-Acquisition Due Diligence',
@@ -147,20 +151,20 @@ export default function LogoBlocksScroll() {
           <motion.div
             style={{ x, opacity }}
             onMouseLeave={() => setHovered(null)}
-            className="flex flex-col items-start justify-center gap-[3px] md:gap-[3px] shrink-0 translate-x-2 sm:translate-x-0"
+            className="flex flex-col items-start justify-center gap-[3px] md:gap-[3.5px] shrink-0 translate-x-2 sm:translate-x-0"
           >
             {BLOCKS.map((block, index) => {
               const isBlockActive = activeBlock === index
               const isBlockOtherActive = activeBlock !== null && !isBlockActive
 
-              // When active: expand. When other is active (small blocks): sleek profile. Otherwise: default.
+              // When active: expand. When other is active: sleek but visible profile. Otherwise: default.
               const heightClass = isBlockActive
                 ? 'h-12 sm:h-14 md:h-20 lg:h-24 xl:h-[110px]'
                 : isBlockOtherActive
-                  ? 'h-4 sm:h-5 md:h-6 lg:h-6 xl:h-[30px]'
-                  : 'h-7 sm:h-9 md:h-12 lg:h-16 xl:h-[68px]'
+                  ? 'h-8 sm:h-9 md:h-11 lg:h-12 xl:h-[45px]'
+                  : 'h-10 sm:h-12 md:h-14 lg:h-16 xl:h-[68px]'
 
-              const opacityClass = isBlockOtherActive ? 'opacity-70' : 'opacity-100'
+              const opacityClass = isBlockOtherActive ? 'opacity-85' : 'opacity-100'
 
               return (
                 <div
@@ -182,20 +186,20 @@ export default function LogoBlocksScroll() {
                       }}
                     />
 
-                    {/* Heading inside the block — RIGHT ALIGNED, shown when active */}
+                    {/* Heading inside the block — RIGHT ALIGNED, NO DOT */}
                     <div
-                      className={`relative z-10 h-full w-full flex items-center justify-end ${block.paddingRightClass} select-none transition-all duration-300 ${isBlockActive
-                        ? 'opacity-100 translate-x-0'
-                        : 'opacity-0 translate-x-2 pointer-events-none'
-                        }`}
+                      className={`relative z-10 h-full w-full flex items-center justify-end ${block.paddingRightClass} select-none transition-all duration-300 ${
+                        isBlockActive
+                          ? 'opacity-100 translate-x-0'
+                          : isMobile
+                            ? 'opacity-75 translate-x-0'
+                            : 'opacity-0 translate-x-2 pointer-events-none'
+                      }`}
                     >
-                      <div className="flex items-center gap-1.5 sm:gap-2.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C9951A] scale-125 shrink-0" />
-                        <span className="font-semibold tracking-tight uppercase whitespace-nowrap text-white dark:text-[#212e52] text-[11px] sm:text-xs md:text-sm lg:text-base">
-                          <span className="hidden sm:inline">{block.heading}</span>
-                          <span className="sm:hidden">{block.shortHeading}</span>
-                        </span>
-                      </div>
+                      <span className="font-semibold tracking-tight uppercase whitespace-nowrap text-white dark:text-[#212e52] text-[10px] sm:text-xs md:text-sm lg:text-base">
+                        <span className="hidden sm:inline">{block.heading}</span>
+                        <span className="sm:hidden">{block.shortHeading}</span>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -267,7 +271,7 @@ export default function LogoBlocksScroll() {
                               : 'bg-black/5 dark:bg-white/5 text-[#212e52]/60 dark:text-white/60 hover:text-[#212e52] dark:hover:text-white'
                           }`}
                         >
-                          {b.shortHeading}
+                          {b.tabLabel}
                         </button>
                       ))}
                     </div>

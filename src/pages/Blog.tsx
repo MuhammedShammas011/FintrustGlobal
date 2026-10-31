@@ -146,14 +146,31 @@ export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
   const [subscribed, setSubscribed] = useState(false)
+  const [subscribing, setSubscribing] = useState(false)
   const [email, setEmail] = useState('')
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (email.trim()) {
-      setSubscribed(true)
-      setEmail('')
+    if (!email.trim()) return
+
+    const formId = import.meta.env.VITE_FORMSPREE_NEWSLETTER_ID || import.meta.env.VITE_FORMSPREE_FORM_ID
+    if (formId) {
+      setSubscribing(true)
+      try {
+        const endpoint = formId.startsWith('http') ? formId : `https://formspree.io/f/${formId}`
+        await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email, _subject: 'New Newsletter Subscription' }),
+        })
+      } catch (err) {
+        console.error('Newsletter submission error:', err)
+      } finally {
+        setSubscribing(false)
+      }
     }
+    setSubscribed(true)
+    setEmail('')
   }
 
   // Filter posts based on category and search query
@@ -460,9 +477,10 @@ export default function Blog() {
                     />
                     <button
                       type="submit"
-                      className="px-6 py-3.5 bg-[#212e52] hover:bg-[#111111] text-white text-xs font-semibold uppercase tracking-wider rounded-full transition-colors duration-300 flex-shrink-0"
+                      disabled={subscribing}
+                      className="px-6 py-3.5 bg-[#212e52] hover:bg-[#111111] text-white text-xs font-semibold uppercase tracking-wider rounded-full transition-colors duration-300 flex-shrink-0 disabled:opacity-70 disabled:cursor-wait"
                     >
-                      Subscribe
+                      {subscribing ? 'Subscribing...' : 'Subscribe'}
                     </button>
                   </form>
                 )}
