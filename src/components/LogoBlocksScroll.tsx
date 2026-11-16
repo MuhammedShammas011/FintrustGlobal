@@ -17,7 +17,7 @@ const BLOCKS: BlockItem[] = [
     heading: 'Accounting & Compliance',
     shortHeading: 'Compliance',
     tabLabel: 'Compliance',
-    tag: 'Pillar 01 · Integrity',
+    tag: 'Pillar 01 — Integrity',
     widthClass: 'w-[90vw] max-w-[370px] sm:w-[440px] md:w-[500px] lg:w-[480px] xl:w-[560px] 2xl:w-[600px]',
     paddingRightClass: 'pr-4 sm:pr-5 md:pr-6 lg:pr-8 xl:pr-10',
     leftPoints: [
@@ -33,7 +33,7 @@ const BLOCKS: BlockItem[] = [
     heading: 'Taxation & Advisory',
     shortHeading: 'Taxation',
     tabLabel: 'Taxation',
-    tag: 'Pillar 02 · Precision',
+    tag: 'Pillar 02 — Precision',
     widthClass: 'w-[74vw] max-w-[305px] sm:w-[360px] md:w-[400px] lg:w-[390px] xl:w-[455px] 2xl:w-[490px]',
     paddingRightClass: 'pr-3.5 sm:pr-4 md:pr-5 lg:pr-7 xl:pr-8',
     leftPoints: [
@@ -49,7 +49,7 @@ const BLOCKS: BlockItem[] = [
     heading: 'Strategy',
     shortHeading: 'Strategy',
     tabLabel: 'Strategy',
-    tag: 'Pillar 03 · Vision',
+    tag: 'Pillar 03 — Vision',
     widthClass: 'w-[58vw] max-w-[240px] sm:w-[285px] md:w-[315px] lg:w-[305px] xl:w-[355px] 2xl:w-[385px]',
     paddingRightClass: 'pr-3 sm:pr-4 md:pr-4 lg:pr-6 xl:pr-7',
     leftPoints: [
@@ -187,17 +187,17 @@ export default function LogoBlocksScroll() {
                       }}
                     />
 
-                    {/* Heading inside the block — RIGHT ALIGNED, NO DOT, ALWAYS VISIBLE */}
+                    {/* Heading inside the block — CENTER ALIGNED, NO DOT, ALWAYS VISIBLE */}
                     <div
-                      className={`relative z-10 h-full w-full flex items-center justify-end ${block.paddingRightClass} select-none transition-all duration-300 ${
+                      className={`relative z-10 h-full w-full flex items-center justify-center text-center px-4 sm:px-6 md:px-8 select-none overflow-hidden transition-all duration-300 ${
                         isBlockActive
                           ? 'opacity-100 translate-x-0'
-                          : 'opacity-80 translate-x-0 hover:opacity-100'
+                          : 'opacity-85 translate-x-0 hover:opacity-100'
                       }`}
                     >
-                      <span className="font-semibold tracking-wider uppercase whitespace-nowrap text-white dark:text-[#212e52] text-[11px] sm:text-xs md:text-sm lg:text-[15px] xl:text-base">
-                        <span className="hidden sm:inline">{block.heading}</span>
-                        <span className="sm:hidden">{block.shortHeading}</span>
+                      <span className="font-semibold tracking-wider uppercase whitespace-nowrap text-white dark:text-[#212e52] text-[10px] sm:text-xs md:text-xs lg:text-sm xl:text-[15px]">
+                        <span className="hidden lg:inline">{block.heading}</span>
+                        <span className="lg:hidden">{block.shortHeading}</span>
                       </span>
                     </div>
                   </div>
@@ -275,7 +275,9 @@ export default function LogoBlocksScroll() {
                     ))}
                   </div>
                   <span className="text-[10px] text-[#C9951A] font-semibold uppercase tracking-widest">
-                    {BLOCKS[activeDisplayBlock].tag.split('·')[0].trim()}
+                    {BLOCKS[activeDisplayBlock].tag.includes('—')
+                      ? BLOCKS[activeDisplayBlock].tag.split('—')[0].trim()
+                      : BLOCKS[activeDisplayBlock].tag.split('·')[0].trim()}
                   </span>
                 </div>
 
